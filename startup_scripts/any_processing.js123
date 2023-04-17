@@ -1,0 +1,232 @@
+// priority: 0
+
+// This script, by default, creates a BlockEntity (that can do energy + items -> items) per call to processor() in block startup event.
+// the blocks created also have their own recipe type and they are directional.
+// if you want to make the output extractable with automation, you'll have to use PowerfulJS and make some modifications to this script.
+// if you know how to read code, good!
+
+const Mth = Java.loadClass("net.minecraft.util.Mth")
+const Explosion = Java.loadClass("net.minecraft.world.level.Explosion")
+
+const recipeTypesToRegister = []
+
+StartupEvents.registry('block', event => {
+    // HELPER FUNCTION FOR (processing) BLOCK ENTITIES
+    let processor = (id, name, inputSlotCount, outputSlotCount, maxEnergy, onProcess, overrideRecipeType) => {
+       event.create(id, 'entity').hardness(5.0).displayName(name)
+       .entity(builder => {
+           builder.ticker((level, pos, state, be) => {
+               if (!level.clientSide) {
+                   tickAnyProcessor(level, pos, state, be, overrideRecipeType == null ? id : overrideRecipeType, onProcess)
+               }
+       	    })
+           .itemHandler(inputSlotCount)
+           .itemHandler(outputSlotCount)
+           .energyHandler(maxEnergy, maxEnergy, maxEnergy)
+       }).defaultState(state => {
+            state.set(BlockProperties.LIT, false)
+            state['set(net.minecraft.world.level.block.state.properties.EnumProperty,java.lang.Enum)'](BlockProperties.HORIZONTAL_FACING, Facing.north)
+       }).placementState(state => {
+            state['set(net.minecraft.world.level.block.state.properties.EnumProperty,java.lang.Enum)'](BlockProperties.HORIZONTAL_FACING, state.horizontalDirection.opposite)
+       })
+       .property(BlockProperties.LIT)
+       .property(BlockProperties.HORIZONTAL_FACING)
+
+       if (overrideRecipeType == null) {
+            recipeTypesToRegister.push({"type": id, "inputCount": inputSlotCount, "outputCount": outputSlotCount})
+       }
+    }
+
+    
+// USAGE
+    // runs a recipe type registered as 'kubejs:processing_example'
+    processor('bejs:example_processor', "Example Processor", 2, 3, 10000, null, null)
+    // runs the same as above, but does something on recipe completion (it explodes)
+    processor('bejs:example_processor_2', "Example Processor 2: Explosive Boogaloo", 2, 3, 10000, onProcessExplode, 'bejs:example_processor')
+})
+
+// A PROCESS FINISH FUNCTION HAS TO HAVE THESE EXACT PARAMETERS
+function onProcessExplode(level, pos, state, be, recipe) {
+    level.explode(null, null, null, pos.x, pos.y, pos.z, 5, true, Explosion.BlockInteraction.BREAK) // this will explode when a recipe finishes
+}
+
+// REGISTER MENUS YOURSELF; I DON'T KNOW WHERE YOU WANT SLOTS
+StartupEvents.registry('menu', event => {
+    event.create('example_processor', 'block_entity')
+        .addSlot(17, 17, 0, 0)
+        .addSlot(79, 17, 1, 0)
+        .addOutputSlot(56, 51, 0, 0, 1, null)
+        .addOutputSlot(79, 58, 1, 0, 1, null)
+        .addOutputSlot(102, 51, 2, 0, 1, null)
+        .playerInventoryY(84)
+        .tintColor(0xFFFFFFFF) // a color to tint the whole inventory texture, in hexadecimal [a, r, g, b]
+        .backroundTexture('minecraft:textures/gui/container/brewing_stand.png', new Rectangle(0, 0, 176, 166))
+        .progressDrawable(60, 44, new Rectangle(176, 29, 18, 4), 'minecraft:textures/gui/container/brewing_stand.png', 'left', 'energy')
+        //.progressDrawable(63, 14, new Rectangle(185, 0, 12, 29), 'minecraft:textures/gui/container/brewing_stand.png', 'up', 'fuel')
+        .progressDrawable(97, 16, new Rectangle(176, 0, 9, 28), 'minecraft:textures/gui/container/brewing_stand.png', 'down', 'progress')
+        .setBlockEntity('bejs:example_processor')
+
+    event.create('example_processor_2', 'block_entity')
+        .addSlot(17, 17, 0, 0)
+        .addSlot(79, 17, 1, 0)
+        .addOutputSlot(56, 51, 0, 0, 1, null)
+        .addOutputSlot(79, 58, 1, 0, 1, null)
+        .addOutputSlot(102, 51, 2, 0, 1, null)
+        .playerInventoryY(84)
+        .tintColor(0xFFFFFFFF) // a color to tint the whole inventory texture, in hexadecimal [a, r, g, b]
+        .backroundTexture('minecraft:textures/gui/container/brewing_stand.png', new Rectangle(0, 0, 176, 166))
+        .progressDrawable(60, 44, new Rectangle(176, 29, 18, 4), 'minecraft:textures/gui/container/brewing_stand.png', 'left', 'energy')
+        //.progressDrawable(63, 14, new Rectangle(185, 0, 12, 29), 'minecraft:textures/gui/container/brewing_stand.png', 'up', 'fuel')
+        .progressDrawable(97, 16, new Rectangle(176, 0, 9, 28), 'minecraft:textures/gui/container/brewing_stand.png', 'down', 'progress')
+        .setBlockEntity('bejs:example_processor_2')
+})
+
+StartupEvents.registry('recipe_type', event => {
+    for (const recipeType of recipeTypesToRegister) {
+        console.info('registering recipe type ' + recipeType.type + ' with max inputs ' + recipeType.inputCount + ' and max outputs ' + recipeType.outputCount)
+        event.create(recipeType.type)
+            .maxInputs(recipeType.inputCount)
+            .maxOutputs(recipeType.outputCount)
+            .toastSymbol(recipeType.type)
+    }
+
+})
+
+// check if the recipe can finish (if there's free slots)
+function canProcess(recipe, outputs) {
+    if(recipe != null) {
+        let results = recipe.itemResults
+
+        let current = []
+        for (let i = 0; i < outputs.containerSize; ++i) {
+            current.push(outputs.getItem(i))
+        }
+
+        return recipe.outputsFit(current, results)
+    } else {
+        return false
+    }
+
+}
+
+// actually do the recipe item i/o, 
+function process (recipe, outputSlots, inputSlots) {
+    if(recipe != null && canProcess(recipe, outputSlots)) {
+        let results = recipe.itemResults
+        let inputs = recipe.itemInputs
+
+        let stacksToInsert = new Map()
+
+        for (let i = 0; i < results.size(); ++i) {
+            if (findFirstFreeOutput(outputSlots, results.get(i), stacksToInsert) > 0) {
+                return false
+            }
+        }
+
+        let slotIndexes = recipe.getInputStackIndexMap(inputSlots, inputs)
+        for (let value of slotIndexes.entrySet()) {
+            inputSlots.getStackInSlot(value.value).shrink(value.key.count)
+        }
+
+        for (const [index, stack] of stacksToInsert) {
+            outputSlots.setStackInSlot(index, stack)
+        }
+        return true
+    } else {
+        return false
+    }
+}
+
+function findFirstFreeOutput(outputSlots, stack, insertTo) {
+    let lastCheckedSlot = 0
+    let amountToInsert = stack.count
+    for (let i = 0; i < outputSlots.slots; ++i) {
+        let currentSlot = outputSlots.getStackInSlot(i).copy()
+        if ((currentSlot.isSameItemSameTags(currentSlot, stack) || currentSlot.empty) && !insertTo.has(i)) {
+            let maxInsert = currentSlot.maxStackSize - currentSlot.count
+            if (maxInsert > 0) {
+                let inserted = Math.min(maxInsert, amountToInsert)
+                insertTo.set(i, Item.of(stack.item, currentSlot.count + inserted, stack.tag))
+                amountToInsert -= inserted
+            }
+        }
+        lastCheckedSlot = i
+
+        if (amountToInsert == 0) {
+            return 0
+        }
+    }
+
+    if (amountToInsert > 0) {
+        for (let i = lastCheckedSlot + 1; i < outputSlots.slots; ++i) {
+            let slotStack = outputSlots.getStackInSlot(i).copy()
+
+            if (slotStack.empty && !insertTo.has(i)) {
+                let maxInsert = Math.min(stack.maxStackSize, outputSlots.getSlotLimit(i))
+                if (maxInsert > 0) {
+                    let inserted = Math.min(maxInsert, amountToInsert)
+                    insertTo.set(i, stack)
+                    amountToInsert -= inserted
+                }
+                if (amountToInsert == 0) {
+                    return 0
+                }
+            }
+        }
+
+    }
+
+    return amountToInsert
+}
+
+
+// "COMMON" FUNCTION FOR PROCESSING RECIPES
+function tickAnyProcessor(level, pos, state, be, recipeType, onProcess) {
+
+    var energy = be.getCapability(ForgeCapabilities.ENERGY).orElse(null)
+    let items = be.getCapability(ForgeCapabilities.ITEM_HANDLER).orElse(null)
+    let inputs = items.getContainer(0)
+    let outputs = items.getContainer(1)
+    // let fluids = be.getCapability(ForgeCapabilities.FLUID_HANDLER).orElse(null) // NOTE: IMPLEMENT THIS YOURSELF
+
+    let hadFuel = energy.energyStored > 0
+    let changed = false
+
+    let progress = be.persistentData.getInt("progress")
+
+    let wrapper = new RecipeWrapper(inputs)
+    let recipe = level.server.recipeManager.getRecipeFor(recipeType, wrapper, level).orElse(null)
+    if (recipe != null) {
+        let energyToExtract = recipe.energy / recipe.processingTime
+
+        if (energy.energyStored >= energyToExtract) {
+            be.persistentData.putInt("totalProgress", recipe.processingTime)
+
+            if (canProcess(recipe, outputs)) {
+                ++progress
+                energy.extractEnergy(energyToExtract, false)
+                if(progress >= recipe.processingTime) {
+                    be.persistentData.putInt("progress", 0)
+                    if(global.process(recipe, outputs, inputs)) {
+                        if (onProcess != null) {
+                            onProcess(level, pos, state, be, recipe)
+                        }
+                    }
+                    changed = true
+                } else {
+                    be.persistentData.putInt("progress", progress)
+                }
+            } else {
+                be.persistentData.putInt("progress", 0)
+            }
+        } else if (energy.energyStored < energyToExtract && progress > 0) {
+            be.persistentData.putInt("progress", Mth.clamp(progress - 2, 0, recipe.processingTime))
+        }
+    } else {
+        be.persistentData.putInt("progress", 0)
+    }
+
+    if (changed) {
+        be.setChanged()
+    }
+}

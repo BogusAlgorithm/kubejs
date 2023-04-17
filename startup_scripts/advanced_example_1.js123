@@ -1,0 +1,141 @@
+// priority: 0
+
+const Mth = Java.loadClass("net.minecraft.util.Mth")
+const Boolean = Java.loadClass('java.lang.Boolean')
+
+StartupEvents.registry('block', event => {
+    event.create('example_block_2', 'entity').material('wood').hardness(1.0).displayName('Example Block')
+	.entity(builder => {
+	    builder.ticker((level, pos, state, be) => {
+            if (!level.clientSide) {
+                tick(level, pos, state, be)
+            }
+    	})
+        .itemHandler(5)
+        .energyHandler(1000, 50, 50)
+    }).defaultState(state => {
+        state.set(BlockProperties.LIT, false)
+    })
+    .property(BlockProperties.LIT)
+})
+
+StartupEvents.registry('menu', event => {
+    event.create('example_block_2', 'block_entity')
+        .addSlot(79, 17)
+        .addSlot(17, 17)
+        .addOutputSlot(56, 51, 2)
+        .addOutputSlot(79, 58, 3, 0, 0, null)
+        .addOutputSlot(102, 51, 4, 0, 0, null)
+        .playerInventoryY(84)
+        .tintColor(0xFFFFFFFF) // a color to tint the whole inventory texture, in hexadecimal [a, r, g, b]
+        .backroundTexture('minecraft:textures/gui/container/brewing_stand.png', new Rectangle(0, 0, 176, 166))
+        .progressDrawable(60, 44, new Rectangle(176, 29, 18, 4), 'minecraft:textures/gui/container/brewing_stand.png', 'left', 'energy')
+        //.progressDrawable(63, 14, new Rectangle(185, 0, 12, 29), 'minecraft:textures/gui/container/brewing_stand.png', 'up', 'fuel')
+        .progressDrawable(97, 16, new Rectangle(176, 0, 9, 28), 'minecraft:textures/gui/container/brewing_stand.png', 'down', 'progress')
+        .setBlockEntity('kubejs:example_block_2')
+})
+
+function canBurn(recipe, items) {
+    if(recipe != null) {
+        let result = recipe.assemble(items)
+        if(result.empty) {
+            return false
+        } else {
+            let currentResult = items.getItem(2)
+            if(currentResult.empty) {
+                return true
+            } else if (!currentResult.sameItem(result)) {
+                return false
+            } else {
+                return result.count + currentResult.count <= currentResult.maxStackSize
+            }
+        }
+    } else {
+        return false
+    }
+}
+
+function burn(recipe, items) {
+    if(recipe != null && canBurn(recipe, items)) {
+        let input = items.getItem(0)
+        let result = recipe.assemble(items)
+        let currentResultSlot = items.getItem(2)
+        if (currentResultSlot.empty) {
+            items.setItem(2, result.copy())
+        } else if (currentResultSlot.is(result.item)) {
+            currentResultSlot.grow(result.count)
+        }
+
+        input.shrink(1)
+        return true
+    } else {
+        return false
+    }
+}
+
+function isFuel(stack) {
+    return stack.is('#forge:dusts/redstone') || stack.is('#forge:storage_blocks/redstone')
+}
+
+function tick(level, pos, state, be) {
+
+    var energy = be.getCapability(ForgeCapabilities.ENERGY).orElse(null)
+    let items = be.getCapability(ForgeCapabilities.ITEM_HANDLER).orElse(null)
+    let item = items.getContainer(0)
+    var fuelStack = item.getStackInSlot(1)
+
+    let hadFuel = energy.energyStored > 0
+    let changed = false
+
+    let progress = be.persistentData.getInt("progress")
+    if (energy.energyStored > 0 || isFuel(fuelStack) && !item.getStackInSlot(0).empty) {
+        let wrapper = new RecipeWrapper(item)
+        let recipe = level.server.recipeManager.getRecipeFor('minecraft:smelting', wrapper, level).orElse(null)
+
+        if (recipe != null) {
+            be.persistentData.putInt("totalProgress", recipe.cookingTime)
+
+            if (level.levelData.gameTime % 5 == 0 && canBurn(recipe, wrapper)) {
+                if(fuelStack.is('#forge:dusts/redstone') && energy.energyStored < energy.maxEnergyStored - 5) {
+                    energy.receiveEnergy(5, false)
+                    fuelStack.shrink(1)
+                    changed = true
+                } else if (fuelStack.is('#forge:storage_blocks/redstone') && energy.energyStored < energy.maxEnergyStored - 45) {
+                    energy.receiveEnergy(45, false)
+                    fuelStack.shrink(1)
+                    changed = true
+                }
+            }
+
+            if (energy.energyStored > 0 && canBurn(recipe, wrapper)) {
+                ++progress
+                energy.extractEnergy(1, false)
+                if(progress == recipe.cookingTime) {
+                    be.persistentData.putInt("progress", 0)
+                    if(burn(recipe, wrapper)) {
+
+                    }
+                    changed = true
+                } else {
+                    be.persistentData.putInt("progress", progress)
+                }
+            } else {
+                be.persistentData.putInt("progress", 0)
+            }
+        } else {
+            be.persistentData.putInt("progress", 0)
+        }
+    } else if (energy.energyStored <= 0 && progress > 0) {
+        be.persistentData.putInt("progress", Mth.clamp(progress - 2, 0, be.persistentData.getInt("totalProgress")))
+    }
+
+    if (hadFuel != energy.energyStored > 0) {
+        changed = true
+        var newState = state.setValue(BlockProperties.LIT, Boolean.valueOf(energy.energyStored > 0))
+        level.setBlock(pos, newState, 3)
+    }
+
+    if (changed) {
+        be.setChanged()
+    }
+}
