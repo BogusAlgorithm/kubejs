@@ -6,6 +6,8 @@ console.info('Hello, World! (You will only see this line once in console, during
 
 ServerEvents.recipes(event => {
 
+    //event.remove({type: 'exnihilosequentia:heat'})
+
     event.shapeless("minecraft:wooden_pickaxe", ["minecraft:stick", 'minecraft:wooden_pickaxe']).modifyResult((inventory, itemstack) => {
         let item = inventory.find(Item.of("minecraft:wooden_pickaxe").ignoreNBT())
 
