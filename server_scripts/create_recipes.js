@@ -32,7 +32,7 @@ ServerEvents.recipes(event => {
 
     event.recipes.create.compacting([Fluid.of('minecraft:water', 50)], '#minecraft:leaves')
 
-    event.recipes.create.compacting(["minecraft:magma_block"], ["minecraft:cobblestone"]).superheated()
+    event.recipes.create.compacting(["minecraft:magma_block"], ["minecraft:basalt"]).superheated()
 
     event.recipes.create.compacting(["minecraft:spruce_slab", Fluid.of("thermal:resin", 100)], ["minecraft:spruce_planks"]).heated()
 
@@ -45,7 +45,7 @@ ServerEvents.recipes(event => {
 
     event.recipes.create.mixing([Fluid.of('minecraft:milk', 500)], [Fluid.of('minecraft:water', 500), "minecraft:bone_meal"]).heated()
 
-    event.recipes.create.mixing([Fluid.of('minecraft:honey', 1000)], [Fluid.of('thermal:syrup', 1000), "minecraft:sugar", "minecraft:sugar", "minecraft:sugar", "minecraft:sugar"]).heated()
+    event.recipes.create.mixing([Fluid.of('create:honey', 1000)], [Fluid.of('thermal:syrup', 1000), "minecraft:sugar", "minecraft:sugar", "minecraft:sugar", "minecraft:sugar"]).heated()
 
     event.remove({id: "create:crafting/kinetics/super_glue"})
     let inter = 'kubejs:incomplete_glue'

@@ -107,7 +107,7 @@ const modes = [ [stones, 0.02, "minecraft:iron_ore", 64, 4, 0.5],
                 [organics, 0.02, "minecraft:egg", 16, 4, 0.5],
                 [plants, 0.02, "minecraft:cactus", 64, 4, 0.5],
                 [trees, 0.02, "minecraft:bamboo", 64, 4, 0.5],
-                [food, 0, "minecraft:air", 64, 8, 0.5]
+                [food, 0, "minecraft:air", 64, 8, 0.5],
                 [soils, 0.02, "minecraft:soul_soil", 64, 4, 0.5]]
 
 function GetModeFor(id) {
@@ -154,7 +154,8 @@ StartupEvents.registry('block', event => {
                 
                     if (valids.includes(item.getStackInSlot(0).id) && item.getStackInSlot(0).count>modes[mode][4])
                     {
-                        let adv_chance = be.persistentData.getInt('adv_cha')
+                        let adv_chance = be.persistentData.getFloat('adv_cha')
+                        level.server.tell(adv_chance)
                         if (item.getStackInSlot(0).id == be.persistentData.getString("last_sid") && item.getStackInSlot(0).count == be.persistentData.getInt("last_cnt"))
                         {
                             adv_chance += modes[mode][1]
@@ -163,9 +164,11 @@ StartupEvents.registry('block', event => {
                         {
                             adv_chance = modes[mode][1]
                         }
-                        be.persistentData.putInt('adv_cha', adv_chance)
-                        //level.server.tell(adv_chance+" to "+modes[mode][2]+ " min " + Math.min(modes[mode][3]))
-                        if (Math.random() < adv_chance)
+                        be.persistentData.putFloat('adv_cha', adv_chance)
+                        let ra = Math.random()
+                        level.server.tell(adv_chance+" to "+modes[mode][2]+ " min " + Math.min(modes[mode][3]) + " r="+ra)
+                         
+                        if (ra < adv_chance)
                         {
                             //level.server.tell("MORPH")
                             item.setStackInSlot(0, Item.of(modes[mode][2], Math.min(modes[mode][3], Math.floor((item.getStackInSlot(0).count - modes[mode][4]) * modes[mode][5]))))    ///!!!
