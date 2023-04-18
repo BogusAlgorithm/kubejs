@@ -1,6 +1,5 @@
 // priority: 0
 
-
 const stones = [
     ["minecraft:cobblestone", 1],
     ["minecraft:granite", 1],
@@ -25,9 +24,9 @@ const ores = [
 
 const organics = [
     ["minecraft:slime_ball", 1],
-    ["minecraft:rotten_flesh", 1],
+    //["minecraft:rotten_flesh", 1],
     ["minecraft:spider_eye", 1],
-    //["minecraft:bone", 1],
+    ["minecraft:ink_sac", 1],
     ["minecraft:leather", 1],
     ["minecraft:string", 1],
     ["minecraft:feather:", 1]//,
@@ -67,14 +66,49 @@ const food = [
     //["minecraft:azalea", 1]
   ];
 
+  const soils = [
+    ["minecraft:grass_block", 1],
+    ["minecraft:podzol", 1],
+    ["minecraft:mycelium", 1],
+    ["minecraft:crimson_nylium", 1],
+    ["minecraft:warped_nylium", 1]//,
+    //["minecraft:sugar_cane", 1],
+    //["minecraft:kelp", 1]//,
+    //["thermal:", 1]
+  ];
+
+  const crops_2 = [
+    /*
+    ["thermal:amaranth", 1],
+    ["thermal:barley", 1],
+    ["thermal:bell_pepper", 1],
+    ["thermal:coffee", 1],
+    ["thermal:corn", 1],
+    ["thermal:eggplant", 1],
+    ["thermal:flax", 1],
+    ["thermal:green_bean", 1],
+    ["thermal:onion", 1],
+    ["thermal:peanut", 1],
+    ["thermal:radish", 1],
+    ["thermal:rice", 1],
+    ["thermal:sadiroot", 1],
+    ["thermal:spinach", 1],
+    ["thermal:strawberry", 1],
+    ["thermal:tea", 1],
+    ["thermal:tomato" 1]
+    */
+  ];
+
+
 //const morph = ["minecraft:iron_ore", "minecraft:nether_quartz_ore", "minecraft:egg", "minecraft:cactus"]
 //const modes = [stones, ores, organics, plants]
-const modes = [ [stones, 2, "minecraft:iron_ore", 64, 4, 0.5],
-                [ores, 2, "minecraft:nether_quartz_ore", 64, 3, 0.5],
-                [organics, 2, "minecraft:egg", 16, 4, 0.5],
-                [plants, 2, "minecraft:cactus", 64, 4, 0.5],
-                [trees, 2, "minecraft:bamboo", 64, 4, 0.5],
-                [food, 0, "minecraft:air", 64, 8, 0.5]]
+const modes = [ [stones, 0.02, "minecraft:iron_ore", 64, 4, 0.5],
+                [ores, 0.02, "minecraft:nether_quartz_ore", 64, 3, 0.5],
+                [organics, 0.02, "minecraft:egg", 16, 4, 0.5],
+                [plants, 0.02, "minecraft:cactus", 64, 4, 0.5],
+                [trees, 0.02, "minecraft:bamboo", 64, 4, 0.5],
+                [food, 0, "minecraft:air", 64, 8, 0.5]
+                [soils, 0.02, "minecraft:soul_soil", 64, 4, 0.5]]
 
 function GetModeFor(id) {
     for (let i = 0; i < modes.length; i++) {
@@ -131,7 +165,7 @@ StartupEvents.registry('block', event => {
                         }
                         be.persistentData.putInt('adv_cha', adv_chance)
                         //level.server.tell(adv_chance+" to "+modes[mode][2]+ " min " + Math.min(modes[mode][3]))
-                        if (Math.floor(Math.random()*100) < adv_chance)
+                        if (Math.random() < adv_chance)
                         {
                             //level.server.tell("MORPH")
                             item.setStackInSlot(0, Item.of(modes[mode][2], Math.min(modes[mode][3], Math.floor((item.getStackInSlot(0).count - modes[mode][4]) * modes[mode][5]))))    ///!!!
