@@ -24,7 +24,6 @@ const ores = [
 
 const organics = [
     ["minecraft:slime_ball", 1],
-    //["minecraft:rotten_flesh", 1], move to protein tier
     ["minecraft:spider_eye", 1],
     ["minecraft:ink_sac", 1],
     ["minecraft:leather", 1],
@@ -111,13 +110,14 @@ const modes = [ [stones, 0.02, "minecraft:iron_ore", 64, 4, 0.5],
                 [soils, 0.02, "minecraft:soul_soil", 64, 4, 0.5]]
 
 function GetModeFor(id) {
+  if (id == "minecraft:air") return -1
     for (let i = 0; i < modes.length; i++) {
         let v = []
         //modes[i].forEach(pair => v.push(pair[0]))
         modes[i][0].forEach(pair => v.push(pair[0]))//** */
         if (v.includes(id)) return i
       }
-    return -1
+  return -1
 }
 
 StartupEvents.registry('block', event => {
@@ -135,6 +135,7 @@ StartupEvents.registry('block', event => {
                     //let item = items.getContainer(1)
 
                     let item = items.getContainer(0)
+                    if (items.getStackInSlot(0).id == "minecraft:air") return -1
                     /*let valids = ['minecraft:stone', 
                     'minecraft:granite', 
                     'minecraft:diorite', 

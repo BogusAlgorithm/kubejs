@@ -5,6 +5,18 @@
 console.info('Trying to load vanila recipes...')
 
 ServerEvents.recipes(event => {
+    event.shaped(
+        Item.of('minecraft:turtle_egg'), 
+          [ 
+          'KKK', 
+          'KEK', 
+          'KBK'  
+          ],{
+          B: 'minecraft:water_bucket',
+          E: 'minecraft:egg',
+          K: 'minecraft:kelp'
+          }
+        ).replaceIngredient("minecraft:water_bucket", "minecraft:bucket")    
 
     event.smelting('minecraft:soul_sand', 'minecraft:soul_soil')
 
@@ -29,7 +41,11 @@ ServerEvents.recipes(event => {
     event.remove({ type: 'minecraft:smelting', output: 'minecraft:charcoal' })
     //event.remove({ id: 'minecraft:torch'})
     event.shapeless('minecraft:torch', ['minecraft:stick', 'minecraft:flint_and_steel']).damageIngredient('minecraft:flint_and_steel')
-    event.replaceInput({ id: 'minecraft:campfire'}, '#minecraft:coal', '#minecraft:torch')
+
+    event.remove({ id: 'minecraft:iron_bars'})
+    event.shapeless('minecraft:iron_bars', ['createaddition:iron_rod', 'createaddition:iron_rod', 'createaddition:iron_rod', 'createaddition:iron_rod'])
+
+    event.replaceInput({ id: 'minecraft:campfire'}, '#minecraft:coals', 'minecraft:torch')
 
     //event.shapeless(Item.of("minecraft:book").enchant('kubejs:cust_enchant', 1), ["minecraft:book", 'minecraft:diamond'])
 
