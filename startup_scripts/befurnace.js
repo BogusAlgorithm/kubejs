@@ -24,7 +24,7 @@ const ores = [
 
 const organics = [
     ["minecraft:slime_ball", 1],
-    //["minecraft:rotten_flesh", 1],
+    //["minecraft:rotten_flesh", 1], move to protein tier
     ["minecraft:spider_eye", 1],
     ["minecraft:ink_sac", 1],
     ["minecraft:leather", 1],
