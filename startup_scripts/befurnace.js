@@ -37,10 +37,9 @@ const plants = [
     ["minecraft:wheat_seeds", 1],
     ["minecraft:pumpkin_seeds", 1],
     ["minecraft:melon_seeds", 1],
-    //["minecraft:bamboo", 1],
     ["minecraft:sugar_cane", 1],
     ["minecraft:kelp", 1]//,
-    //["thermal:", 1]
+    //["thermal:amaranth:", 1]
   ];
 
 const trees = [
@@ -76,8 +75,8 @@ const food = [
     //["thermal:", 1]
   ];
 
+  /*
   const crops_2 = [
-    /*
     ["thermal:amaranth", 1],
     ["thermal:barley", 1],
     ["thermal:bell_pepper", 1],
@@ -95,28 +94,54 @@ const food = [
     ["thermal:strawberry", 1],
     ["thermal:tea", 1],
     ["thermal:tomato" 1]
-    */
+  ];*/
+
+  const protein = [
+    ['minecraft:rotten_flash',1],
+    ['minecraft:beef',1],
+    ['minecraft:porkchop',1],
+    ['minecraft:chicken',1],
+    ['minecraft:mutton',1],
+    ['minecraft:rabbit',1],
+    ['minecraft:cod',1],
+    ['minecraft:salmon',1]
   ];
 
+  const minerals = [
+    ['minecraft:clay_ball',1],
+    ['minecraft:coal',1],
+    ['thermal:appatite',1],
+    ['thermal:cinabar',1],
+    ['thermal:niter',1],
+    ['thermal:sulfur',1]//,
+    //['minecraft:cod',1],
+    //['minecraft:salmon',1]
+  ];
 
-//const morph = ["minecraft:iron_ore", "minecraft:nether_quartz_ore", "minecraft:egg", "minecraft:cactus"]
-//const modes = [stones, ores, organics, plants]
+const tier = 0;
+const chnc = 1;
+const bons = 2;
+const mstk = 3;
+const decr = 4;
+const mltp = 5;
 const modes = [ [stones, 0.02, "minecraft:iron_ore", 64, 4, 0.5],
                 [ores, 0.02, "minecraft:nether_quartz_ore", 64, 3, 0.5],
                 [organics, 0.02, "minecraft:egg", 16, 4, 0.5],
                 [plants, 0.02, "minecraft:cactus", 64, 4, 0.5],
                 [trees, 0.02, "minecraft:bamboo", 64, 4, 0.5],
-                [food, 0, "minecraft:air", 64, 8, 0.5],
-                [soils, 0.02, "minecraft:soul_soil", 64, 4, 0.5]]
+                [food, 0.00, "minecraft:air", 64, 8, 0.5],
+                [soils, 0.02, "minecraft:soul_soil", 64, 4, 0.5],
+                [protein, 0.00, "minecraft:air", 64, 16, 0.5],
+                [minerals, 0.00, "minecraft:air", 64, 8, 0.5]
+              ]
 
 function GetModeFor(id) {
-  if (id == "minecraft:air") return -1
-    for (let i = 0; i < modes.length; i++) {
-        let v = []
-        //modes[i].forEach(pair => v.push(pair[0]))
-        modes[i][0].forEach(pair => v.push(pair[0]))//** */
-        if (v.includes(id)) return i
-      }
+  for (let i = 0; i < modes.length; i++) {
+    let v = []
+    //modes[i].forEach(pair => v.push(pair[0]))
+    modes[i][tier].forEach(pair => v.push(pair[0]))//** */
+    if (v.includes(id)) return i
+  }
   return -1
 }
 
@@ -124,101 +149,95 @@ StartupEvents.registry('block', event => {
 	event.create('befurnace', 'entity').displayName('befurnace')
 	.entity(builder => { // adds a BlockEntity onto this block
 	    builder.ticker((level, pos, state, be) => { 
-            if(!level.clientSide) { // ALWAYS check side, the tick method is called on both CLIENT and SERVER
-				if(level.levelData.gameTime % 60 == 0) {
-					let items = be.getCapability(ForgeCapabilities.ITEM_HANDLER).orElse(null)
-					let mode = GetModeFor(items.getContainer(1).getStackInSlot(0).id)
-                    //level.server.tell(item.getStackInSlot(0).id)
-                    //level.server.tell(mode)
-                    if (mode < 0) return
-                    //level.server.tell(GetModeFor(items.getContainer(1).getStackInSlot(0).id))
-                    //let item = items.getContainer(1)
+        if(!level.clientSide) { // ALWAYS check side, the tick method is called on both CLIENT and SERVER
+				  if(level.levelData.gameTime % 60 == 0) {
+					  let items = be.getCapability(ForgeCapabilities.ITEM_HANDLER).orElse(null)
+            let item = items.getContainer(0)					
+            if (item.getStackInSlot(0).id == "minecraft:air" || items.getContainer(1).getStackInSlot(0).id == "minecraft:air") return
 
-                    let item = items.getContainer(0)
-                    if (items.getStackInSlot(0).id == "minecraft:air") return -1
-                    /*let valids = ['minecraft:stone', 
-                    'minecraft:granite', 
-                    'minecraft:diorite', 
-                    'minecraft:andesite', 
-                    'minecraft:deepslate', 
-                    'minecraft:tuff', 
-                    'minecraft:calcite', 
-                    'minecraft:dripstone_block']*/
-                    //level.server.tell(valids)
+            let mode = GetModeFor(items.getContainer(1).getStackInSlot(0).id)
+            if (mode < 0) return  
+            //level.server.tell(item.getStackInSlot(0).id)
+            //level.server.tell(mode) 
+            //level.server.tell(GetModeFor(items.getContainer(1).getStackInSlot(0).id))
+            //let item = items.getContainer(1)
+
+            /*let valids = ['minecraft:stone', 
+            'minecraft:granite', 
+            'minecraft:diorite', 
+            'minecraft:andesite', 
+            'minecraft:deepslate', 
+            'minecraft:tuff', 
+            'minecraft:calcite', 
+            'minecraft:dripstone_block']*/
+            //level.server.tell(valids)
                     
-                    //valids.forEach(id => items.isItemValid(0, Item.of(id)))
-                    //item.isItemValid(0, Item.of('minecraft:stone'))
-                    let valids = []
-                    //modes[mode][0].forEach(pair => valids.push(pair[0]))
-                    modes[mode][0].forEach(pair => valids.push(pair[0]))
-                    //level.server.tell(valids)
+            //valids.forEach(id => items.isItemValid(0, Item.of(id)))
+            //item.isItemValid(0, Item.of('minecraft:stone'))
+            let valids = []
+            //modes[mode][0].forEach(pair => valids.push(pair[0]))
+            modes[mode][tier].forEach(pair => valids.push(pair[0]))
+            //level.server.tell(valids)
                 
-                    if (valids.includes(item.getStackInSlot(0).id) && item.getStackInSlot(0).count>modes[mode][4])
-                    {
-                        let adv_chance = be.persistentData.getFloat('adv_cha')
-                        level.server.tell(adv_chance)
-                        if (item.getStackInSlot(0).id == be.persistentData.getString("last_sid") && item.getStackInSlot(0).count == be.persistentData.getInt("last_cnt"))
-                        {
-                            adv_chance += modes[mode][1]
-                        }
-                        else
-                        {
-                            adv_chance = modes[mode][1]
-                        }
-                        be.persistentData.putFloat('adv_cha', adv_chance)
-                        let ra = Math.random()
-                        level.server.tell(adv_chance+" to "+modes[mode][2]+ " min " + Math.min(modes[mode][3]) + " r="+ra)
+            if (valids.includes(item.getStackInSlot(0).id) && item.getStackInSlot(0).count>modes[mode][decr])
+            {
+              let adv_chance = be.persistentData.getFloat('adv_cha')
+              //level.server.tell(adv_chance)
+              if (item.getStackInSlot(0).id == be.persistentData.getString("last_sid") && item.getStackInSlot(0).count == be.persistentData.getInt("last_cnt"))
+              {
+                adv_chance += modes[mode][chnc]
+              }
+              else
+              {
+                adv_chance = modes[mode][chnc]
+              }
+              be.persistentData.putFloat('adv_cha', adv_chance)
+              let ra = Math.random()
+              level.server.tell(adv_chance+" to "+modes[mode][bons]+ " min " + Math.min(modes[mode][mstk]) + " r="+ra)
                          
-                        if (ra < adv_chance)
-                        {
-                            //level.server.tell("MORPH")
-                            item.setStackInSlot(0, Item.of(modes[mode][2], Math.min(modes[mode][3], Math.floor((item.getStackInSlot(0).count - modes[mode][4]) * modes[mode][5]))))    ///!!!
-                        }
-                        else
-                        {
-                            let mass = 0
-                            modes[mode][0].forEach(pair => mass+=pair[1])
-                            let r = Math.floor(Math.random()*mass)
-                            let ind=-1
-                            do
-                            {
-                                ind+=1
-                                r-=modes[mode][0][ind][1]
-                            }
-                            while (r>=0) 
-                            
-                            item.setStackInSlot(0, Item.of(modes[mode][0][ind][0], item.getStackInSlot(0).count-modes[mode][4]))
-                            //item.setStackInSlot(0, Item.of(valids[Math.floor(Math.random()*valids.length)], item.getStackInSlot(0).count-4))
-                            //level.server.tell("Chance = "+adv_chance)
-                        }
-                        
-                        be.persistentData.putString("last_sid", item.getStackInSlot(0).id)
-                        be.persistentData.putInt("last_cnt", item.getStackInSlot(0).count)
-                        
-                        //level.server.tell()
-                    }
-                    //level.server.tell('stack invalid')
-					//item.setStackInSlot(0, Item.of("minecraft:stone", level.levelData.gameTime % 33))
-                    //item.setStackInSlot(0, Item.of("minecraft:diamond", 1))
-					//console.info(item.getStackInSlot(0))
-				
-                /*if(level.levelData.gameTime % 20 == 0) { // only .levelData.gameTime works for some reason??
-                    if(level.getBlockState(pos.above()) === Blocks.AIR.defaultBlockState()) {
-                        level.setBlock(pos.above(), Blocks.GLASS.defaultBlockState(), 3)
-                      	be.persistentData.putBoolean("placed", true)
-                    } else {
-                        level.setBlock(pos.above(), Blocks.AIR.defaultBlockState(), 3)
-                        be.persistentData.putBoolean("placed", false)
-                    }
-                  	console.info("placed: " + be.persistentData.getBoolean("placed"))*/
+              if (ra < adv_chance)
+              {
+                //level.server.tell("MORPH")
+                item.setStackInSlot(0, Item.of(modes[mode][bons], Math.min(modes[mode][mstk], Math.floor((item.getStackInSlot(0).count - modes[mode][decr]) * modes[mode][mltp]))))
+              }
+              else
+              {
+                let total_mass = 0
+                modes[mode][tier].forEach(pair => total_mass+=pair[1])
+                let rand_mass = Math.floor(Math.random()*mass)
+                let ind=-1
+                do
+                {
+                  ind+=1
+                  rand_mass-=modes[mode][tier][ind][1]
                 }
+                while (r>=0) 
+                            
+                item.setStackInSlot(0, Item.of(modes[mode][tier][ind][0], item.getStackInSlot(0).count-modes[mode][decr]))
+                //item.setStackInSlot(0, Item.of(valids[Math.floor(Math.random()*valids.length)], item.getStackInSlot(0).count-4))
+                //level.server.tell("Chance = "+adv_chance)
+              }
+                        
+              be.persistentData.putString("last_sid", item.getStackInSlot(0).id)
+              be.persistentData.putInt("last_cnt", item.getStackInSlot(0).count)          
+              //be.setChanged()
+              //level.server.tell()
             }
-    	})
-        .defaultValues(tag => tag = { adv_cha: 0, last_cnt: 0, last_sid: 'minecraft:air'})                                                                                                          // [1st param: CompoundTag consumer]
-        //.addValidBlock('befurnace') // adds a valid block this can attach to, useless in normal circumstances (except if you want to attach to multiple blocks or are building the BE separately)
-        .itemHandler(1) // adds a basic item handler to this block entity, [1st param: slot count]
-        .itemHandler(1)
-    })
+            
+            //level.server.tell('stack invalid')
+					  //item.setStackInSlot(0, Item.of("minecraft:stone", level.levelData.gameTime % 33))
+            //item.setStackInSlot(0, Item.of("minecraft:diamond", 1))
+					  //console.info(item.getStackInSlot(0))    
+          }
+        }
+  })
+  .defaultValues(tag => tag = { adv_cha: 0, last_cnt: 0, last_sid: 'minecraft:air'})                                                                                                          // [1st param: CompoundTag consumer]
+  //.addValidBlock('befurnace') // adds a valid block this can attach to, useless in normal circumstances (except if you want to attach to multiple blocks or are building the BE separately)
+  .itemHandler(1) // adds a basic item handler to this block entity, [1st param: slot count]
+  .itemHandler(1)
+})
+
+//BlockReg END
 })
 
 StartupEvents.registry('menu', event => {

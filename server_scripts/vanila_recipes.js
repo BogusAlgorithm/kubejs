@@ -2,19 +2,20 @@
 //const $EnchantmentHelper = Java.loadClass('net.minecraft.world.item.enchantment.EnchantmentHelper')
 //const $RandomSource = Java.loadClass('net.minecraft.util.RandomSource')
 
-console.info('Trying to load vanila recipes...')
+console.info('Loading VANILA recipes...')
 
 ServerEvents.recipes(event => {
     event.shaped(
         Item.of('minecraft:turtle_egg'), 
           [ 
-          'KKK', 
+          'KSK', 
           'KEK', 
           'KBK'  
           ],{
           B: 'minecraft:water_bucket',
           E: 'minecraft:egg',
-          K: 'minecraft:kelp'
+          K: 'minecraft:kelp',
+          S: 'minecraft:sand'
           }
         ).replaceIngredient("minecraft:water_bucket", "minecraft:bucket")    
 

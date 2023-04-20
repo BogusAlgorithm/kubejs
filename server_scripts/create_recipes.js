@@ -1,3 +1,4 @@
+console.info('Loading CREATE recipes...')
 
 ServerEvents.recipes(event => {
 
@@ -8,8 +9,13 @@ ServerEvents.recipes(event => {
   
  	event.shapeless("powah:steel_energized", ["minecraft:iron_ingot", Item.of('thermal:flux_magnet', '{Energy:50000}').weakNBT()])
     .customIngredientAction("thermal:flux_magnet", "magnetize")
-    
-  event.remove({id: "create:crafting/materials/electron_tube"})
+
+  event.shapeless("create:blaze_cake", ["create:blaze_cake_base", "3x minecraft:magma_cream"])
+
+  event.shapeless("createaddition:alternator", "createaddition:electric_motor")
+  event.shapeless("createaddition:electric_motor", "createaddition:alternator")
+
+  /*
   event.shaped(
     Item.of('create:blaze_burner'), 
       [ 
@@ -22,20 +28,64 @@ ServerEvents.recipes(event => {
       R: 'minecraft:blaze_rod'
       }
     )
+  */  
+  event.remove({id: "create:crafting/materials/electron_tube"})
+  event.shaped(
+    Item.of('create:electron_tube'), 
+      [ 
+      ' B ', 
+      'QCG', 
+      'WRW'  
+      ],{
+      B: 'minecraft:glass_bottle',
+      Q: 'ae2:certus_quartz_cutting_knife',  
+      C: 'create:polished_rose_quartz',
+      G: 'create:super_glue',
+      R: 'thermal:cured_rubber',
+      W: 'createaddition:copper_wire'  
+      }
+    ).damageIngredient('create:super_glue', 5).damageIngredient('ae2:certus_quartz_cutting_knife', 5)
 
+  event.remove({id: "create:crafting/kinetics/belt_connector"})
+  event.shaped(
+    Item.of('create:belt_connector', 3), 
+      [ 
+      ' G ', 
+      'RRR', 
+      'RRR'  
+      ],{
+      G: 'create:super_glue',
+      R: 'thermal:cured_rubber',
+      }
+    ).damageIngredient('create:super_glue', 5)
+
+  event.shaped(
+    Item.of('create:belt_connector'), 
+      [ 
+      ' G ', 
+      'KKK', 
+      'KKK'  
+      ],{
+      G: 'create:super_glue',
+      K: 'minecraft:dried_kelp',
+      }
+    ).damageIngredient('create:super_glue', 5)
+
+    event.remove({id: "crafting/createaddition:capacitor_1"})
+    event.remove({id: "crafting/createaddition:capacitor_2"})
     event.shaped(
-      Item.of('create:electron_tube'), 
+      Item.of("createaddition:capacitor"), 
         [ 
-        ' B ', 
-        'QCG', 
-        'WRW'  
+        ' GQ', 
+        'ZDC', 
+        'W W'  
         ],{
-        B: 'minecraft:glass_bottle',
-        Q: 'ae2:certus_quartz_cutting_knife',  
-        C: 'create:polished_rose_quartz',
+        D: 'powah:dielectric_paste',
         G: 'create:super_glue',
-        R: 'thermal:cured_rubber',
-        W: 'createaddition:copper_wire'  
+        Q: 'ae2:certus_quartz_cutting_knife',
+        S: '#forge:plates/silver',
+        W: 'createaddition:copper_wire',
+        Z: '#forge:plates/zinc'
         }
       ).damageIngredient('create:super_glue', 5).damageIngredient('ae2:certus_quartz_cutting_knife', 5)
 
@@ -60,6 +110,8 @@ ServerEvents.recipes(event => {
 
   event.remove({id: "create:crafting/materials/rose_quartz"})
   event.recipes.create.mixing([Fluid.of('minecraft:milk', 500)], [Fluid.of('minecraft:water', 500), "minecraft:bone_meal"]).heated()
+  
+  event.recipes.create.splashing('minecraft:clay_ball', 'minecraft:sand')
 
   event.remove({id: "create:crafting/kinetics/super_glue"})
   let inter = 'kubejs:incomplete_glue'
@@ -74,7 +126,7 @@ ServerEvents.recipes(event => {
     event.recipes.createDeploying(inter,[inter,"#minecraft:wooden_buttons"])
     ]).transitionalItem(inter).loops(1) // set the transitional item and the loops (amount of repetitions)
 
-  inter = 'thermal:chiller_rod_cast'
+  /*inter = 'thermal:chiller_rod_cast'
   event.recipes.createSequencedAssembly([ 
     Item.of('minecraft:blaze_rod').withChance(9), Item.of('thermal:bronze_dust', 3), Item.of('thermal:bronze_dust', 2), Item.of('thermal:bronze_dust')
     ],'thermal:chiller_rod_cast',[
@@ -85,4 +137,5 @@ ServerEvents.recipes(event => {
     event.recipes.createFilling(inter,[inter, Fluid.of("thermal:resin", 1000)]),
     event.recipes.createPressing(inter, inter)
     ]).transitionalItem(inter).loops(1) // set the transitional item and the loops (amount of repetitions)
+  */
 })
