@@ -38,13 +38,13 @@ ServerEvents.recipes(event => {
       'WRW'  
       ],{
       B: 'minecraft:glass_bottle',
-      Q: 'ae2:certus_quartz_cutting_knife',  
+      Q: 'ae2:nether_quartz_cutting_knife',  
       C: 'create:polished_rose_quartz',
       G: 'create:super_glue',
       R: 'thermal:cured_rubber',
       W: 'createaddition:copper_wire'  
       }
-    ).damageIngredient('create:super_glue', 5).damageIngredient('ae2:certus_quartz_cutting_knife', 5)
+    ).damageIngredient('create:super_glue', 5).damageIngredient('ae2:nether_quartz_cutting_knife', 5)
 
   event.remove({id: "create:crafting/kinetics/belt_connector"})
   event.shaped(
@@ -71,23 +71,23 @@ ServerEvents.recipes(event => {
       }
     ).damageIngredient('create:super_glue', 5)
 
-    event.remove({id: "crafting/createaddition:capacitor_1"})
-    event.remove({id: "crafting/createaddition:capacitor_2"})
+    event.remove({id: "createaddition:crafting/capacitor_1"})
+    event.remove({id: "createaddition:crafting/capacitor_2"})
     event.shaped(
       Item.of("createaddition:capacitor"), 
         [ 
         ' GQ', 
-        'ZDC', 
+        'ZDS', 
         'W W'  
         ],{
         D: 'powah:dielectric_paste',
         G: 'create:super_glue',
-        Q: 'ae2:certus_quartz_cutting_knife',
+        Q: 'ae2:nether_quartz_cutting_knife',
         S: '#forge:plates/silver',
         W: 'createaddition:copper_wire',
         Z: '#forge:plates/zinc'
         }
-      ).damageIngredient('create:super_glue', 5).damageIngredient('ae2:certus_quartz_cutting_knife', 5)
+      ).damageIngredient('create:super_glue', 5).damageIngredient('ae2:nether_quartz_cutting_knife', 5)
 
   event.recipes.create.compacting([Fluid.of('minecraft:water', 50)], '#minecraft:leaves')
 
@@ -101,12 +101,17 @@ ServerEvents.recipes(event => {
 
   event.recipes.create.milling(["minecraft:string"], '#thermal:rockwool')
 
+  event.recipes.create.milling(["kubejs:zinc_dust"], 'create:zinc_ingot')//~~~
+  event.recipes.create.milling(["thermal:copper_dust"], 'minecraft:copper_ingot')//~~~
+
   event.remove({id: "create:crafting/materials/rose_quartz"})
   event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye",])
 
   event.recipes.create.mixing([Fluid.of('minecraft:milk', 500)], [Fluid.of('minecraft:water', 500), "minecraft:bone_meal"]).heated()
 
   event.recipes.create.mixing([Fluid.of('create:honey', 1000)], [Fluid.of('thermal:syrup', 1000), "minecraft:sugar", "minecraft:sugar", "minecraft:sugar", "minecraft:sugar"]).heated()
+
+  event.recipes.create.mixing("2x kubejs:brass_dust", ["thermal:copper_dust", "kubejs:zinc_dust"])
 
   event.remove({id: "create:crafting/materials/rose_quartz"})
   event.recipes.create.mixing([Fluid.of('minecraft:milk', 500)], [Fluid.of('minecraft:water', 500), "minecraft:bone_meal"]).heated()

@@ -17,9 +17,23 @@ ServerEvents.recipes(event => {
           K: 'minecraft:kelp',
           S: 'minecraft:sand'
           }
-        ).replaceIngredient("minecraft:water_bucket", "minecraft:bucket")    
+    ).replaceIngredient("minecraft:water_bucket", "minecraft:bucket")    
+
+    event.remove({ id: 'minecraft:rail'})
+    event.shaped(
+        Item.of('minecraft:rail', 16), 
+            [ 
+            'RSR', 
+            'RSR', 
+            'RSR'  
+            ],{
+            R: 'createaddition:iron_rod',
+            S: 'minecraft:stick'
+            }) 
 
     event.smelting('minecraft:soul_sand', 'minecraft:soul_soil')
+
+    event.smelting('create:brass_ingot', 'kubejs:brass_dust')
 
 /*  event.shapeless("minecraft:wooden_pickaxe", ["minecraft:stick", 'minecraft:wooden_pickaxe']).modifyResult((inventory, itemstack) => {
         let item = inventory.find(Item.of("minecraft:wooden_pickaxe").ignoreNBT())

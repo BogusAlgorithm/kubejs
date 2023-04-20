@@ -152,25 +152,17 @@ StartupEvents.registry('block', event => {
         if(!level.clientSide) { // ALWAYS check side, the tick method is called on both CLIENT and SERVER
 				  if(level.levelData.gameTime % 60 == 0) {
 					  let items = be.getCapability(ForgeCapabilities.ITEM_HANDLER).orElse(null)
-            let item = items.getContainer(0)					
+            let item = items.getContainer(0)
+            //level.server.tell(item.getStackInSlot(0).id) 
+            //level.server.tell(items.getContainer(1).getStackInSlot(0).id) 					
             if (item.getStackInSlot(0).id == "minecraft:air" || items.getContainer(1).getStackInSlot(0).id == "minecraft:air") return
-
+            //level.server.tell("Progress") 
             let mode = GetModeFor(items.getContainer(1).getStackInSlot(0).id)
             if (mode < 0) return  
             //level.server.tell(item.getStackInSlot(0).id)
             //level.server.tell(mode) 
             //level.server.tell(GetModeFor(items.getContainer(1).getStackInSlot(0).id))
             //let item = items.getContainer(1)
-
-            /*let valids = ['minecraft:stone', 
-            'minecraft:granite', 
-            'minecraft:diorite', 
-            'minecraft:andesite', 
-            'minecraft:deepslate', 
-            'minecraft:tuff', 
-            'minecraft:calcite', 
-            'minecraft:dripstone_block']*/
-            //level.server.tell(valids)
                     
             //valids.forEach(id => items.isItemValid(0, Item.of(id)))
             //item.isItemValid(0, Item.of('minecraft:stone'))
@@ -183,13 +175,16 @@ StartupEvents.registry('block', event => {
             {
               let adv_chance = be.persistentData.getFloat('adv_cha')
               //level.server.tell(adv_chance)
+              level.server.tell("Last ID "+be.persistentData.getString('last_sid')+ "Last Cnt "+be.persistentData.getInt('last_cnt')) 
               if (item.getStackInSlot(0).id == be.persistentData.getString("last_sid") && item.getStackInSlot(0).count == be.persistentData.getInt("last_cnt"))
               {
                 adv_chance += modes[mode][chnc]
+                level.server.tell("Accumulation") 
               }
               else
               {
                 adv_chance = modes[mode][chnc]
+                level.server.tell("Reset") 
               }
               be.persistentData.putFloat('adv_cha', adv_chance)
               let ra = Math.random()
@@ -204,14 +199,14 @@ StartupEvents.registry('block', event => {
               {
                 let total_mass = 0
                 modes[mode][tier].forEach(pair => total_mass+=pair[1])
-                let rand_mass = Math.floor(Math.random()*mass)
+                let rand_mass = Math.floor(Math.random()*total_mass)
                 let ind=-1
                 do
                 {
                   ind+=1
                   rand_mass-=modes[mode][tier][ind][1]
                 }
-                while (r>=0) 
+                while (rand_mass>=0) 
                             
                 item.setStackInSlot(0, Item.of(modes[mode][tier][ind][0], item.getStackInSlot(0).count-modes[mode][decr]))
                 //item.setStackInSlot(0, Item.of(valids[Math.floor(Math.random()*valids.length)], item.getStackInSlot(0).count-4))
