@@ -32,4 +32,7 @@ ServerEvents.recipes(event => {
           P: '#minecraft:planks'
           })
 
+
+     event.replaceInput({ id: 'thermal:phytosoil'}, 'minecraft:charcoal', 'thermal:compost')
+
 })

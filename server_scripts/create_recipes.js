@@ -104,6 +104,19 @@ ServerEvents.recipes(event => {
         }
       ).damageIngredient('create:super_glue', 5).damageIngredient('ae2:nether_quartz_cutting_knife', 5)
 
+    event.remove({id: "create:crafting/kinetics/mechanical_drill"})
+    event.shaped(
+      Item.of("create:mechanical_drill"), 
+        [ 
+        ' I ', 
+        'ILI', 
+        ' A '  
+        ],{
+        A: 'create:andesite_casing',
+        I: 'minecraft:iron_ingot',
+        L: 'create:andesite_alloy'
+        })
+
   event.recipes.create.compacting([Fluid.of('minecraft:water', 50)], '#minecraft:leaves')
 
   event.recipes.create.compacting(["minecraft:magma_block"], ["minecraft:basalt"]).superheated()
@@ -119,6 +132,9 @@ ServerEvents.recipes(event => {
   event.recipes.create.milling(["kubejs:zinc_dust"], 'create:zinc_ingot')//~~~
   event.recipes.create.milling(["thermal:copper_dust"], 'minecraft:copper_ingot')//~~~
 
+  event.remove({id: "create:milling/calcite"})
+  event.recipes.create.milling(["minecraft:bone_meal"], 'minecraft:calcite')
+
   event.remove({id: "create:crafting/materials/rose_quartz"})
   event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye",])
 
@@ -132,6 +148,10 @@ ServerEvents.recipes(event => {
   event.recipes.create.mixing([Fluid.of('minecraft:milk', 500)], [Fluid.of('minecraft:water', 500), "minecraft:bone_meal"]).heated()
   
   event.recipes.create.splashing('minecraft:clay_ball', 'minecraft:sand')
+
+  event.remove({id: "create:splashing/gravel"})
+  event.recipes.create.splashing([Item.of('thermal:apatite').withChance(0.2), Item.of('thermal:niter').withChance(0.2), Item.of('minecraft:redstone').withChance(0.1)], 'minecraft:gravel')
+  //event.recipes.create.splashing([Item.of('thermal:appatite')], 'minecraft:gravel')
 
   event.remove({id: "create:crafting/kinetics/super_glue"})
   let inter = 'kubejs:incomplete_glue'

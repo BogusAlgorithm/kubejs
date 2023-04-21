@@ -31,7 +31,7 @@ ServerEvents.recipes(event => {
             S: 'minecraft:stick'
             }) 
 
-    event.smelting('minecraft:soul_sand', 'minecraft:soul_soil')
+    //event.smelting('minecraft:soul_sand', 'minecraft:soul_soil')
 
     event.smelting('create:brass_ingot', 'kubejs:brass_dust')
 
