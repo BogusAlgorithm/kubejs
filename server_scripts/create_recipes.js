@@ -89,6 +89,21 @@ ServerEvents.recipes(event => {
         }
       ).damageIngredient('create:super_glue', 5).damageIngredient('ae2:nether_quartz_cutting_knife', 5)
 
+    event.remove({id: "create:crafting/kinetics/spout"})
+    event.shaped(
+      Item.of("create:spout"), 
+        [ 
+        'GCG', 
+        ' P ', 
+        ' K '  
+        ],{
+        C: 'create:copper_casing',
+        G: '#forge:glass',
+        P: 'create:fluid_pipe',
+        K: 'minecraft:dried_kelp'
+        }
+      ).damageIngredient('create:super_glue', 5).damageIngredient('ae2:nether_quartz_cutting_knife', 5)
+
   event.recipes.create.compacting([Fluid.of('minecraft:water', 50)], '#minecraft:leaves')
 
   event.recipes.create.compacting(["minecraft:magma_block"], ["minecraft:basalt"]).superheated()
@@ -127,8 +142,7 @@ ServerEvents.recipes(event => {
     event.recipes.createCutting(inter, inter),
     event.recipes.createPressing(inter, inter),
     // like a normal recipe function, is used as a sequence step in this array. Input and output have the transitional item
-    event.recipes.createFilling(inter,[inter, Fluid.of("thermal:resin", 1000)]),
-    event.recipes.createDeploying(inter,[inter,"#minecraft:wooden_buttons"])
+    event.recipes.createFilling(inter,[inter, Fluid.of("thermal:resin", 1000)])
     ]).transitionalItem(inter).loops(1) // set the transitional item and the loops (amount of repetitions)
 
   /*inter = 'thermal:chiller_rod_cast'

@@ -13,9 +13,9 @@ const stones = [
 
 const ores = [
     ["minecraft:iron_ore", 1],
-    ["minecraft:copper_ore", 1],
+    ["minecraft:copper_ore", 3],
     ["minecraft:gold_ore", 1],
-    ["create:zinc_ore", 1],
+    ["create:zinc_ore", 2],
     ["thermal:tin_ore", 1],
     ["thermal:lead_ore", 1],
     ["thermal:silver_ore", 1],
@@ -124,7 +124,7 @@ const bons = 2;
 const mstk = 3;
 const decr = 4;
 const mltp = 5;
-const modes = [ [stones, 0.02, "minecraft:iron_ore", 64, 4, 0.5],
+const modes = [ [stones, 0.02, "minecraft:iron_ore", 64, 3, 0.5],
                 [ores, 0.02, "minecraft:nether_quartz_ore", 64, 3, 0.5],
                 [organics, 0.02, "minecraft:egg", 16, 4, 0.5],
                 [plants, 0.02, "minecraft:cactus", 64, 4, 0.5],
