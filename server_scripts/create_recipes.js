@@ -6,14 +6,6 @@ ServerEvents.recipes(event => {
   event.replaceInput({ id: 'create:crafting/kinetics/goggles'}, '#forge:plates/gold', 'create:brass_sheet')
   event.replaceInput({ id: 'create:crafting/kinetics/wrench'}, '#forge:plates/gold', 'create:brass_sheet')
 
-  Ingredient.registerCustomIngredientAction("magnetize", (itemstack, index, inventory) => {
-      itemstack.nbt.Energy = 0
-      return itemstack;
-  })
-  
- 	event.shapeless("powah:steel_energized", ["minecraft:iron_ingot", Item.of('thermal:flux_magnet', '{Energy:50000}').weakNBT()])
-    .customIngredientAction("thermal:flux_magnet", "magnetize")
-
   event.shapeless("create:blaze_cake", ["create:blaze_cake_base", "3x minecraft:magma_cream"])
 
   event.remove({id: "createaddition:crafting/connector"})
@@ -30,29 +22,6 @@ ServerEvents.recipes(event => {
   //event.remove({id: "createaddition:crafting/materials/ createaddition:alternator"})
   event.shapeless("createaddition:alternator", "createaddition:electric_motor")
   event.shapeless("createaddition:electric_motor", "createaddition:alternator")
-
-  
-  event.recipes.create.mechanicalCrafting('createaddition:tesla_coil', [
-    'SSS',
-    'CRC',
-    'BEB'], {
-    B: 'create:brass_sheet',
-    C: 'createaddition:capacitor',
-    E: 'create:electron_tube',
-    R: 'create:railway_casing',
-    S: 'createaddition:copper_spool'
-  })
-
-  event.recipes.create.mechanicalCrafting('createaddition:alternator', [
-    'BCB',
-    'SOS',
-    'BRB'], {
-    B: 'create:brass_sheet',
-    C: 'createaddition:capacitor',
-    O: 'minecraft:iron_ingot',
-    R: 'create:railway_casing',
-    S: 'createaddition:copper_spool'
-  })
   
   event.remove({id: "create:crafting/materials/electron_tube"})
   event.shaped(
@@ -96,9 +65,9 @@ ServerEvents.recipes(event => {
       }
     ).damageIngredient('create:super_glue', 5)
 
-    event.remove({id: "createaddition:crafting/capacitor_1"})
-    event.remove({id: "createaddition:crafting/capacitor_2"})
-    event.shaped(
+  event.remove({id: "createaddition:crafting/capacitor_1"})
+  event.remove({id: "createaddition:crafting/capacitor_2"})
+  event.shaped(
       Item.of("createaddition:capacitor"), 
         [ 
         ' GQ', 
@@ -114,8 +83,8 @@ ServerEvents.recipes(event => {
         }
       ).damageIngredient('create:super_glue', 5).damageIngredient('ae2:nether_quartz_cutting_knife', 5)
 
-    event.remove({id: "create:crafting/kinetics/spout"})
-    event.shaped(
+  event.remove({id: "create:crafting/kinetics/spout"})
+  event.shaped(
       Item.of("create:spout"), 
         [ 
         'GCG', 
@@ -129,18 +98,40 @@ ServerEvents.recipes(event => {
         }
       ).damageIngredient('create:super_glue', 5).damageIngredient('ae2:nether_quartz_cutting_knife', 5)
 
-    event.remove({id: "create:crafting/kinetics/mechanical_drill"})
-    event.shaped(
-      Item.of("create:mechanical_drill"), 
-        [ 
-        ' I ', 
-        'ILI', 
-        ' A '  
-        ],{
-        A: 'create:andesite_casing',
-        I: 'minecraft:iron_ingot',
-        L: 'create:andesite_alloy'
-        })
+  event.remove({id: "create:crafting/kinetics/mechanical_drill"})
+  event.shaped(
+    Item.of("create:mechanical_drill"), 
+      [ 
+      ' I ', 
+      'ILI', 
+      ' A '  
+      ],{
+      A: 'create:andesite_casing',
+      I: 'minecraft:iron_ingot',
+      L: 'create:andesite_alloy'
+    })
+
+  event.recipes.create.mechanicalCrafting('createaddition:tesla_coil', [
+    'SSS',
+    'CRC',
+    'BEB'], {
+    B: 'create:brass_sheet',
+    C: 'createaddition:capacitor',
+    E: 'create:electron_tube',
+    R: 'create:railway_casing',
+    S: 'createaddition:copper_spool'
+  })
+      
+  event.recipes.create.mechanicalCrafting('createaddition:alternator', [
+    'BCB',
+    'SOS',
+    'BRB'], {
+    B: 'create:brass_sheet',
+    C: 'createaddition:capacitor',
+    O: 'minecraft:iron_ingot',
+    R: 'create:railway_casing',
+    S: 'createaddition:copper_spool'
+  })
 
   event.recipes.create.compacting([Fluid.of('minecraft:water', 50)], '#minecraft:leaves')
 
@@ -195,6 +186,7 @@ ServerEvents.recipes(event => {
   event.recipes.createSequencedAssembly([ 
     "create:sturdy_sheet"
     ],'thermal:lead_plate',[
+    event.recipes.createDeploying(inter,[inter,"powah:dielectric_paste"]),
     event.recipes.createDeploying(inter,[inter,"powah:dielectric_paste"]),
     event.recipes.createPressing(inter, inter),
     event.recipes.createFilling(inter,[inter, Fluid.of("thermal:resin", 1000)]),
