@@ -12,14 +12,14 @@ const stones = [
   ];
 
 const ores = [
-    ["minecraft:iron_ore", 1],
+    ["minecraft:iron_ore", 2],
     ["minecraft:copper_ore", 3],
-    ["minecraft:gold_ore", 1],
+    //["minecraft:gold_ore", 1],
     ["create:zinc_ore", 2],
-    ["thermal:tin_ore", 1],
+    //["thermal:tin_ore", 1],
     ["thermal:lead_ore", 1],
     ["thermal:silver_ore", 1],
-    ["thermal:nickel_ore", 1]
+    //["thermal:nickel_ore", 1]
   ];
 
 const organics = [
@@ -27,7 +27,6 @@ const organics = [
     ["minecraft:spider_eye", 1],
     ["minecraft:ink_sac", 1],
     ["minecraft:leather", 1],
-    ["minecraft:string", 1],
     ["minecraft:feather:", 1]//,
     //["thermal:", 1]
   ];

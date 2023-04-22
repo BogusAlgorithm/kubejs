@@ -2,6 +2,10 @@ console.info('Loading CREATE recipes...')
 
 ServerEvents.recipes(event => {
 
+  event.replaceInput({ id: 'create:crafting/kinetics/steam_engine'}, '#forge:plates/gold', 'create:brass_sheet')
+  event.replaceInput({ id: 'create:crafting/kinetics/goggles'}, '#forge:plates/gold', 'create:brass_sheet')
+  event.replaceInput({ id: 'create:crafting/kinetics/wrench'}, '#forge:plates/gold', 'create:brass_sheet')
+
   Ingredient.registerCustomIngredientAction("magnetize", (itemstack, index, inventory) => {
       itemstack.nbt.Energy = 0
       return itemstack;
@@ -12,23 +16,44 @@ ServerEvents.recipes(event => {
 
   event.shapeless("create:blaze_cake", ["create:blaze_cake_base", "3x minecraft:magma_cream"])
 
+  event.remove({id: "createaddition:crafting/connector"})
+  event.remove({id: "createaddition:crafting/redstone_relay"})
+  event.remove({id: "createaddition:crafting/spool"})
+  event.remove({id: "createaddition:mechanical_crafting/tesla_coil"})
+  event.remove({id: "createaddition:mechanical_crafting/alternator"})
+  event.remove({id: "createaddition:mechanical_crafting/electric_motor"})
+
+  event.replaceInput({ id: 'createaddition:crafting/modular_accumulator'}, 'createaddition:gold_wire', 'createaddition:copper_wire')
+  event.replaceInput({ id: 'createaddition:crafting/copper_spool'}, 'createaddition:spool', 'minecraft:stick')
+  event.replaceInput({ id: 'createaddition:crafting/gold_spool'}, 'createaddition:spool', 'minecraft:stick')
+  //event.remove({id: "createaddition:crafting/materials/ createaddition:electric_motor"})
+  //event.remove({id: "createaddition:crafting/materials/ createaddition:alternator"})
   event.shapeless("createaddition:alternator", "createaddition:electric_motor")
   event.shapeless("createaddition:electric_motor", "createaddition:alternator")
 
-  /*
-  event.shaped(
-    Item.of('create:blaze_burner'), 
-      [ 
-      'RRR', 
-      'RER', 
-      'RCR'  
-      ],{
-      C: 'create:empty_blaze_burner',
-      E: 'minecraft:egg',
-      R: 'minecraft:blaze_rod'
-      }
-    )
-  */  
+  
+  event.recipes.create.mechanicalCrafting('createaddition:tesla_coil', [
+    'SSS',
+    'CRC',
+    'BEB'], {
+    B: 'create:brass_sheet',
+    C: 'createaddition:capacitor',
+    E: 'create:electron_tube',
+    R: 'create:railway_casing',
+    S: 'createaddition:copper_spool'
+  })
+
+  event.recipes.create.mechanicalCrafting('createaddition:alternator', [
+    'BCB',
+    'SOS',
+    'BRB'], {
+    B: 'create:brass_sheet',
+    C: 'createaddition:capacitor',
+    O: 'minecraft:iron_ingot',
+    R: 'create:railway_casing',
+    S: 'createaddition:copper_spool'
+  })
+  
   event.remove({id: "create:crafting/materials/electron_tube"})
   event.shaped(
     Item.of('create:electron_tube'), 
@@ -146,11 +171,11 @@ ServerEvents.recipes(event => {
 
   event.remove({id: "create:crafting/materials/rose_quartz"})
   event.recipes.create.mixing([Fluid.of('minecraft:milk', 500)], [Fluid.of('minecraft:water', 500), "minecraft:bone_meal"]).heated()
-  
-  event.recipes.create.splashing('minecraft:clay_ball', 'minecraft:sand')
+
+  event.recipes.create.pressing(["thermal:lead_plate"], ["thermal:lead_ingot"])
 
   event.remove({id: "create:splashing/gravel"})
-  event.recipes.create.splashing([Item.of('thermal:apatite').withChance(0.2), Item.of('thermal:niter').withChance(0.2), Item.of('minecraft:redstone').withChance(0.1)], 'minecraft:gravel')
+  event.recipes.create.splashing([Item.of('thermal:apatite').withChance(0.15), Item.of('thermal:niter').withChance(0.15), Item.of('minecraft:redstone').withChance(0.05)], 'minecraft:gravel')
   //event.recipes.create.splashing([Item.of('thermal:appatite')], 'minecraft:gravel')
 
   event.remove({id: "create:crafting/kinetics/super_glue"})
@@ -165,16 +190,23 @@ ServerEvents.recipes(event => {
     event.recipes.createFilling(inter,[inter, Fluid.of("thermal:resin", 1000)])
     ]).transitionalItem(inter).loops(1) // set the transitional item and the loops (amount of repetitions)
 
-  /*inter = 'thermal:chiller_rod_cast'
+  event.remove({id: "create:sequenced_assembly/sturdy_sheet"})
+  inter = 'create:iron_sheet'
   event.recipes.createSequencedAssembly([ 
-    Item.of('minecraft:blaze_rod').withChance(9), Item.of('thermal:bronze_dust', 3), Item.of('thermal:bronze_dust', 2), Item.of('thermal:bronze_dust')
-    ],'thermal:chiller_rod_cast',[
-    event.recipes.createDeploying(inter,[inter,"minecraft:blaze_powder"]),
-    event.recipes.createDeploying(inter,[inter,"minecraft:blaze_powder"]),
-    event.recipes.createDeploying(inter,[inter,"minecraft:blaze_powder"]),
-    event.recipes.createDeploying(inter,[inter,"minecraft:blaze_powder"]),
+    "create:sturdy_sheet"
+    ],'thermal:lead_plate',[
+    event.recipes.createDeploying(inter,[inter,"powah:dielectric_paste"]),
+    event.recipes.createPressing(inter, inter),
     event.recipes.createFilling(inter,[inter, Fluid.of("thermal:resin", 1000)]),
     event.recipes.createPressing(inter, inter)
     ]).transitionalItem(inter).loops(1) // set the transitional item and the loops (amount of repetitions)
-  */
+  
+  inter = 'kubejs:pulp'
+  event.recipes.createSequencedAssembly([ 
+    "minecraft:paper"
+    ],'thermal:sawdust',[
+    event.recipes.createFilling(inter,[inter, Fluid.of("minecraft:water", 1000)]),
+    event.recipes.createPressing(inter, inter),
+    event.recipes.createPressing(inter, inter),
+    ]).transitionalItem(inter).loops(1) // set the transitional item and the loops (amount of repetitions)
 })
