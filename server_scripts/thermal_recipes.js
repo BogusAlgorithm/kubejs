@@ -9,6 +9,22 @@ ServerEvents.recipes(event => {
 
   event.remove({id: "thermal:phytogro_8"})
 
+  event.remove({id: "minecraft:fire_charge"})
+  event.shapeless("2x minecraft:fire_charge", ["minecraft:blaze_powder", "minecraft:gunpowder", 'thermal:sawdust'])
+
+  event.remove({id: "thermal:hazmat_fabric"})
+  event.shaped(
+    Item.of('thermal:hazmat_fabric'), 
+      [ 
+      'RSR', 
+      'SLS', 
+      'RSR'  
+      ],{
+      L: 'thermal:lead_plate',
+      R: 'thermal:cured_rubber',
+      S: 'minecraft:string'
+    }) 
+
   event.remove({id: "thermal:machine_press"})
   event.shaped(
     Item.of('thermal:machine_press'), 
@@ -61,7 +77,7 @@ ServerEvents.recipes(event => {
     I: 'thermal:iron_plate',
     M: Item.of('thermal:flux_magnet', '{Energy:50000}').weakNBT(),
     R: 'minecraft:redstone'
-  }).customIngredientAction("thermal:flux_magnet", "magnetize").id('kubejs:redstone_servo_manual')  
+  }).customIngredientAction("thermal:flux_magnet", "magnetize").id('kubejs:redstone_servo_manual_only')  
 
   event.remove({id: "thermal:rf_coil"})
   event.shaped('thermal:rf_coil', [
@@ -71,7 +87,7 @@ ServerEvents.recipes(event => {
     G: 'thermal:gold_plate',
     M: Item.of('thermal:flux_magnet', '{Energy:50000}').weakNBT(),
     R: 'minecraft:redstone'
-  }).customIngredientAction("thermal:flux_magnet", "magnetize").id('kubejs:rf_coil_manual')
+  }).customIngredientAction("thermal:flux_magnet", "magnetize").id('kubejs:rf_coil_manual_only')
 
   event.remove({id: "thermal:flux_magnet"})
   event.shaped('thermal:flux_magnet', [
@@ -86,6 +102,14 @@ ServerEvents.recipes(event => {
   event.replaceInput({ id: 'thermal:phytosoil'}, 'minecraft:charcoal', 'thermal:compost')
 
   event.recipes.create.crushing(["thermal:sawdust", Item.of("thermal:sawdust").withChance(0.5)], "#minecraft:planks")
+
+  event.remove({id: "thermal:lumium_dust_4"})
+  event.recipes.create.mixing("thermal:lumium_ingot", ["thermal:gold_dust", "thermal:gold_dust", "thermal:gold_dust", 
+    "thermal:tin_dust", "minecraft:glowstone_dust", "minecraft:glowstone_dust"]).superheated()
+
+  event.remove({id: "thermal:signalum_dust_4"})
+  event.recipes.create.mixing("thermal:signalum_ingot", ["thermal:nickel_dust", "thermal:nickel_dust", "thermal:nickel_dust", 
+    "thermal:tin_dust", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone"]).superheated()
 
   event.remove({id: "thermal:press_gear_die"})
   let inter = 'minecraft:heavy_weighted_pressure_plate'
