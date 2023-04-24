@@ -111,6 +111,19 @@ ServerEvents.recipes(event => {
       L: 'create:andesite_alloy'
     })
 
+  event.remove({id: "createaddition:crafting/modular_accumulator"})
+  event.recipes.create.mechanicalCrafting('modular_accumulator', [
+      'LDL', 
+      'LBL', 
+      'STS'  
+      ],{
+      B: 'create:brass_casing',
+      D: 'powah:dielectric_paste',
+      L: 'thermal:lead_plate',
+      S: 'thermal:sulfur',
+      T: 'create:fluid_tank'
+    })
+
   event.recipes.create.mechanicalCrafting('createaddition:tesla_coil', [
     'SSS',
     'CRC',
