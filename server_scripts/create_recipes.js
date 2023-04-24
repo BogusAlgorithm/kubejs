@@ -112,7 +112,7 @@ ServerEvents.recipes(event => {
     })
 
   event.remove({id: "createaddition:crafting/modular_accumulator"})
-  event.recipes.create.mechanicalCrafting('modular_accumulator', [
+  event.recipes.create.mechanicalCrafting('createaddition:modular_accumulator', [
       'LDL', 
       'LBL', 
       'STS'  

@@ -85,7 +85,7 @@ ServerEvents.recipes(event => {
     'RGR',
     'GRM'], {
     G: 'thermal:gold_plate',
-    M: Item.of('thermal:flux_magnet', '{Energy:50000}').weakNBT(),
+    M: Item.of("thermal:flux_magnet", '{Energy:50000}').weakNBT(),
     R: 'minecraft:redstone'
   }).customIngredientAction("thermal:flux_magnet", "magnetize").id('kubejs:rf_coil_manual_only')
 
@@ -99,7 +99,41 @@ ServerEvents.recipes(event => {
     W: 'createaddition:copper_wire'
   })
 
+
+
   event.replaceInput({ id: 'thermal:phytosoil'}, 'minecraft:charcoal', 'thermal:compost')
+
+  //event.recipes.thermal.bottler("minecraft:diamond", [Fluid.of("cofh_core:potion", 250, '{"Potion":"minecraft:regeneration"}'), "thermal:diamond_dust"])
+  /*event.custom({
+    "type": "thermal:crystallizer",
+    "ingredients": [
+      {
+        "fluid": "cofh_core:potion",
+        "nbt": {
+          "Potion": "minecraft:regeneration"
+        },
+        "amount": 250
+      },
+      {
+        "item": "thermal:diamond_dust"
+      }
+    ],
+    "result": [
+      {
+        "item": "minecraft:diamond"
+      }
+    ]
+  })*/
+
+  //let i = 0
+	//event.forEachRecipe({type:'thermal:bottler'}, recipe => {
+  //
+	//	JsonIO.write(`kubejs/jsn/thermal_${i}.json`, recipe.json)
+  // i++
+	//})
+
+  event.recipes.create.filling("minecraft:diamond", [Fluid.of("cofh_core:potion", 250, '{"Potion":"minecraft:regeneration"}'), "thermal:diamond_dust"])
+  //event.recipes.thermal.brewer(Fluid.of("minecraft:water", 1000), [Fluid.of("minecraft:lava", 1000), "#minecraft:planks"])
 
   event.recipes.create.crushing(["thermal:sawdust", Item.of("thermal:sawdust").withChance(0.5)], "#minecraft:planks")
 
