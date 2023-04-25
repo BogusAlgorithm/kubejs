@@ -25,24 +25,8 @@ ServerEvents.recipes(event => {
       S: 'minecraft:string'
     }) 
 
-  event.remove({id: "thermal:machine_press"})
-  event.shaped(
-    Item.of('thermal:machine_press'), 
-      [ 
-      'MPM', 
-      'S S', 
-      'SIS'  
-      ],{
-      I: 'minecraft:iron_block',
-      M: 'createaddition:electric_motor',
-      P: 'create:mechanical_press',
-      S: 'create:sturdy_sheet'
-    })  
-
   event.remove({id: "thermal:device_tree_extractor"})
-  event.shaped(
-    Item.of('thermal:device_tree_extractor'), 
-      [ 
+  event.shaped(Item.of('thermal:device_tree_extractor'), [ 
       'PBP', 
       'GCG', 
       'PIP'  
@@ -99,7 +83,17 @@ ServerEvents.recipes(event => {
     W: 'createaddition:copper_wire'
   })
 
-
+  event.remove({id: "thermal:machine_press"})
+  event.recipes.create.mechanicalCrafting('thermal:machine_press', [ 
+      'MPM', 
+      'S S', 
+      'SIS'  
+      ],{
+      I: 'minecraft:iron_block',
+      M: 'createaddition:electric_motor',
+      P: 'create:mechanical_press',
+      S: 'create:sturdy_sheet'
+    })
 
   event.replaceInput({ id: 'thermal:phytosoil'}, 'minecraft:charcoal', 'thermal:compost')
 

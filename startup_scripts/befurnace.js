@@ -110,9 +110,9 @@ const food = [
     ['minecraft:clay_ball',1],
     ['minecraft:coal',1],
     ['minecraft:pointed_dripstone',1],
-    ['thermal:cinabar',1],
-    //['thermal:niter',1],
-    ['thermal:sulfur',1]//,
+    //['thermal:cinabar',1],
+    //['thermal:niter',1],//move to mobloot
+    //['thermal:sulfur',1]//, //move to mobloot
     //['minecraft:cod',1],
     //['minecraft:salmon',1]
   ];
