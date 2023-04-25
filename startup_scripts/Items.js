@@ -8,4 +8,6 @@ StartupEvents.registry('item', event => {
     event.create('zinc_dust').texture("kubejs:item/zinc_dust").displayName('Zinc Dust')
     event.create('brass_dust').texture("kubejs:item/brass_dust").displayName('Brass Dust')
 
+    event.create('crystallizer').texture("createaddition:item/diamond_grit").displayName('Crystallizer Compound')
+
 })

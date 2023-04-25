@@ -97,37 +97,72 @@ ServerEvents.recipes(event => {
 
   event.replaceInput({ id: 'thermal:phytosoil'}, 'minecraft:charcoal', 'thermal:compost')
 
-  //event.recipes.thermal.bottler("minecraft:diamond", [Fluid.of("cofh_core:potion", 250, '{"Potion":"minecraft:regeneration"}'), "thermal:diamond_dust"])
-  /*event.custom({
-    "type": "thermal:crystallizer",
-    "ingredients": [
-      {
-        "fluid": "cofh_core:potion",
-        "nbt": {
-          "Potion": "minecraft:regeneration"
+  let thermabrew = (outputFluid, outputAmmount, inputItem, inputFluid, inputAmmount, energy) => {
+    event.custom({
+      "type": "thermal:brewer",
+      "ingredients": [
+        {
+          "fluid": inputFluid,
+          "amount": inputAmmount
         },
+        {
+          "item": inputItem
+        }
+      ],
+      "result": [
+        {
+          "fluid": outputFluid,
+          "amount": outputAmmount
+        }
+      ],
+      "energy": energy
+  })}
+
+  let thermacryst = (outputItem, inputAmmount, inputItem, energy) => {
+    event.custom({
+      "type": "thermal:crystallizer",
+      "ingredients": [
+        {
+          "fluid": "minecraft:water",
+          "amount": inputAmmount
+        },
+        {
+          "item": inputItem
+        },
+        {
+          "item": "kubejs:crystallizer"
+        }
+      ],
+      "result": [
+        {
+          "item": outputItem
+        }
+      ],
+      "energy": energy
+  })}
+
+  event.custom({
+      "type": "thermal:refinery",
+      "ingredient": {
+        "fluid": "kubejs:solution_4",
         "amount": 250
       },
-      {
-        "item": "thermal:diamond_dust"
-      }
-    ],
-    "result": [
-      {
-        "item": "minecraft:diamond"
-      }
-    ]
-  })*/
+      "result": 
+        {
+          "item": "kubejs:crystallizer",
+        },
+        "energy": 20000
+  })
 
-  //let i = 0
-	//event.forEachRecipe({type:'thermal:bottler'}, recipe => {
-  //
-	//	JsonIO.write(`kubejs/jsn/thermal_${i}.json`, recipe.json)
-  // i++
-	//})
+  thermabrew("kubejs:solution_1", 1000, "minecraft:blaze_powder", "minecraft:water", 1000, 20000)
+  thermabrew("kubejs:solution_2", 1000, "thermal:blitz_powder", "kubejs:solution_1", 1000, 20000)
+  thermabrew("kubejs:solution_3", 1000, "thermal:basalz_powder", "kubejs:solution_2", 1000, 20000)
+  thermabrew("kubejs:solution_4", 1000, "thermal:blizz_powder", "kubejs:solution_3", 1000, 20000)
 
-  event.recipes.create.filling("minecraft:diamond", [Fluid.of("cofh_core:potion", 250, '{"Potion":"minecraft:regeneration"}'), "thermal:diamond_dust"])
-  //event.recipes.thermal.brewer(Fluid.of("minecraft:water", 1000), [Fluid.of("minecraft:lava", 1000), "#minecraft:planks"])
+  event.remove({type: "thermal:crystallizer"})
+  thermacryst("ae2:certus_quartz_crystal", 1000, "ae2:certus_quartz_dust", 20000)
+  thermacryst("minecraft:diamond", 1000, "thermal:diamond_dust", 20000)
+  thermacryst("minecraft:emerald", 1000, "thermal:emerald_dust", 20000)
 
   event.recipes.create.crushing(["thermal:sawdust", Item.of("thermal:sawdust").withChance(0.5)], "#minecraft:planks")
 
