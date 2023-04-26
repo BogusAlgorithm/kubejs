@@ -179,7 +179,8 @@ ServerEvents.recipes(event => {
   event.recipes.create.pressing(["thermal:lead_plate"], ["thermal:lead_ingot"])
 
   event.remove({id: "create:splashing/gravel"})
-  event.recipes.create.splashing([Item.of('thermal:apatite').withChance(0.15), Item.of('minecraft:redstone').withChance(0.05)], 'minecraft:gravel')
+  //event.recipes.create.splashing([Item.of('thermal:apatite').withChance(0.15), Item.of('minecraft:redstone').withChance(0.05)], 'minecraft:gravel')
+  event.recipes.create.splashing([Item.of('minecraft:redstone').withChance(0.05)], 'minecraft:gravel')
 
   event.recipes.create.splashing([Item.of("thermal:tin_dust", 1).withChance(0.5)], Item.of("kubejs:zinc_dust"))
   event.recipes.create.splashing([Item.of("thermal:nickel_dust", 1).withChance(0.5)], Item.of("thermal:iron_dust"))

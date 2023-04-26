@@ -95,7 +95,26 @@ ServerEvents.recipes(event => {
       S: 'create:sturdy_sheet'
     })
 
-  event.replaceInput({ id: 'thermal:phytosoil'}, 'minecraft:charcoal', 'thermal:compost')
+  event.remove({id: "thermal:machines/centrifuge/centrifuge_oil_red_sand"})
+  event.remove({id: "thermal:machines/centrifuge/centrifuge_oil_sand"})
+    event.custom({
+        "type": "thermal:centrifuge",
+        "ingredient": {
+          "item": "thermal:oil_sand"
+        },
+        "result": [
+//          {
+//            "item": "minecraft:sand",
+//            "chance": 0.5
+//          },
+          {
+            "fluid": "thermal:crude_oil",
+            "amount": 200
+          }
+        ],
+        "energy": 20000
+    })
+
 
   let thermabrew = (outputFluid, outputAmmount, inputItem, inputFluid, inputAmmount, energy) => {
     event.custom({
@@ -163,6 +182,12 @@ ServerEvents.recipes(event => {
   thermacryst("ae2:certus_quartz_crystal", 1000, "ae2:certus_quartz_dust", 20000)
   thermacryst("minecraft:diamond", 1000, "thermal:diamond_dust", 20000)
   thermacryst("minecraft:emerald", 1000, "thermal:emerald_dust", 20000)
+
+  event.recipes.thermal.bottler('thermal:signalum_glass', [Fluid.of('thermal:redstone', 500), 'thermal:obsidian_glass'])
+  event.recipes.thermal.bottler('thermal:lumium_glass', [Fluid.of('thermal:glowstone', 500), 'thermal:obsidian_glass'])
+  event.recipes.thermal.bottler('thermal:enderium_glass', [Fluid.of('thermal:ender', 500), 'thermal:obsidian_glass'])
+
+  event.recipes.thermal.pulverizer(Item.of("thermal:bitumen"), 'thermal:oil_sand')//.energy(100)
 
   event.recipes.create.crushing(["thermal:sawdust", Item.of("thermal:sawdust").withChance(0.5)], "#minecraft:planks")
 
