@@ -131,8 +131,8 @@ const food = [
 
   const sands = [
     ['minecraft:sand',2],
-    ['minecraft:red_sand',2],
-    ['thermal:oil_sand',1]
+    ['minecraft:red_sand',2]//,
+    //['thermal:oil_sand',1]
   ];
 
   const stones2 = [
@@ -161,8 +161,8 @@ const modes = [ [stones, 0.02, "minecraft:iron_ore", 64, 3, 0.5],
                 [protein, 0.00, "minecraft:air", 64, 16, 0.5],
                 [minerals, 0.00, "minecraft:air", 64, 8, 0.5],
                 [gems, 0.00, "minecraft:air", 64, 8, 0.5],
-                [sands, 0.00, "thermal:oil_sand", 64, 8, 0.5],
-                [stones2, 0.00, "minecraft:air", 64, 4, 0.5]
+                [sands, 0.02, "thermal:oil_sand", 64, 4, 0.5],
+                [stones2, 0.00, "minecraft:air", 64, 8, 0.5]
               ]
 
 function GetModeFor(id) {
