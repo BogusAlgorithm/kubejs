@@ -111,6 +111,17 @@ ServerEvents.recipes(event => {
       L: 'create:andesite_alloy'
     })
 
+  event.remove({id: "createaddition:liquid_burning/biofuel"})
+  event.custom({
+    "type":"createaddition:liquid_burning",
+    "input": {
+          "fluidTag": "forge:biofuel",
+          "amount": 1000
+    },
+    "burnTime": 320,
+    "superheated": true
+  })
+  
   event.remove({id: "createaddition:crafting/modular_accumulator"})
   event.recipes.create.mechanicalCrafting('createaddition:modular_accumulator', [
       'LDL', 
