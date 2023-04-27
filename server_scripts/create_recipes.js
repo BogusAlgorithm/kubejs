@@ -176,7 +176,8 @@ ServerEvents.recipes(event => {
   event.recipes.create.milling(["minecraft:bone_meal"], 'minecraft:calcite')
 
   event.remove({id: "create:crafting/materials/rose_quartz"})
-  event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye",])
+  event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye"])
+  event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone"])
 
   event.recipes.create.mixing([Fluid.of('minecraft:milk', 500)], [Fluid.of('minecraft:water', 500), "minecraft:bone_meal"]).heated()
 
@@ -189,9 +190,8 @@ ServerEvents.recipes(event => {
 
   event.recipes.create.pressing(["thermal:lead_plate"], ["thermal:lead_ingot"])
 
-  event.remove({id: "create:splashing/gravel"})
-  //event.recipes.create.splashing([Item.of('thermal:apatite').withChance(0.15), Item.of('minecraft:redstone').withChance(0.05)], 'minecraft:gravel')
-  event.recipes.create.splashing([Item.of('minecraft:redstone').withChance(0.05)], 'minecraft:gravel')
+  event.remove({id: "create:splashing/red_sand"})
+  event.recipes.create.splashing([Item.of('minecraft:redstone').withChance(0.05)], 'minecraft:red_sand')
 
   event.recipes.create.splashing([Item.of("thermal:tin_dust", 1).withChance(0.5)], Item.of("kubejs:zinc_dust"))
   event.recipes.create.splashing([Item.of("thermal:nickel_dust", 1).withChance(0.5)], Item.of("thermal:iron_dust"))

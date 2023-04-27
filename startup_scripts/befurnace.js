@@ -37,7 +37,8 @@ const plants = [
     ["minecraft:pumpkin_seeds", 1],
     ["minecraft:melon_seeds", 1],
     ["minecraft:sugar_cane", 1],
-    ["minecraft:kelp", 1]//,
+    ["minecraft:kelp", 1],
+    ["minecraft:cocoa_beans", 1]
     //["thermal:amaranth:", 1]
   ];
 
@@ -68,7 +69,8 @@ const food = [
     ["minecraft:podzol", 1],
     ["minecraft:mycelium", 1],
     ["minecraft:crimson_nylium", 1],
-    ["minecraft:warped_nylium", 1]//,
+    ["minecraft:warped_nylium", 1],
+    ["minecraft:moss_block", 1]
     //["minecraft:sugar_cane", 1],
     //["minecraft:kelp", 1]//,
     //["thermal:", 1]
@@ -128,16 +130,17 @@ const food = [
   ];
 
   const sands = [
-    ['minecraft:sand',1],
-    ['minecraft:red_sand',1],
+    ['minecraft:sand',2],
+    ['minecraft:red_sand',2],
     ['thermal:oil_sand',1]
   ];
 
   const stones2 = [
-    ['create:asurine',1],
-    ['create:crimsite',1],
-    ['create:limestone',1],
-    ['create:veridium',1],
+    ['create:scoria',2],
+    ['create:asurine',2],
+    ['create:crimsite',2],
+    ['create:limestone',2],
+    ['create:veridium',2],
     ['ae2:sky_stone_block',1],
     ['minecraft:endstone',1]
   ];
