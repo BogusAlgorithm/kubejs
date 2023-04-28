@@ -9,8 +9,8 @@ ServerEvents.recipes(event => {
 
   event.remove({id: "thermal:phytogro_8"})
 
-  event.remove({id: "minecraft:fire_charge"})
-  event.shapeless("2x minecraft:fire_charge", ["minecraft:blaze_powder", "minecraft:gunpowder", 'thermal:sawdust'])
+  //event.remove({id: "minecraft:fire_charge"})
+  //event.shapeless("2x minecraft:fire_charge", ["minecraft:blaze_powder", "minecraft:gunpowder", 'thermal:sawdust'])
 
   event.remove({id: "thermal:hazmat_fabric"})
   event.shaped(
@@ -83,6 +83,19 @@ ServerEvents.recipes(event => {
     W: 'createaddition:copper_wire'
   })
 
+  //event.remove({id: "thermal:machine_frame"})
+  event.recipes.create.mechanicalCrafting('thermal:machine_frame', [ 
+      'DIT', 
+      'IDI', 
+      'CID'  
+      ],{
+      C: '#thermal:frame_component',
+      D: 'powah:dielectric_paste',
+      I: 'thermal:iron_plate',
+      //S: 'thermal:silver_gear',//#FrameComponent
+      T: 'thermal:tin_gear'
+    })
+
   event.remove({id: "thermal:machine_press"})
   event.recipes.create.mechanicalCrafting('thermal:machine_press', [ 
       'MPM', 
@@ -94,6 +107,181 @@ ServerEvents.recipes(event => {
       P: 'create:mechanical_press',
       S: 'create:sturdy_sheet'
     })
+
+  event.remove({id: "thermal:machine_pulverizer"})
+  event.recipes.create.mechanicalCrafting('thermal:machine_pulverizer', [ 
+      'LPL', 
+      'IFI', 
+      'SGS'  
+      ],{
+      F: 'thermal:machine_frame',
+      G: 'thermal:invar_gear',
+      I: 'thermal:iron_plate',
+      L: 'thermal:obsidian_glass',
+      P: "minecraft:piston",
+      S: 'thermal:redstone_servo'
+    })
+
+  event.remove({id: "thermal:machine_pyrolizer"})
+  event.recipes.create.mechanicalCrafting('thermal:machine_pyrolizer', [ 
+    'NBN', 
+    'IFI', 
+    'SEC'  
+    ],{
+    B: 'minecraft:blaze_rod',
+    F: 'thermal:machine_frame',
+    E: 'thermal:electrum_gear',//Check later if available
+    I: 'thermal:signalum_plate',
+    N: 'minecraft:nether_bricks',
+    C: 'thermal:rf_coil',
+    S: 'thermal:redstone_servo'
+  })
+
+  event.remove({id: "thermal:machine_smelter"})
+  event.recipes.create.mechanicalCrafting('thermal:machine_smelter', [ 
+    'GBG', 
+    'IFI', 
+    'STC'  
+    ],{
+    B: 'minecraft:blast_furnace',
+    F: 'thermal:machine_frame',
+    I: 'thermal:signalum_plate',
+    G: 'thermal:obsidian_glass',
+    C: 'thermal:rf_coil',
+    S: 'thermal:redstone_servo',
+    T: 'createaddition:tesla_coil'
+  })
+
+  event.remove({id: "thermal:machine_refinery"})
+  event.recipes.create.mechanicalCrafting('thermal:machine_refinery', [ 
+    'TOT', 
+    'LFL', 
+    'SGC'  
+    ],{
+    F: 'thermal:machine_frame',
+    G: 'thermal:invar_gear',
+    L: 'thermal:lumium_plate',
+    O: 'thermal:obsidian_glass',
+    T: 'create:fluid_tank',
+    C: 'thermal:rf_coil',
+    S: 'thermal:redstone_servo'
+  })
+
+  event.remove({id: "thermal:machine_crucible"})
+  event.recipes.create.mechanicalCrafting('thermal:machine_crucible', [ 
+    'NYN', 
+    'IFI', 
+    'SGC'  
+    ],{
+    F: 'thermal:machine_frame',
+    I: 'thermal:signalum_plate',
+    N: 'thermal:signalum_glass',
+    Y: 'powah:blazing_crystal',
+    C: 'thermal:rf_coil',
+    S: 'thermal:redstone_servo',
+    G: 'thermal:steel_gear'
+  })
+
+  //event.remove({id: "thermal:machine_extruder"})
+  //event.remove({id: "thermal:machine_nullyfier"})
+  
+  event.remove({id: "thermal:machine_bottler"})
+  event.recipes.create.mechanicalCrafting('thermal:machine_bottler', [ 
+    'OPO', 
+    'IFI', 
+    'SGC'  
+    ],{
+    F: 'thermal:machine_frame',
+    L: 'thermal:lumium_plate',
+    O: 'thermal:obsidian_glass',
+    P: 'create_spout',
+    C: 'thermal:rf_coil',
+    S: 'thermal:redstone_servo',
+    G: 'thermal:steel_gear'
+  })
+
+  event.remove({id: "thermal:machine_insolator"})
+  event.recipes.create.mechanicalCrafting('thermal:machine_insolator', [ 
+    'UDU', 
+    'LFL', 
+    'SGC'  
+    ],{
+    D: 'minecraft:dirt',
+    F: 'thermal:machine_frame',
+    L: 'thermal:silver_plate',
+    U: 'thermal:lumium_glass',
+    C: 'thermal:rf_coil',
+    S: 'thermal:redstone_servo',
+    G: 'thermal:lumium_gear'
+  })
+  //event.remove({id: "thermal:machine_phytostation"})
+
+  event.remove({id: "thermal:machine_chiller"})
+  event.recipes.create.mechanicalCrafting('thermal:machine_chiller', [ 
+    'VLV', 
+    'LFN', 
+    'SGC'  
+    ],{
+    F: 'thermal:machine_frame',
+    I: 'minecraft:packed_ice',  
+    L: 'thermal:lumium_gear',
+    N: 'thermal:signalum_gear',
+    V: 'thermal:silver_plate',
+    C: 'thermal:rf_coil',
+    S: 'thermal:redstone_servo',
+    G: 'thermal:steel_gear'
+  })
+
+  event.remove({id: "thermal:machine_centrifuge"})
+  event.recipes.create.mechanicalCrafting('thermal:machine_centrifuge', [ 
+    'UBI', 
+    'LFN', 
+    'SGC'  
+    ],{
+    B: 'minecraft:bucket',
+    F: 'thermal:machine_frame',
+    L: 'thermal:lumium_gear',
+    U: 'thermal:lumium_glass',
+    N: 'thermal:signalum_gear',
+    I: 'thermal:signalum_glass',
+    C: 'thermal:rf_coil',
+    S: 'thermal:redstone_servo',
+    G: 'thermal:steel_gear'
+  })
+
+  event.remove({id: "thermal:machine_brewer"})
+  event.recipes.create.mechanicalCrafting('thermal:machine_brewer', [ 
+    'UBI', 
+    'LFN', 
+    'SGC'  
+    ],{
+    B: 'minecraft:brewing_stand',
+    F: 'thermal:machine_frame',
+    L: 'thermal:lumium_gear',
+    U: 'thermal:lumium_glass',
+    N: 'thermal:signalum_gear',
+    I: 'thermal:signalum_glass',
+    C: 'thermal:rf_coil',
+    S: 'thermal:redstone_servo',
+    G: 'thermal:steel_gear'
+  })
+
+  event.remove({id: "thermal:machine_crystallizer"})
+  event.recipes.create.mechanicalCrafting('thermal:machine_crystallizer', [ 
+    'URI', 
+    'LFN', 
+    'SGC'  
+    ],{
+    R: 'kubejs:crystallizer',
+    F: 'thermal:machine_frame',
+    L: 'thermal:lumium_gear',
+    U: 'thermal:lumium_glass',
+    N: 'thermal:signalum_gear',
+    I: 'thermal:signalum_glass',
+    C: 'thermal:rf_coil',
+    S: 'thermal:redstone_servo',
+    G: 'thermal:steel_gear'
+  })
 
   event.remove({id: "thermal:machines/centrifuge/centrifuge_oil_red_sand"})
   event.remove({id: "thermal:machines/centrifuge/centrifuge_oil_sand"})
@@ -199,11 +387,20 @@ ServerEvents.recipes(event => {
   event.recipes.create.mixing("thermal:signalum_ingot", ["thermal:nickel_dust", "thermal:nickel_dust", "thermal:nickel_dust", 
     "thermal:tin_dust", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone"]).superheated()
 
+  //event.remove({id: "thermal:obsidian_glass"})
+  event.recipes.create.mixing("thermal:obsidian_glass", ["minecraft:obsidian", "minecraft:obsidian", 
+  "thermal:quartz_dust", "thermal:quartz_dust"]).superheated()
+
+  event.recipes.create.mixing(Fluid.of('thermal:redstone', 500), 'minecraft:redstone_block').superheated()
+
+  event.recipes.create.mixing(Fluid.of('thermal:glowstone', 500), 'minecraft:glowstone_block').superheated()
+
   event.remove({id: "thermal:press_gear_die"})
   let inter = 'minecraft:heavy_weighted_pressure_plate'
   event.recipes.createSequencedAssembly([ 
     "thermal:press_gear_die"
     ],'minecraft:iron_block',[
+    event.recipes.createDeploying(inter,[inter,"create:cog"]),
     event.recipes.createCutting(inter, inter),
     event.recipes.createFilling(inter,[inter, Fluid.of("minecraft:water", 1000)]),
     ]).transitionalItem(inter).loops(10)
