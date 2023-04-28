@@ -122,8 +122,8 @@ ServerEvents.recipes(event => {
       S: 'thermal:redstone_servo'
     })
 
-  event.remove({id: "thermal:machine_pyrolizer"})
-  event.recipes.create.mechanicalCrafting('thermal:machine_pyrolizer', [ 
+  event.remove({id: "thermal:machine_pyrolyzer"})
+  event.recipes.create.mechanicalCrafting('thermal:machine_pyrolyzer', [ 
     'NBN', 
     'IFI', 
     'SEC'  
@@ -176,7 +176,7 @@ ServerEvents.recipes(event => {
     F: 'thermal:machine_frame',
     I: 'thermal:signalum_plate',
     N: 'thermal:signalum_glass',
-    Y: 'powah:blazing_crystal',
+    Y: 'powah:crystal_blazing',
     C: 'thermal:rf_coil',
     S: 'thermal:redstone_servo',
     G: 'thermal:steel_gear'
@@ -188,13 +188,13 @@ ServerEvents.recipes(event => {
   event.remove({id: "thermal:machine_bottler"})
   event.recipes.create.mechanicalCrafting('thermal:machine_bottler', [ 
     'OPO', 
-    'IFI', 
+    'LFL', 
     'SGC'  
     ],{
     F: 'thermal:machine_frame',
     L: 'thermal:lumium_plate',
     O: 'thermal:obsidian_glass',
-    P: 'create_spout',
+    P: 'create:spout',
     C: 'thermal:rf_coil',
     S: 'thermal:redstone_servo',
     G: 'thermal:steel_gear'
@@ -218,7 +218,7 @@ ServerEvents.recipes(event => {
 
   event.remove({id: "thermal:machine_chiller"})
   event.recipes.create.mechanicalCrafting('thermal:machine_chiller', [ 
-    'VLV', 
+    'VIV', 
     'LFN', 
     'SGC'  
     ],{
@@ -391,16 +391,16 @@ ServerEvents.recipes(event => {
   event.recipes.create.mixing("thermal:obsidian_glass", ["minecraft:obsidian", "minecraft:obsidian", 
   "thermal:quartz_dust", "thermal:quartz_dust"]).superheated()
 
-  event.recipes.create.mixing(Fluid.of('thermal:redstone', 500), 'minecraft:redstone_block').superheated()
+  event.recipes.create.mixing([Fluid.of('thermal:redstone', 500)], 'minecraft:redstone_block').superheated()
 
-  event.recipes.create.mixing(Fluid.of('thermal:glowstone', 500), 'minecraft:glowstone_block').superheated()
+  event.recipes.create.mixing([Fluid.of('thermal:glowstone', 500)], 'minecraft:glowstone').superheated()
 
   event.remove({id: "thermal:press_gear_die"})
   let inter = 'minecraft:heavy_weighted_pressure_plate'
   event.recipes.createSequencedAssembly([ 
     "thermal:press_gear_die"
     ],'minecraft:iron_block',[
-    event.recipes.createDeploying(inter,[inter,"create:cog"]),
+    event.recipes.createDeploying(inter,[inter,"create:cogwheel"]),
     event.recipes.createCutting(inter, inter),
     event.recipes.createFilling(inter,[inter, Fluid.of("minecraft:water", 1000)]),
     ]).transitionalItem(inter).loops(10)
