@@ -9,8 +9,8 @@ ServerEvents.recipes(event => {
 
   event.remove({id: "thermal:phytogro_8"})
 
-  //event.remove({id: "minecraft:fire_charge"})
-  //event.shapeless("2x minecraft:fire_charge", ["minecraft:blaze_powder", "minecraft:gunpowder", 'thermal:sawdust'])
+  event.remove({id: "minecraft:fire_charge"})
+  event.shapeless("2x minecraft:fire_charge", ["minecraft:blaze_powder", "minecraft:gunpowder", 'thermal:sawdust'])
 
   event.remove({id: "thermal:hazmat_fabric"})
   event.shaped(
@@ -80,7 +80,7 @@ ServerEvents.recipes(event => {
     'WCW'], {
     L: 'thermal:lead_ingot',
     C: 'createaddition:capacitor',
-    W: 'createaddition:copper_wire'
+    W: 'kubejs:silver_wire'
   })
 
   //event.remove({id: "thermal:machine_frame"})

@@ -121,6 +121,17 @@ ServerEvents.recipes(event => {
     "burnTime": 320,
     "superheated": true
   })
+
+  event.custom({
+    "type":"createaddition:rolling",
+    "input": {
+          "item": "thermal:silver_plate"
+    },
+    "result": {
+      "item": "kubejs:silver_wire",
+      "count": 2
+    }
+  })
   
   event.remove({id: "createaddition:crafting/modular_accumulator"})
   event.recipes.create.mechanicalCrafting('createaddition:modular_accumulator', [
@@ -157,7 +168,7 @@ ServerEvents.recipes(event => {
     S: 'createaddition:copper_spool'
   })
 
-  event.recipes.create.compacting([Fluid.of('minecraft:water', 50)], '#minecraft:leaves')
+  event.recipes.create.compacting([Fluid.of('minecraft:water', 100)], '#minecraft:leaves')
 
   event.recipes.create.compacting(["minecraft:magma_block"], ["minecraft:basalt"]).superheated()
 
@@ -175,6 +186,8 @@ ServerEvents.recipes(event => {
   event.remove({id: "create:milling/calcite"})
   event.recipes.create.milling(["minecraft:bone_meal"], 'minecraft:calcite')
 
+  event.recipes.create.crushing("thermal:iron_dust", "minecraft:iron_ingot")
+
   event.remove({id: "create:crafting/materials/rose_quartz"})
   event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye"])
   event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone"])
@@ -189,9 +202,10 @@ ServerEvents.recipes(event => {
   event.recipes.create.mixing([Fluid.of('minecraft:milk', 500)], [Fluid.of('minecraft:water', 500), "minecraft:bone_meal"]).heated()
 
   event.recipes.create.pressing(["thermal:lead_plate"], ["thermal:lead_ingot"])
+  event.recipes.create.pressing(["thermal:silver_plate"], ["thermal:silver_ingot"])
 
   event.remove({id: "create:splashing/red_sand"})
-  event.recipes.create.splashing([Item.of('minecraft:redstone').withChance(0.05)], 'minecraft:red_sand')
+  event.recipes.create.splashing([Item.of('minecraft:redstone').withChance(0.1)], 'minecraft:red_sand')
 
   event.recipes.create.splashing([Item.of("thermal:tin_dust", 1).withChance(0.5)], Item.of("kubejs:zinc_dust"))
   event.recipes.create.splashing([Item.of("thermal:nickel_dust", 1).withChance(0.5)], Item.of("thermal:iron_dust"))
@@ -229,4 +243,14 @@ ServerEvents.recipes(event => {
     event.recipes.createPressing(inter, inter),
     event.recipes.createPressing(inter, inter),
     ]).transitionalItem(inter).loops(1) // set the transitional item and the loops (amount of repetitions)
+
+  event.remove({id: "create:sequenced_assembly/precision_mechanism"})
+  inter = 'create:incomplete_precision_mechanism'
+  event.recipes.createSequencedAssembly([ 
+    "create:precision_mechanism"
+    ],'create:brass_sheet',[
+      event.recipes.createDeploying(inter,[inter,"create:cogwheel"]),
+      event.recipes.createDeploying(inter,[inter,"create:large_cogwheel"]),
+      event.recipes.createDeploying(inter,[inter,"minecraft:iron_nugget"])
+    ]).transitionalItem(inter).loops(5) // set the transitional item and the loops (amount of repetitions)
 })
