@@ -159,7 +159,7 @@ const modes = [ [stones, 0.02, "minecraft:raw_iron", 64, 3, 0.5],
                 [food, 0.02, "thermal:frost_melon_slice", 64, 8, 0.5],
                 [soils, 0.02, "minecraft:soul_soil", 64, 4, 0.5],
                 [protein, 0.00, "minecraft:air", 64, 16, 0.5],
-                [minerals, 0.00, "minecraft:air", 64, 4, 0.5],
+                [minerals, 0.00, "minecraft:air", 64, 2, 0.5],
                 [gems, 0.00, "minecraft:air", 64, 8, 0.5],
                 [sands, 0.02, "thermal:oil_sand", 64, 4, 0.5],
                 [stones2, 0.00, "minecraft:air", 64, 8, 0.5]
@@ -209,16 +209,16 @@ StartupEvents.registry('block', event => {
               if (item.getStackInSlot(0).id == be.persistentData.getString("last_sid") && item.getStackInSlot(0).count == be.persistentData.getInt("last_cnt"))
               {
                 adv_chance += modes[mode][chnc]
-                level.server.tell("Accumulation") 
+                //level.server.tell("Accumulation") 
               }
               else
               {
                 adv_chance = modes[mode][chnc]
-                level.server.tell("Reset") 
+                //level.server.tell("Reset") 
               }
               be.persistentData.putFloat('adv_cha', adv_chance)
               let ra = Math.random()
-              level.server.tell(adv_chance+" to "+modes[mode][bons]+ " min " + Math.min(modes[mode][mstk]) + " r="+ra)
+              //level.server.tell(adv_chance+" to "+modes[mode][bons]+ " min " + Math.min(modes[mode][mstk]) + " r="+ra)
                          
               if (ra < adv_chance)
               {

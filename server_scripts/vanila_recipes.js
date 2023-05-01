@@ -19,20 +19,22 @@ event.smelting('thermal:raw_tin', '2x create:crushed_tin_ore')
 
 ServerEvents.recipes(event => {
 
+     //let metals = ["iron", "gold", "copper", "zinc", "lead", "silver", "nickel", "tin"]
+
     event.remove({type: `minecraft:smelting`, input: '#forge:ores'})
     event.remove({type: `minecraft:smelting`, input: '/.*:raw_.*/', output: '#forge:ingots'})
     event.remove({type: `minecraft:blasting`, input: '/.*:raw_.*/', output: '#forge:ingots'})
     
     event.smelting('8x minecraft:iron_nugget', 'minecraft:raw_iron')
     event.smelting('8x minecraft:gold_nugget', 'minecraft:raw_gold')
-    
     event.smelting('8x create:copper_nugget', 'minecraft:raw_copper')
     event.smelting('8x create:zinc_nugget', 'create:raw_zinc')
-    
     event.smelting('8x thermal:lead_nugget', 'thermal:raw_lead')
     event.smelting('8x thermal:silver_nugget', 'thermal:raw_silver')
     event.smelting('8x thermal:nickel_nugget', 'thermal:raw_nickel')
     event.smelting('8x thermal:tin_nugget', 'thermal:raw_tin')
+
+    event.remove({type: `create:crushing`, input: '#forge:raw_materials'}) 
 
     event.recipes.create.milling("2x create:crushed_iron_ore", "minecraft:raw_iron")
     event.recipes.create.milling("2x create:crushed_gold_ore", "minecraft:raw_gold")
@@ -43,7 +45,15 @@ ServerEvents.recipes(event => {
     event.recipes.create.milling("2x create:crushed_nickel_ore", "thermal:raw_nickel")
     event.recipes.create.milling("2x create:crushed_tin_ore", "thermal:raw_tin")
 
-    //let metals = ["iron", "gold", "copper", "zinc", "lead", "silver", "nickel", "tin"]
+    event.recipes.create.crushing("4x thermal:iron_dust", "minecraft:raw_iron")
+    event.recipes.create.crushing("4x thermal:gold_dust", "minecraft:raw_gold")
+    event.recipes.create.crushing("4x thermal:copper_dust", "minecraft:raw_copper")
+    event.recipes.create.crushing("4x kubejs:zinc_dust", "create:raw_zinc")
+    event.recipes.create.crushing("4x thermal:lead_dust", "thermal:raw_lead")
+    event.recipes.create.crushing("4x thermal:silver_dust", "thermal:raw_silver")
+    event.recipes.create.crushing("4x thermal:nickel_dust", "thermal:raw_nickel")
+    event.recipes.create.crushing("4x thermal:tin_dust", "thermal:raw_tin")
+     
     event.remove({input: '#create:crushed_ores'})
     
     event.smelting('5x minecraft:iron_nugget', 'create:crushed_iron_ore')
@@ -75,6 +85,9 @@ ServerEvents.recipes(event => {
     event.smelting('3x thermal:nickel_nugget', 'thermal:nickel_dust')
     event.smelting('3x thermal:tin_nugget', 'thermal:tin_dust')
     event.smelting('3x create:brass_nugget', 'kubejs:brass_dust')
+
+    event.shapeless("3x thermal:invar_ingot", ["thermal:nickel_ingot", "2x minecraft:iron_ingot", "minecraft:fire_charge"])
+    event.shapeless("2x thermal:electrum_ingot", ["minecraft:gold_ingot", "thermal:silver_ingot", "minecraft:fire_charge"])
 
     event.shaped(
         Item.of('minecraft:turtle_egg'), 
