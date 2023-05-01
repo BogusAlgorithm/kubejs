@@ -364,7 +364,7 @@ ServerEvents.recipes(event => {
     'LFN', 
     'SGC'  
     ],{
-    R: 'kubejs:crystallizer',
+    R: 'thermal:enderium_glass',
     F: 'thermal:machine_frame',
     L: 'thermal:lumium_gear',
     U: 'thermal:lumium_glass',
