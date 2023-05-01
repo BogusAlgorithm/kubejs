@@ -372,7 +372,7 @@ ServerEvents.recipes(event => {
     I: 'thermal:signalum_glass',
     C: 'thermal:rf_coil',
     S: 'thermal:redstone_servo',
-    G: 'thermal:steel_gear'
+    G: 'thermal:steel_gear'//swap to enderium
   })
 
   event.remove({id: "thermal:machines/centrifuge/centrifuge_oil_red_sand"})
