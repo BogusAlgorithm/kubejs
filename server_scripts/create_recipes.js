@@ -196,10 +196,10 @@ ServerEvents.recipes(event => {
 
   event.recipes.create.mixing([Fluid.of('create:honey', 1000)], [Fluid.of('thermal:syrup', 1000), "minecraft:sugar", "minecraft:sugar", "minecraft:sugar", "minecraft:sugar"]).heated()
 
-  event.recipes.create.mixing("2x kubejs:brass_dust", ["thermal:copper_dust", "kubejs:zinc_dust"])//~~~ delete when mill ore gravel to dust implemented
+  event.recipes.create.mixing("2x kubejs:brass_dust", ["thermal:copper_dust", "kubejs:zinc_dust"])
 
   event.remove({id: "create:crafting/materials/rose_quartz"})
-  event.recipes.create.mixing([Fluid.of('minecraft:milk', 500)], [Fluid.of('minecraft:water', 500), "minecraft:bone_meal"]).heated()
+  event.recipes.create.mixing([Fluid.of('minecraft:milk', 250)], [Fluid.of('minecraft:water', 250), "minecraft:bone_meal"]).heated()
 
   event.recipes.create.pressing(["thermal:lead_plate"], ["thermal:lead_ingot"])
   event.recipes.create.pressing(["thermal:silver_plate"], ["thermal:silver_ingot"])

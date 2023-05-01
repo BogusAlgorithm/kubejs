@@ -12,13 +12,13 @@ const stones = [
   ];
 
 const ores = [
-    ["minecraft:iron_ore", 2],
-    ["minecraft:copper_ore", 3],
+    ["minecraft:raw_iron", 2],
+    ["minecraft:raw_copper", 3],
     //["minecraft:gold_ore", 1],
-    ["create:zinc_ore", 2],
+    ["create:raw_zinc", 2],
     //["thermal:tin_ore", 1],
-    ["thermal:lead_ore", 1],
-    ["thermal:silver_ore", 1],
+    ["thermal:raw_lead", 1],
+    ["thermal:raw_silver", 1],
     //["thermal:nickel_ore", 1]
   ];
 
@@ -151,7 +151,7 @@ const bons = 2;
 const mstk = 3;
 const decr = 4;
 const mltp = 5;
-const modes = [ [stones, 0.02, "minecraft:iron_ore", 64, 3, 0.5],
+const modes = [ [stones, 0.02, "minecraft:raw_iron", 64, 3, 0.5],
                 [ores, 0.02, "minecraft:nether_quartz_ore", 64, 3, 0.5],
                 [organics, 0.02, "minecraft:egg", 16, 4, 0.5],
                 [plants, 0.02, "minecraft:cactus", 64, 4, 0.5],
@@ -205,7 +205,7 @@ StartupEvents.registry('block', event => {
             {
               let adv_chance = be.persistentData.getFloat('adv_cha')
               //level.server.tell(adv_chance)
-              level.server.tell("Last ID "+be.persistentData.getString('last_sid')+ "Last Cnt "+be.persistentData.getInt('last_cnt')) 
+              //level.server.tell("Last ID "+be.persistentData.getString('last_sid')+ "Last Cnt "+be.persistentData.getInt('last_cnt')) 
               if (item.getStackInSlot(0).id == be.persistentData.getString("last_sid") && item.getStackInSlot(0).count == be.persistentData.getInt("last_cnt"))
               {
                 adv_chance += modes[mode][chnc]
