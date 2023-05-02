@@ -9,6 +9,7 @@ ServerEvents.recipes(event => {
 
   event.remove({id: "thermal:phytogro_8"})
   event.remove({type: `minecraft:crafting_shaped`, output: '/^thermal:.*_gear$/'})
+  event.remove({id: "createaddition:crushing/diamond"})
 
   //event.remove({id: "minecraft:fire_charge"})
   event.shapeless("2x minecraft:fire_charge", ["minecraft:blaze_powder", "minecraft:gunpowder", '2x thermal:sawdust'])
@@ -360,19 +361,18 @@ ServerEvents.recipes(event => {
 
   event.remove({id: "thermal:machine_crystallizer"})
   event.recipes.create.mechanicalCrafting('thermal:machine_crystallizer', [ 
-    'URI', 
+    'RYR', 
     'LFN', 
     'SGC'  
     ],{
+    Y: 'kubejs:crystallizer',
     R: 'thermal:enderium_glass',
     F: 'thermal:machine_frame',
     L: 'thermal:lumium_gear',
-    U: 'thermal:lumium_glass',
     N: 'thermal:signalum_gear',
-    I: 'thermal:signalum_glass',
     C: 'thermal:rf_coil',
     S: 'thermal:redstone_servo',
-    G: 'thermal:steel_gear'//swap to enderium
+    G: 'thermal:steel_gear'
   })
 
   event.remove({id: "thermal:machines/centrifuge/centrifuge_oil_red_sand"})
@@ -391,8 +391,7 @@ ServerEvents.recipes(event => {
         "energy": 20000
     })
 
-
-  let thermabrew = (outputFluid, outputAmmount, inputItem, inputFluid, inputAmmount, energy) => {
+  /*let thermabrew = (outputFluid, outputAmmount, inputItem, inputFluid, inputAmmount, energy) => {
     event.custom({
       "type": "thermal:brewer",
       "ingredients": [
@@ -411,7 +410,7 @@ ServerEvents.recipes(event => {
         }
       ],
       "energy": energy
-  })}
+  })}*/
 
   let thermacryst = (outputItem, inputAmmount, inputItem, energy) => {
     event.custom({
@@ -436,7 +435,8 @@ ServerEvents.recipes(event => {
       "energy": energy
   })}
 
-  event.custom({
+  event.recipes.thermal.refinery([Item.of("kubejs:crystallizer")], [Fluid.of('kubejs:solution_4', 250)]).energy(20000)
+  /*event.custom({
       "type": "thermal:refinery",
       "ingredient": {
         "fluid": "kubejs:solution_4",
@@ -447,12 +447,16 @@ ServerEvents.recipes(event => {
           "item": "kubejs:crystallizer",
         },
         "energy": 20000
-  })
+  })*/
 
-  thermabrew("kubejs:solution_1", 1000, "minecraft:blaze_rod", "minecraft:water", 1000, 20000)
-  thermabrew("kubejs:solution_2", 1000, "thermal:blitz_rod", "kubejs:solution_1", 1000, 20000)
-  thermabrew("kubejs:solution_3", 1000, "thermal:basalz_rod", "kubejs:solution_2", 1000, 20000)
-  thermabrew("kubejs:solution_4", 1000, "thermal:blizz_rod", "kubejs:solution_3", 1000, 20000)
+  //thermabrew("kubejs:solution_1", 1000, "minecraft:blaze_rod", "minecraft:water", 1000, 20000)
+  //thermabrew("kubejs:solution_2", 1000, "thermal:blitz_rod", "kubejs:solution_1", 1000, 20000)
+  //thermabrew("kubejs:solution_3", 1000, "thermal:basalz_rod", "kubejs:solution_2", 1000, 20000)
+  //thermabrew("kubejs:solution_4", 1000, "thermal:blizz_rod", "kubejs:solution_3", 1000, 20000)
+  event.recipes.thermal.brewer([Fluid.of("kubejs:solution_1", 1000)], [Item.of("minecraft:blaze_rod"), Fluid.of("minecraft:water",1000)]).energy(20000)
+  event.recipes.thermal.brewer([Fluid.of("kubejs:solution_2", 1000)], [Item.of("thermal:blitz_rod"), Fluid.of("kubejs:solution_1",1000)]).energy(20000)
+  event.recipes.thermal.brewer([Fluid.of("kubejs:solution_3", 1000)], [Item.of("thermal:basalz_rod"), Fluid.of("kubejs:solution_2",1000)]).energy(20000)
+  event.recipes.thermal.brewer([Fluid.of("kubejs:solution_4", 1000)], [Item.of("thermal:blizz_rod"), Fluid.of("kubejs:solution_3",1000)]).energy(20000)
 
   event.remove({type: "thermal:crystallizer"})
   thermacryst("ae2:certus_quartz_crystal", 1000, "ae2:certus_quartz_dust", 20000)
