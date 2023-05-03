@@ -8,18 +8,16 @@ const stones = [
     ["minecraft:deepslate", 1],
     ["minecraft:tuff", 1],
     ["minecraft:calcite", 1],
-    ["minecraft:sandstone", 1]
+    ["minecraft:sandstone", 1],
+    ["minecraft:dripstone_block", 1]
   ];
 
 const ores = [
     ["minecraft:raw_iron", 2],
     ["minecraft:raw_copper", 3],
-    //["minecraft:gold_ore", 1],
     ["create:raw_zinc", 2],
-    //["thermal:tin_ore", 1],
     ["thermal:raw_lead", 1],
-    ["thermal:raw_silver", 1],
-    //["thermal:nickel_ore", 1]
+    ["thermal:raw_silver", 1]
   ];
 
 const organics = [
@@ -162,6 +160,7 @@ const modes = [ [stones, 0.02, "minecraft:raw_iron", 64, 3, 0.5],
                 [minerals, 0.00, "minecraft:air", 64, 2, 0.5],
                 [gems, 0.00, "minecraft:air", 64, 8, 0.5],
                 [sands, 0.02, "thermal:oil_sand", 64, 4, 0.5],
+                //[crops_2, 0.00, "minecraft:air", 64, 4, 0.5],
                 [stones2, 0.00, "minecraft:air", 64, 8, 0.5]
               ]
 

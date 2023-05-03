@@ -85,9 +85,11 @@ ServerEvents.recipes(event => {
     event.smelting('3x thermal:nickel_nugget', 'thermal:nickel_dust')
     event.smelting('3x thermal:tin_nugget', 'thermal:tin_dust')
     event.smelting('3x create:brass_nugget', 'kubejs:brass_dust')
+    event.smelting('3x thermal:electrum_nugget', 'thermal:electrum_dust')
+    event.smelting('3x thermal:invar_nugget', 'thermal:invar_dust')
 
-    event.shapeless("3x thermal:invar_ingot", ["thermal:nickel_ingot", "2x minecraft:iron_ingot", "minecraft:fire_charge"])
-    event.shapeless("2x thermal:electrum_ingot", ["minecraft:gold_ingot", "thermal:silver_ingot", "minecraft:fire_charge"])
+    //event.shapeless("3x thermal:invar_ingot", ["thermal:nickel_ingot", "2x minecraft:iron_ingot", "minecraft:fire_charge"])
+    //event.shapeless("2x thermal:electrum_ingot", ["minecraft:gold_ingot", "thermal:silver_ingot", "minecraft:fire_charge"])
 
     event.shaped(
         Item.of('minecraft:turtle_egg'), 

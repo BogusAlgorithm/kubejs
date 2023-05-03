@@ -116,7 +116,7 @@ ServerEvents.recipes(event => {
   })
 
   event.remove({id: "thermal:machine_frame"})
-  event.recipes.create.mechanicalCrafting('thermal:machine_frame', [ 
+  event.shaped('thermal:machine_frame', [ 
       'DIT', 
       'IDI', 
       'CID'  
@@ -166,6 +166,20 @@ ServerEvents.recipes(event => {
       S: 'thermal:redstone_servo'
     })
 
+  event.remove({id: "thermal:machine_furnace"})
+  event.recipes.create.mechanicalCrafting('thermal:machine_furnace', [ 
+    'NUN', 
+    'IFI', 
+    'CGC'  
+    ],{
+    F: 'thermal:machine_frame',
+    I: 'thermal:invar_plate',
+    N: 'minecraft:nether_bricks',
+    U: "minecraft:furnace",
+    G: 'thermal:invar_gear',
+    C: 'thermal:rf_coil'
+  })  
+
   event.remove({id: "thermal:machine_pyrolyzer"})
   event.recipes.create.mechanicalCrafting('thermal:machine_pyrolyzer', [ 
     'NBN', 
@@ -203,7 +217,7 @@ ServerEvents.recipes(event => {
     'SGC'  
     ],{
     F: 'thermal:machine_frame',
-    G: 'thermal:invar_gear',
+    G: 'thermal:electrum_gear',
     L: 'thermal:lumium_plate',
     O: 'thermal:obsidian_glass',
     T: 'create:fluid_tank',
@@ -234,7 +248,7 @@ ServerEvents.recipes(event => {
     ],{
     P: 'minecraft:piston',
     F: 'thermal:machine_frame',
-    G: 'thermal:silver_gear',
+    G: 'thermal:steel_gear',
     I: 'thermal:iron_plate',
     S: 'thermal:redstone_servo'
   })
@@ -260,7 +274,7 @@ ServerEvents.recipes(event => {
     ],{
     E: "minecraft:ender_pearl",
     F: 'thermal:machine_frame',
-    G: 'thermal:silver_gear',
+    G: 'thermal:electrum_gear',
     I: 'thermal:iron_plate',
     S: 'thermal:redstone_servo'
   })
@@ -283,12 +297,12 @@ ServerEvents.recipes(event => {
   event.remove({id: "thermal:machine_insolator"})
   event.recipes.create.mechanicalCrafting('thermal:machine_insolator', [ 
     'UDU', 
-    'LFL', 
+    'EFE', 
     'SGC'  
     ],{
-    D: 'minecraft:dirt',
+    D: 'minecraft:grass',
     F: 'thermal:machine_frame',
-    L: 'thermal:silver_plate',
+    E: 'thermal:electrum_plate',
     U: 'thermal:lumium_glass',
     C: 'thermal:rf_coil',
     S: 'thermal:redstone_servo',
@@ -297,21 +311,21 @@ ServerEvents.recipes(event => {
 
   event.remove({id: "thermal:device_soil_infuser"})
   event.recipes.create.mechanicalCrafting('thermal:device_soil_infuser', [ 
-    ' D ', 
-    'IFI', 
+    'DDD', 
+    'EFE', 
     'SGC'  
     ],{
     D: "thermal:phytosoil",
     F: 'thermal:machine_frame',
     G: 'thermal:lumium_gear',
-    I: 'thermal:silver_plate',
+    E: 'thermal:electrum_plate',
     S: 'thermal:redstone_servo',
     C: 'thermal:rf_coil'
   })
 
   event.remove({id: "thermal:machine_chiller"})
   event.recipes.create.mechanicalCrafting('thermal:machine_chiller', [ 
-    'VIV', 
+    'EIE', 
     'LFN', 
     'SGC'  
     ],{
@@ -319,7 +333,7 @@ ServerEvents.recipes(event => {
     I: 'minecraft:packed_ice',  
     L: 'thermal:lumium_gear',
     N: 'thermal:signalum_gear',
-    V: 'thermal:silver_plate',
+    V: 'thermal:electrum_plate',
     C: 'thermal:rf_coil',
     S: 'thermal:redstone_servo',
     G: 'thermal:steel_gear'
@@ -377,40 +391,7 @@ ServerEvents.recipes(event => {
 
   event.remove({id: "thermal:machines/centrifuge/centrifuge_oil_red_sand"})
   event.remove({id: "thermal:machines/centrifuge/centrifuge_oil_sand"})
-    event.custom({
-        "type": "thermal:centrifuge",
-        "ingredient": {
-          "item": "thermal:oil_sand"
-        },
-        "result": [
-          {
-            "fluid": "thermal:crude_oil",
-            "amount": 200
-          }
-        ],
-        "energy": 20000
-    })
-
-  /*let thermabrew = (outputFluid, outputAmmount, inputItem, inputFluid, inputAmmount, energy) => {
-    event.custom({
-      "type": "thermal:brewer",
-      "ingredients": [
-        {
-          "fluid": inputFluid,
-          "amount": inputAmmount
-        },
-        {
-          "item": inputItem
-        }
-      ],
-      "result": [
-        {
-          "fluid": outputFluid,
-          "amount": outputAmmount
-        }
-      ],
-      "energy": energy
-  })}*/
+  event.recipes.thermal.centrifuge([Fluid.of("thermal:crude_oil",200)], "thermal:oil_sand").energy(5000)
 
   let thermacryst = (outputItem, inputAmmount, inputItem, energy) => {
     event.custom({
@@ -435,24 +416,8 @@ ServerEvents.recipes(event => {
       "energy": energy
   })}
 
-  event.recipes.thermal.refinery([Item.of("kubejs:crystallizer")], [Fluid.of('kubejs:solution_4', 250)]).energy(20000)
-  /*event.custom({
-      "type": "thermal:refinery",
-      "ingredient": {
-        "fluid": "kubejs:solution_4",
-        "amount": 250
-      },
-      "result": 
-        {
-          "item": "kubejs:crystallizer",
-        },
-        "energy": 20000
-  })*/
+  event.recipes.thermal.refinery([Item.of("kubejs:crystallizer")], [Fluid.of('kubejs:solution_4', 125)]).energy(20000)
 
-  //thermabrew("kubejs:solution_1", 1000, "minecraft:blaze_rod", "minecraft:water", 1000, 20000)
-  //thermabrew("kubejs:solution_2", 1000, "thermal:blitz_rod", "kubejs:solution_1", 1000, 20000)
-  //thermabrew("kubejs:solution_3", 1000, "thermal:basalz_rod", "kubejs:solution_2", 1000, 20000)
-  //thermabrew("kubejs:solution_4", 1000, "thermal:blizz_rod", "kubejs:solution_3", 1000, 20000)
   event.recipes.thermal.brewer([Fluid.of("kubejs:solution_1", 1000)], [Item.of("minecraft:blaze_rod"), Fluid.of("minecraft:water",1000)]).energy(20000)
   event.recipes.thermal.brewer([Fluid.of("kubejs:solution_2", 1000)], [Item.of("thermal:blitz_rod"), Fluid.of("kubejs:solution_1",1000)]).energy(20000)
   event.recipes.thermal.brewer([Fluid.of("kubejs:solution_3", 1000)], [Item.of("thermal:basalz_rod"), Fluid.of("kubejs:solution_2",1000)]).energy(20000)
@@ -485,6 +450,10 @@ ServerEvents.recipes(event => {
   
   event.recipes.thermal.furnace(Item.of("thermal:ender_pearl_dust").withChance(0.25), 'minecraft:warped_wart_block')
 
+  event.recipes.thermal.smelter([Item.of("create:brass_ingot", 2)], ["minecraft:copper_ingot", "create:zinc_ingot"])
+  event.recipes.thermal.smelter([Item.of("thermal:electrum_ingot", 2)], ["minecraft:gold_ingot", "thermal:silver_ingot"])
+  event.recipes.thermal.smelter([Item.of("thermal:invar_ingot", 3)], ["2x minecraft:iron_ingot", "thermal:nickel_ingot"])
+
   event.recipes.thermal.crucible([Fluid.of("thermal:ender", 250)], "#forge:dusts/ender_pearl")
 
   event.remove({type: "thermal:pulverizer_catalyst"})
@@ -499,6 +468,12 @@ ServerEvents.recipes(event => {
   event.remove({id: "thermal:signalum_dust_4"})
   event.recipes.create.mixing("thermal:signalum_ingot", ["thermal:nickel_dust", "thermal:nickel_dust", "thermal:nickel_dust", 
     "thermal:tin_dust", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone"]).superheated()
+
+  event.remove({id: "thermal:invar_dust_3"})
+  event.recipes.create.mixing(Item.of("thermal:invar_dust", 3), ["2x thermal:iron_dust", "thermal:nickel_dust"])
+
+  event.remove({id: "thermal:electrum_dust_2"})
+  event.recipes.create.mixing(Item.of("thermal:electrum_dust", 2), ["thermal:gold_dust", "thermal:silver_dust"])
 
   //event.remove({id: "thermal:obsidian_glass"})
   //event.recipes.create.mixing("thermal:obsidian_glass", ["minecraft:obsidian", "minecraft:obsidian", "thermal:quartz_dust", "thermal:quartz_dust"]).superheated()
