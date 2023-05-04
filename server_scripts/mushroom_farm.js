@@ -12,3 +12,16 @@ BlockEvents.rightClicked('minecraft:mycelium', event => {
 
     }
 })
+
+BlockEvents.rightClicked('minecraft:grass', event => { 
+    const {item, block} = event
+    if(item.id == 'thermal:compost') {
+        item.shrink(1)
+        
+        let tblock = event.level.getBlock([block.x, block.y, block.z])
+        const m = ["minecraft:dandelion", "minecraft:sunflower", "minecraft:poppy", "minecraft:rose_bush", "minecraft:cornflower"]
+        let r = Math.floor(Math.random()*m.length)
+        tblock.up.set(m[r])	
+
+    }
+})

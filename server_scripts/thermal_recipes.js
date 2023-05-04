@@ -147,7 +147,7 @@ ServerEvents.recipes(event => {
       ],{
       F: 'thermal:machine_frame',
       G: 'thermal:invar_gear',
-      I: 'thermal:iron_plate',
+      I: 'thermal:invar_plate',
       L: 'thermal:obsidian_glass',
       P: "minecraft:piston",
       S: 'thermal:redstone_servo'
@@ -379,7 +379,7 @@ ServerEvents.recipes(event => {
     'LFN', 
     'SGC'  
     ],{
-    Y: 'kubejs:crystallizer',
+    Y: 'kubejs:crystallizer',//Ametist_bud
     R: 'thermal:enderium_glass',
     F: 'thermal:machine_frame',
     L: 'thermal:lumium_gear',
@@ -393,7 +393,7 @@ ServerEvents.recipes(event => {
   event.remove({id: "thermal:machines/centrifuge/centrifuge_oil_sand"})
   event.recipes.thermal.centrifuge([Fluid.of("thermal:crude_oil",200)], "thermal:oil_sand").energy(5000)
 
-  let thermacryst = (outputItem, inputAmmount, inputItem, energy) => {
+  let thermacryst = (outputItem, inputAmmount, inputItem1, inputItem2, energy) => {
     event.custom({
       "type": "thermal:crystallizer",
       "ingredients": [
@@ -402,10 +402,10 @@ ServerEvents.recipes(event => {
           "amount": inputAmmount
         },
         {
-          "item": inputItem
+          "item": inputItem1
         },
         {
-          "item": "kubejs:crystallizer"
+          "item": inputItem2
         }
       ],
       "result": [
@@ -424,9 +424,14 @@ ServerEvents.recipes(event => {
   event.recipes.thermal.brewer([Fluid.of("kubejs:solution_4", 1000)], [Item.of("thermal:blizz_rod"), Fluid.of("kubejs:solution_3",1000)]).energy(20000)
 
   event.remove({type: "thermal:crystallizer"})
-  thermacryst("ae2:certus_quartz_crystal", 1000, "ae2:certus_quartz_dust", 20000)
-  thermacryst("minecraft:diamond", 1000, "thermal:diamond_dust", 20000)
-  thermacryst("minecraft:emerald", 1000, "thermal:emerald_dust", 20000)
+  thermacryst("ae2:certus_quartz_crystal", 1000, "ae2:certus_quartz_dust", "kubejs:crystallizer", 20000)
+  thermacryst("minecraft:diamond", 1000, "thermal:diamond_dust","kubejs:crystallizer", 20000)
+  thermacryst("minecraft:emerald", 1000, "thermal:emerald_dust","kubejs:crystallizer", 20000)
+  //thermacryst("minecraft:prismarine_crystals", 1000, "thermal:quartz_dust", "minecraft:green_dye",5000)
+  //thermacryst("minecraft:ametist_shard", 1000, "thermal:quartz_dust", "minecraft:purple_dye",5000)
+  //thermacryst("minecraft:quartz", 1000, "thermal:quartz_dust", 5000)
+  //thermacryst("create:rose_quartz", 1000, "thermal:quartz_dust", "minecraft:redstone", 5000)
+  //thermacryst("minecraft:lazurite", 1000, "thermal:quartz_dust", "minecraft:blue_dye", 5000)
 
   event.remove({id: `thermal:machines/smelter/smelter_glass_signalum`})
   event.remove({id: `thermal:machines/smelter/smelter_glass_lumium`})
@@ -453,6 +458,8 @@ ServerEvents.recipes(event => {
   event.recipes.thermal.smelter([Item.of("create:brass_ingot", 2)], ["minecraft:copper_ingot", "create:zinc_ingot"])
   event.recipes.thermal.smelter([Item.of("thermal:electrum_ingot", 2)], ["minecraft:gold_ingot", "thermal:silver_ingot"])
   event.recipes.thermal.smelter([Item.of("thermal:invar_ingot", 3)], ["2x minecraft:iron_ingot", "thermal:nickel_ingot"])
+  //event.recipes.thermal.smelter(["minecraft:ametist_shard"], ["minecraft:quartz", "4x minecraft:purle_dye"])
+  //event.recipes.thermal.smelter(["minecraft:quartz"], ["minecraft:purle_dye"])
 
   event.recipes.thermal.crucible([Fluid.of("thermal:ender", 250)], "#forge:dusts/ender_pearl")
 

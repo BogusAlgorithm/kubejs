@@ -119,12 +119,10 @@ const food = [
   ];
 
   const gems = [
-    ['ae2:sky_dust',1],
+    ['thermal:quartz_dust',5],
     ['thermal:diamond_dust',1],
     ['thermal:emerald_dust',1],
-    ['thermal:lapis_dust',1],
-    ['minecraft:amethyst_shard',1],
-    ['ae2:certus_quartz_dust',1]//,
+    ['ae2:certus_quartz_dust',3]//,
   ];
 
   const sands = [
@@ -138,9 +136,9 @@ const food = [
     ['create:asurine',2],
     ['create:crimsite',2],
     ['create:limestone',2],
-    ['create:veridium',2],
-    ['ae2:sky_stone_block',1],
-    ['minecraft:endstone',1]
+    ['create:veridium',2]//,
+    //['ae2:sky_stone_block',1],
+    //['minecraft:endstone',1]
   ];
   
 const tier = 0;
@@ -161,7 +159,8 @@ const modes = [ [stones, 0.02, "minecraft:raw_iron", 64, 3, 0.5],
                 [gems, 0.00, "minecraft:air", 64, 8, 0.5],
                 [sands, 0.02, "thermal:oil_sand", 64, 4, 0.5],
                 //[crops_2, 0.00, "minecraft:air", 64, 4, 0.5],
-                [stones2, 0.00, "minecraft:air", 64, 8, 0.5]
+                [stones2, 0.00, "minecraft:air", 64, 8, 0.5],
+                [gems, 0.00, "minecraft:air", 64, 4, 0.5]
               ]
 
 function GetModeFor(id) {

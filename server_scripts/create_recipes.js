@@ -191,6 +191,7 @@ ServerEvents.recipes(event => {
   event.remove({id: "create:crafting/materials/rose_quartz"})
   event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye"])
   event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone"])
+  //event.recipes.create.mixing(["minecraft:ametist_shard"], ["minecraft:quartz", "minecraft:purple_dye", "minecraft:purple_dye", "minecraft:purple_dye", "minecraft:purple_dye"])
 
   event.recipes.create.mixing([Fluid.of('minecraft:milk', 500)], [Fluid.of('minecraft:water', 500), "minecraft:bone_meal"]).heated()
 
@@ -198,7 +199,6 @@ ServerEvents.recipes(event => {
 
   event.recipes.create.mixing("2x kubejs:brass_dust", ["thermal:copper_dust", "kubejs:zinc_dust"])
 
-  event.remove({id: "create:crafting/materials/rose_quartz"})
   event.recipes.create.mixing([Fluid.of('minecraft:milk', 250)], [Fluid.of('minecraft:water', 250), "minecraft:bone_meal"]).heated()
 
   event.recipes.create.pressing(["thermal:lead_plate"], ["thermal:lead_ingot"])

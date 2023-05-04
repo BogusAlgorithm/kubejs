@@ -157,7 +157,9 @@ ServerEvents.recipes(event => {
 
     event.shapeless("minecraft:crimson_nylium", ["minecraft:netherrack", "thermal:compost", "thermal:slag", "minecraft:crimson_fungus"])
     event.shapeless("minecraft:warped_nylium", ["minecraft:netherrack", "thermal:compost", "thermal:slag", "minecraft:warped_fungus"])
-
+    
+    //event.shapeless("minecraft:ametist_bud", ["4x minecraft:ametist_shard"])
+    
     //Ore refinement
     event.remove({ id: `thermal:machines/pulverizer/pulverizer_raw_iron`})
     event.remove({ id: `thermal:machines/pulverizer/pulverizer_raw_copper`})
