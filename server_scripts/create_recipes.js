@@ -15,6 +15,8 @@ ServerEvents.recipes(event => {
   event.remove({id: "createaddition:mechanical_crafting/alternator"})
   event.remove({id: "createaddition:mechanical_crafting/electric_motor"})
 
+  event.remove({id: "create:crushing/prismarine_crystals"})
+
   event.replaceInput({ id: 'createaddition:crafting/modular_accumulator'}, 'createaddition:gold_wire', 'createaddition:copper_wire')
   event.replaceInput({ id: 'createaddition:crafting/copper_spool'}, 'createaddition:spool', 'minecraft:stick')
   event.replaceInput({ id: 'createaddition:crafting/gold_spool'}, 'createaddition:spool', 'minecraft:stick')
@@ -191,7 +193,7 @@ ServerEvents.recipes(event => {
   event.remove({id: "create:crafting/materials/rose_quartz"})
   event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye"])
   event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone"])
-  //event.recipes.create.mixing(["minecraft:ametist_shard"], ["minecraft:quartz", "minecraft:purple_dye", "minecraft:purple_dye", "minecraft:purple_dye", "minecraft:purple_dye"])
+  event.recipes.create.mixing(["minecraft:amethyst_shard"], ["minecraft:quartz", "minecraft:purple_dye", "minecraft:purple_dye", "minecraft:purple_dye", "minecraft:purple_dye"])
 
   event.recipes.create.mixing([Fluid.of('minecraft:milk', 500)], [Fluid.of('minecraft:water', 500), "minecraft:bone_meal"]).heated()
 
