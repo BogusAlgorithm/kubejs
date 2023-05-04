@@ -140,6 +140,26 @@ const food = [
     //['ae2:sky_stone_block',1],
     //['minecraft:endstone',1]
   ];
+
+  const colors = [
+    ['minecraft:black_dye',1],
+    ['minecraft:red_dye',1],
+    ['minecraft:green_dye',1],
+    ['minecraft:brown_dye',1],
+    ['minecraft:blue_dye',1],
+    ['minecraft:purple_dye',1],
+    ['minecraft:cyan_dye',1],
+    ['minecraft:light_gray_dye',1],
+    ['minecraft:cyan_dye',1],
+    ['minecraft:gray_dye',1],
+    ['minecraft:pink_dye',1],
+    ['minecraft:lime_dye',1],
+    ['minecraft:yellow_dye',1],
+    ['minecraft:light_blue_dye',1],
+    ['minecraft:magenta_dye',1],
+    ['minecraft:orange_dye',1],
+    ['minecraft:white_dye',1]
+  ];
   
 const tier = 0;
 const chnc = 1;
@@ -160,7 +180,8 @@ const modes = [ [stones, 0.02, "minecraft:raw_iron", 64, 3, 0.5],
                 [sands, 0.02, "thermal:oil_sand", 64, 4, 0.5],
                 //[crops_2, 0.00, "minecraft:air", 64, 4, 0.5],
                 [stones2, 0.00, "minecraft:air", 64, 8, 0.5],
-                [gems, 0.00, "minecraft:air", 64, 4, 0.5]
+                [gems, 0.00, "minecraft:air", 64, 4, 0.5],
+                [colors, 0.00, "minecraft:air", 64, 2, 0.5],
               ]
 
 function GetModeFor(id) {

@@ -300,7 +300,7 @@ ServerEvents.recipes(event => {
     'EFE', 
     'SGC'  
     ],{
-    D: 'minecraft:grass',
+    D: 'thermal:phytosoil',
     F: 'thermal:machine_frame',
     E: 'thermal:electrum_plate',
     U: 'thermal:lumium_glass',
@@ -480,6 +480,8 @@ ServerEvents.recipes(event => {
   event.recipes.thermal.smelter([Item.of("thermal:invar_ingot", 3)], ["2x minecraft:iron_ingot", "thermal:nickel_ingot"])
 
   event.recipes.thermal.crucible([Fluid.of("thermal:ender", 250)], "#forge:dusts/ender_pearl")
+
+  //event.recipes.thermal.centrifuge(["minecraft:blue_dye","minecraft:red_dye"], [Item.of("minecraft:purple_dye", 2)])
 
   event.remove({type: "thermal:pulverizer_catalyst"})
   event.recipes.thermal.pulverizer_catalyst("minecraft:flint").primaryMod(1.0).secondaryMod(1.0).energyMod(0.9).minChance(0.0).useChance(1.0)
