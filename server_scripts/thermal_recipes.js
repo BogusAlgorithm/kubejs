@@ -447,14 +447,12 @@ ServerEvents.recipes(event => {
     ]
   })
 
-  event.remove({id: "thermal:machines/centrifuge/centrifuge_oil_red_sand"})
-  event.remove({id: "thermal:machines/centrifuge/centrifuge_oil_sand"})
-  event.recipes.thermal.centrifuge([Fluid.of("thermal:crude_oil",200)], "thermal:oil_sand").energy(5000)
   event.recipes.thermal.centrifuge([Item.of("thermal:ender_pearl_dust").withChance(0.5)], "minecraft:chorus_fruit").energy(3000)
 
-  //event.remove({id: "thermal:machines/refinery/heavy_oil"})
-  //event.recipes.thermal.refinery([Fluid.of("thermal:refined_fuel", 50), Item.of("thermal:bitomus_coke").withChance(0.25)], [Fluid.of("thermal:heavy_oil", 100)])
+  event.remove({id: "thermal:machines/refinery/refinery_heavy_oil"})
+  event.recipes.thermal.refinery([Fluid.of("thermal:refined_fuel", 50), Item.of("thermal:bitumen").withChance(0.25)], [Fluid.of("thermal:heavy_oil", 100)])
   event.recipes.thermal.refinery([Item.of("kubejs:crystallizer")], [Fluid.of('kubejs:solution_4', 125)]).energy(20000)
+  event.recipes.thermal.refinery([Item.of("powah:uraninite")], [Fluid.of("thermal:refined_fuel", 1000)]).energy(20000)
 
   event.recipes.thermal.brewer([Fluid.of("kubejs:solution_1", 1000)], [Item.of("minecraft:blaze_rod"), Fluid.of("minecraft:water",1000)]).energy(20000)
   event.recipes.thermal.brewer([Fluid.of("kubejs:solution_2", 1000)], [Item.of("thermal:blitz_rod"), Fluid.of("kubejs:solution_1",1000)]).energy(20000)
@@ -497,8 +495,11 @@ ServerEvents.recipes(event => {
   
   event.recipes.thermal.furnace(Item.of("thermal:ender_pearl_dust").withChance(0.25), 'minecraft:warped_wart_block')
 
+  event.remove({id: "thermal:machines/pyrolyzer/pyrolyzer_logs"})
+  event.recipes.thermal.pyrolyzer(["minecraft:charcoal"], "#minecraft:logs").energy(5000)
+
   event.recipes.thermal.crucible([Fluid.of("thermal:ender", 250)], "#forge:dusts/ender_pearl")
-  //event.recipes.thermal.crucible([Fluid.of("thermal:heavy_oil", 100)], "minecraft:charcoal")
+  event.recipes.thermal.crucible([Fluid.of("thermal:heavy_oil", 100)], "minecraft:charcoal")
 
   event.remove({type: "thermal:pulverizer_catalyst"})
   event.recipes.thermal.pulverizer_catalyst("minecraft:flint").primaryMod(1.0).secondaryMod(1.0).energyMod(0.9).minChance(0.0).useChance(1.0)
@@ -521,9 +522,6 @@ ServerEvents.recipes(event => {
 
   //event.remove({id: "thermal:obsidian_glass"})
   //event.recipes.create.mixing("thermal:obsidian_glass", ["minecraft:obsidian", "minecraft:obsidian", "thermal:quartz_dust", "thermal:quartz_dust"]).superheated()
-
-  //event.recipes.create.mixing([Fluid.of('thermal:redstone', 500)], 'minecraft:redstone_block').superheated()
-  //event.recipes.create.mixing([Fluid.of('thermal:glowstone', 500)], 'minecraft:glowstone').superheated()
 
   event.remove({id: "thermal:press_gear_die"})
   let inter = 'minecraft:heavy_weighted_pressure_plate'

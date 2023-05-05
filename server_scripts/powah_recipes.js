@@ -23,18 +23,14 @@ ServerEvents.recipes(event => {
         "type": "powah:energizing",
         "ingredients": [
             {"item": "minecraft:cobblestone"},
-            //{"item": "thermal:ender_pearl_dust"},
-            //{"item": "thermal:ender_pearl_dust"},
-            //{"item": "thermal:ender_pearl_dust"},
-            //{"item": "thermal:ender_pearl_dust"}
-            {"tag": "#forge:dusts/ender_pearl"},
-            {"tag": "#forge:dusts/ender_pearl"},
-            {"tag": "#forge:dusts/ender_pearl"},
-            {"tag": "#forge:dusts/ender_pearl"}
+            {"tag": "forge:dusts/ender_pearl"},
+            {"tag": "forge:dusts/ender_pearl"},
+            {"tag": "forge:dusts/ender_pearl"},
+            {"tag": "forge:dusts/ender_pearl"}
             ],
-            "energy": 10000,
+            "energy": "10000",
             "result": {
-            "item": "minecraft:endstone"
+            "item": "minecraft:end_stone"
         }}
     )
     
@@ -42,12 +38,12 @@ ServerEvents.recipes(event => {
         "type": "powah:energizing",
         "ingredients": [
             {"item": "minecraft:cobblestone"},
-            {"tag": "forge:gems/certus_quartz"},
-            {"tag": "forge:gems/certus_quartz"},
-            {"tag": "forge:gems/certus_quartz"},
-            {"tag": "forge:gems/certus_quartz"}
+            {"tag": "forge:dusts/certus_quartz"},
+            {"tag": "forge:dusts/certus_quartz"},
+            {"tag": "forge:dusts/certus_quartz"},
+            {"tag": "forge:dusts/certus_quartz"}
             ],
-            "energy": 10000,
+            "energy": "10000",
             "result": {
             "item": "ae2:sky_stone_block"
         }}
