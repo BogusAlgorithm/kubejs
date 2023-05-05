@@ -389,10 +389,6 @@ ServerEvents.recipes(event => {
     G: 'thermal:steel_gear'
   })
 
-  event.remove({id: "thermal:machines/centrifuge/centrifuge_oil_red_sand"})
-  event.remove({id: "thermal:machines/centrifuge/centrifuge_oil_sand"})
-  event.recipes.thermal.centrifuge([Fluid.of("thermal:crude_oil",200)], "thermal:oil_sand").energy(5000)
-
   let thermacryst = (outputItem, inputAmmount, inputItem1, inputItem2, energy) => {
     event.custom({
       "type": "thermal:crystallizer",
@@ -435,6 +431,29 @@ ServerEvents.recipes(event => {
     "energy": 5000
   })
 
+  event.custom({
+    "type": "thermal:insolator",
+    "ingredient": {
+      "item": "minecraft:endstone"
+    },
+    "result": [
+      {
+        "item": "minecraft:chorus_fruit"
+      },
+      {
+        "item": "minecraft:endstone",
+        "chance": 0.9
+      }
+    ]
+  })
+
+  event.remove({id: "thermal:machines/centrifuge/centrifuge_oil_red_sand"})
+  event.remove({id: "thermal:machines/centrifuge/centrifuge_oil_sand"})
+  event.recipes.thermal.centrifuge([Fluid.of("thermal:crude_oil",200)], "thermal:oil_sand").energy(5000)
+  event.recipes.thermal.centrifuge([Item.of("thermal:ender_pearl_dust").withChance(0.5)], "minecraft:chorus_fruit").energy(3000)
+
+  //event.remove({id: "thermal:machines/refinery/heavy_oil"})
+  //event.recipes.thermal.refinery([Fluid.of("thermal:refined_fuel", 50), Item.of("thermal:bitomus_coke").withChance(0.25)], [Fluid.of("thermal:heavy_oil", 100)])
   event.recipes.thermal.refinery([Item.of("kubejs:crystallizer")], [Fluid.of('kubejs:solution_4', 125)]).energy(20000)
 
   event.recipes.thermal.brewer([Fluid.of("kubejs:solution_1", 1000)], [Item.of("minecraft:blaze_rod"), Fluid.of("minecraft:water",1000)]).energy(20000)
@@ -448,7 +467,6 @@ ServerEvents.recipes(event => {
   thermacryst("minecraft:emerald", 1000, "thermal:emerald_dust","kubejs:crystallizer", 20000)
   thermacryst("minecraft:prismarine_crystals", 1000, "thermal:quartz_dust", "minecraft:green_dye",5000)
   thermacryst("minecraft:amethyst_shard", 1000, "thermal:quartz_dust", "minecraft:purple_dye",5000)
-  //thermacryst("minecraft:quartz", 1000, "thermal:quartz_dust", "", 5000)
   thermacryst("create:rose_quartz", 1000, "thermal:quartz_dust", "minecraft:redstone", 5000)
   thermacryst("minecraft:lapis_lazuli", 1000, "thermal:quartz_dust", "minecraft:blue_dye", 5000)
 
@@ -461,6 +479,10 @@ ServerEvents.recipes(event => {
   event.recipes.thermal.smelter('thermal:signalum_glass', ["thermal:signalum_ingot", "thermal:obsidian_glass"])
   event.recipes.thermal.smelter('thermal:lumium_glass', ["thermal:lumium_ingot", "thermal:obsidian_glass"])
   event.recipes.thermal.smelter('thermal:enderium_glass', ["thermal:enderium_ingot", "thermal:obsidian_glass"])
+
+  event.recipes.thermal.smelter([Item.of("create:brass_ingot", 2)], ["minecraft:copper_ingot", "create:zinc_ingot"])
+  event.recipes.thermal.smelter([Item.of("thermal:electrum_ingot", 2)], ["minecraft:gold_ingot", "thermal:silver_ingot"])
+  event.recipes.thermal.smelter([Item.of("thermal:invar_ingot", 3)], ["2x minecraft:iron_ingot", "thermal:nickel_ingot"])
 
   event.recipes.thermal.smelter('thermal:steel_ingot', ["minecraft:iron_ingot", "thermal:coal_coke"])
 
@@ -475,13 +497,8 @@ ServerEvents.recipes(event => {
   
   event.recipes.thermal.furnace(Item.of("thermal:ender_pearl_dust").withChance(0.25), 'minecraft:warped_wart_block')
 
-  event.recipes.thermal.smelter([Item.of("create:brass_ingot", 2)], ["minecraft:copper_ingot", "create:zinc_ingot"])
-  event.recipes.thermal.smelter([Item.of("thermal:electrum_ingot", 2)], ["minecraft:gold_ingot", "thermal:silver_ingot"])
-  event.recipes.thermal.smelter([Item.of("thermal:invar_ingot", 3)], ["2x minecraft:iron_ingot", "thermal:nickel_ingot"])
-
   event.recipes.thermal.crucible([Fluid.of("thermal:ender", 250)], "#forge:dusts/ender_pearl")
-
-  //event.recipes.thermal.centrifuge(["minecraft:blue_dye","minecraft:red_dye"], [Item.of("minecraft:purple_dye", 2)])
+  //event.recipes.thermal.crucible([Fluid.of("thermal:heavy_oil", 100)], "minecraft:charcoal")
 
   event.remove({type: "thermal:pulverizer_catalyst"})
   event.recipes.thermal.pulverizer_catalyst("minecraft:flint").primaryMod(1.0).secondaryMod(1.0).energyMod(0.9).minChance(0.0).useChance(1.0)

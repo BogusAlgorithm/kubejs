@@ -18,4 +18,38 @@ ServerEvents.recipes(event => {
             }) 
 
     event.recipes.create.mixing("8x powah:dielectric_paste", ["minecraft:clay_ball", "minecraft:clay_ball", "minecraft:blaze_powder", "create:powdered_obsidian", "create:powdered_obsidian"])
+
+    event.custom({
+        "type": "powah:energizing",
+        "ingredients": [
+            {"item": "minecraft:cobblestone"},
+            //{"item": "thermal:ender_pearl_dust"},
+            //{"item": "thermal:ender_pearl_dust"},
+            //{"item": "thermal:ender_pearl_dust"},
+            //{"item": "thermal:ender_pearl_dust"}
+            {"tag": "#forge:dusts/ender_pearl"},
+            {"tag": "#forge:dusts/ender_pearl"},
+            {"tag": "#forge:dusts/ender_pearl"},
+            {"tag": "#forge:dusts/ender_pearl"}
+            ],
+            "energy": 10000,
+            "result": {
+            "item": "minecraft:endstone"
+        }}
+    )
+    
+    event.custom({
+        "type": "powah:energizing",
+        "ingredients": [
+            {"item": "minecraft:cobblestone"},
+            {"tag": "forge:gems/certus_quartz"},
+            {"tag": "forge:gems/certus_quartz"},
+            {"tag": "forge:gems/certus_quartz"},
+            {"tag": "forge:gems/certus_quartz"}
+            ],
+            "energy": 10000,
+            "result": {
+            "item": "ae2:sky_stone_block"
+        }}
+    )
 })
