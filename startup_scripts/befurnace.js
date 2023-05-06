@@ -74,7 +74,7 @@ const food = [
     //["thermal:", 1]
   ];
 
-  /*
+  
   const crops_2 = [
     ["thermal:amaranth", 1],
     ["thermal:barley", 1],
@@ -93,7 +93,7 @@ const food = [
     ["thermal:strawberry", 1],
     ["thermal:tea", 1],
     ["thermal:tomato" 1]
-  ];*/
+  ];
 
   const protein = [
     ['minecraft:rotten_flash',1],
@@ -166,12 +166,12 @@ const modes = [ [stones, 0.02, "minecraft:raw_iron", 64, 3, 0.5],
                 [organics, 0.02, "minecraft:egg", 16, 4, 0.5],
                 [plants, 0.02, "minecraft:cactus", 64, 4, 0.5],
                 [trees, 0.02, "minecraft:bamboo", 64, 4, 0.5],
-                [food, 0.02, "thermal:frost_melon_slice", 64, 8, 0.5],
+                [food, 0.02, "thermal:frost_melon_slice", 64, 6, 0.5],
                 [soils, 0.02, "minecraft:soul_soil", 64, 4, 0.5],
                 [protein, 0.00, "minecraft:air", 64, 16, 0.5],
                 [minerals, 0.00, "minecraft:air", 64, 2, 0.5],
                 [gems, 0.00, "minecraft:air", 64, 8, 0.5],
-                //[crops_2, 0.00, "minecraft:air", 64, 4, 0.5],
+                [crops_2, 0.00, "minecraft:air", 64, 4, 0.5],
                 [stones2, 0.00, "minecraft:air", 64, 8, 0.5],
                 [gems, 0.00, "minecraft:air", 64, 4, 0.5],
                 [colors, 0.00, "minecraft:air", 64, 2, 0.5],
