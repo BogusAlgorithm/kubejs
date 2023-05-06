@@ -5,6 +5,8 @@ ServerEvents.recipes(event => {
     event.remove({id: "ae2:blasting/silicon_from_certus_quartz_dust"})
     event.remove({id: "ae2:smelting/silicon_from_certus_quartz_dust"})
 
+    event.remove({id: "ae2:transform/certus_quartz_crystals"})
+
     event.remove({id: "ae2:inscriber/logic_processor_print"})
     event.remove({id: "ae2:inscriber/calculation_processor_print"})
     event.remove({id: "ae2:inscriber/engineering_processor_print"})

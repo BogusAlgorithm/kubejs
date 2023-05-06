@@ -4,19 +4,6 @@
 
 console.info('Loading VANILA recipes...')
 
-/*
-event.smelting('minecraft:raw_iron', '2x create:crushed_iron_ore')
-event.smelting('minecraft:raw_copper', '2x create:crushed_copper_ore')
-event.smelting('minecraft:raw_gold', '2x create:crushed_gold_ore')
-
-event.smelting('create:raw_zinc', '2x create:crushed_zinc_ore')
-
-event.smelting('thermal:raw_lead', '2x create:crushed_lead_ore')
-event.smelting('thermal:raw_silver', '2x create:crushed_silver_ore')
-event.smelting('thermal:raw_nickel', '2x create:crushed_nickel_ore')
-event.smelting('thermal:raw_tin', '2x create:crushed_tin_ore')
-*/
-
 ServerEvents.recipes(event => {
 
      //let metals = ["iron", "gold", "copper", "zinc", "lead", "silver", "nickel", "tin"]
@@ -115,7 +102,19 @@ ServerEvents.recipes(event => {
             ],{
             R: 'createaddition:iron_rod',
             S: 'minecraft:stick'
-            }) 
+    })
+
+    event.remove({ id: 'itank:tank'})
+    event.shaped(
+        'itank:tank', 
+            [ 
+            'IGI', 
+            'G G', 
+            'IGI'  
+            ],{
+            G: 'minecraft:glass',
+            I: 'minecraft:iron_ingot'
+    })
 
     //event.smelting('minecraft:soul_sand', 'minecraft:soul_soil')
 
