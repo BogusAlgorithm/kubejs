@@ -5,6 +5,8 @@ ServerEvents.recipes(event => {
     event.remove({id: "powah:crafting/dielectric_paste"})
     event.remove({id: "powah:crafting/dielectric_paste_2"})
 
+    event.remove({id: "powah:energizing/energized_steel"})
+
     event.remove({id: "powah:crafting/cable_starter"})
     event.shaped(
         Item.of('powah:energy_cable_starter', 12), 
@@ -46,6 +48,17 @@ ServerEvents.recipes(event => {
             "energy": "10000",
             "result": {
             "item": "ae2:sky_stone_block"
+        }}
+    )
+
+    event.custom({
+        "type": "powah:energizing",
+        "ingredients": [
+            {"item": "thermal:steel_ingot"}
+            ],
+            "energy": "20000",
+            "result": {
+            "item": "powah:steel_energized"
         }}
     )
 })

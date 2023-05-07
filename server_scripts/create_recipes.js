@@ -213,6 +213,8 @@ ServerEvents.recipes(event => {
   event.recipes.create.splashing([Item.of("thermal:nickel_dust", 1).withChance(0.5)], Item.of("thermal:iron_dust"))
   event.recipes.create.splashing([Item.of("thermal:gold_dust", 1).withChance(0.5)], Item.of("thermal:copper_dust"))
 
+  event.recipes.create.haunting(Item.of("create:cinder_flour").withChance(0.1), "create:wheat_flour")
+
   event.remove({id: "create:crafting/kinetics/super_glue"})
   let inter = 'kubejs:incomplete_glue'
   event.recipes.createSequencedAssembly([ 

@@ -155,11 +155,11 @@ ServerEvents.recipes(event => {
 
   event.remove({id: `thermal:machine_crafter`})
   event.recipes.create.mechanicalCrafting('thermal:machine_crafter', [ 
-      ' A ', 
-      'IFI', 
-      'GSG'  
+      'IOI', 
+      'GAG', 
+      'ISI'  
       ],{
-      F: 'thermal:machine_frame',
+      O: 'minecraft:glass',
       G: 'thermal:silver_gear',
       I: 'thermal:iron_plate',
       A: "create:mechanical_crafter",
@@ -232,12 +232,12 @@ ServerEvents.recipes(event => {
     'SGC'  
     ],{
     F: 'thermal:machine_frame',
-    I: 'thermal:signalum_plate',
-    N: 'thermal:signalum_glass',
+    I: 'thermal:invar_plate',
+    N: 'thermal:obsidian_glass',
     Y: 'powah:blazing_crystal_block',
     C: 'thermal:rf_coil',
     S: 'thermal:redstone_servo',
-    G: 'thermal:steel_gear'
+    G: 'thermal:signalum_gear'
   })
 
   event.remove({id: "thermal:device_rock_gen"})
@@ -277,6 +277,21 @@ ServerEvents.recipes(event => {
     G: 'thermal:electrum_gear',
     I: 'thermal:iron_plate',
     S: 'thermal:redstone_servo'
+  })
+
+  event.remove({id: "thermal:dynamo_compression"})
+  event.recipes.create.mechanicalCrafting('thermal:dynamo_compression', [ 
+    'AOA', 
+    'IFI', 
+    'SGC'  
+    ],{
+    A: 'powah:capacitor_hardened',
+    F: 'thermal:machine_frame',
+    I: 'thermal:signalum_plate',
+    O: 'thermal:obsidian_glass',
+    C: 'thermal:rf_coil',
+    S: 'thermal:redstone_servo',
+    G: 'thermal:steel_gear'
   })
   
   event.remove({id: "thermal:machine_bottler"})
@@ -450,7 +465,10 @@ ServerEvents.recipes(event => {
   event.recipes.thermal.centrifuge([Item.of("thermal:ender_pearl_dust").withChance(0.5)], "minecraft:chorus_fruit").energy(3000)
 
   event.remove({id: "thermal:machines/refinery/refinery_heavy_oil"})
-  event.recipes.thermal.refinery([Fluid.of("thermal:refined_fuel", 50), Item.of("thermal:bitumen").withChance(0.25)], [Fluid.of("thermal:heavy_oil", 100)])
+  //event.recipes.thermal.refinery([Fluid.of("thermal:refined_fuel", 50), Item.of("thermal:bitumen").withChance(0.25)], [Fluid.of("thermal:heavy_oil", 100)])
+  event.recipes.thermal.refinery([Fluid.of("thermal:refined_fuel", 50)], [Fluid.of("thermal:heavy_oil", 100)])
+  event.recipes.create.compacting(Item.of("thermal:coal_coke"), Fluid.of("thermal:heavy_oil", 250))
+
   event.recipes.thermal.refinery([Item.of("kubejs:crystallizer")], [Fluid.of('kubejs:solution_4', 125)]).energy(20000)
   event.recipes.thermal.refinery([Item.of("powah:uraninite")], [Fluid.of("thermal:refined_fuel", 1000)]).energy(20000)
 
@@ -474,6 +492,10 @@ ServerEvents.recipes(event => {
   event.remove({id: "thermal:fire_charge/signalum_glass_2"})
   event.remove({id: "thermal:fire_charge/lumium_glass_2"})
   event.remove({id: "thermal:fire_charge/enderium_glass_2"})
+  event.recipes.thermal.smelter("thermal:signalum_ingot", ["thermal:nickel_ingot", Item.of("minecraft:redstone", 5).toJson()]).energy(10000)
+  event.recipes.thermal.smelter("thermal:lumium_ingot", ["minecraft:gold_ingot", Item.of("minecraft:glowstone_dust", 2).toJson()]).energy(10000)
+  //event.recipes.thermal.smelter("thermal:enderium_ingot", ["thermal:gold_ingot", Item.of("minecraft:glowstone", 2).toJson()]).energy(15000)
+
   event.recipes.thermal.smelter('thermal:signalum_glass', ["thermal:signalum_ingot", "thermal:obsidian_glass"])
   event.recipes.thermal.smelter('thermal:lumium_glass', ["thermal:lumium_ingot", "thermal:obsidian_glass"])
   event.recipes.thermal.smelter('thermal:enderium_glass', ["thermal:enderium_ingot", "thermal:obsidian_glass"])

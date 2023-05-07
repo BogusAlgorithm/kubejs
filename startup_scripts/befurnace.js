@@ -92,7 +92,7 @@ const food = [
     ["thermal:spinach", 1],
     ["thermal:strawberry", 1],
     ["thermal:tea", 1],
-    ["thermal:tomato" 1]
+    ["thermal:tomato", 1]
   ];
 
   const protein = [
@@ -108,21 +108,17 @@ const food = [
 
   const minerals = [
     ['minecraft:clay_ball',1],
-    //['minecraft:coal',1],
-    //['minecraft:pointed_dripstone',1],
-    ['thermal:cinnabar',1],
-    ['thermal:niter',1],
-    ['thermal:sulfur',1], 
-    ['thermal:apatite',1]
-    //['minecraft:cod',1],
-    //['minecraft:salmon',1]
+    ['thermal:cinnabar',2],
+    ['thermal:niter',2],
+    ['thermal:sulfur',2], 
+    ['thermal:apatite',2]
   ];
 
   const gems = [
     ['thermal:quartz_dust',5],
     ['thermal:diamond_dust',1],
     ['thermal:emerald_dust',1],
-    ['ae2:certus_quartz_dust',3]//,
+    ['ae2:certus_quartz_dust',3]
   ];
 
   const stones2 = [
@@ -130,9 +126,7 @@ const food = [
     ['create:asurine',2],
     ['create:crimsite',2],
     ['create:limestone',2],
-    ['create:veridium',2]//,
-    //['ae2:sky_stone_block',1],
-    //['minecraft:endstone',1]
+    ['create:veridium',2]
   ];
 
   const colors = [

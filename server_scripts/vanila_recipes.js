@@ -163,7 +163,7 @@ ServerEvents.recipes(event => {
     event.remove({ id: `thermal:machines/pulverizer/pulverizer_raw_iron`})
     event.remove({ id: `thermal:machines/pulverizer/pulverizer_raw_copper`})
 
-    event.recipes.thermal.pulverizer([Item.of(`thermal:nickel_dust`).withChance(0.75)], "minecraft:raw_iron").energy(4000)
-    event.recipes.thermal.pulverizer([Item.of(`thermal:tin_dust`).withChance(0.75)], "create:raw_zinc").energy(4000)
-    event.recipes.thermal.pulverizer([Item.of(`thermal:gold_dust`).withChance(0.75)], "minecraft:raw_copper").energy(4000)
+    event.recipes.thermal.pulverizer([Item.of(`thermal:nickel_dust`).withChance(3)], "minecraft:raw_iron").energy(4000)
+    event.recipes.thermal.pulverizer([Item.of(`thermal:tin_dust`).withChance(3)], "create:raw_zinc").energy(4000)
+    event.recipes.thermal.pulverizer([Item.of(`thermal:gold_dust`).withChance(3)], "minecraft:raw_copper").energy(4000)
 })
