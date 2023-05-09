@@ -26,3 +26,17 @@ BlockEvents.rightClicked('minecraft:flower_pot', event => {
         tblock.set(m[r])
     }
 })
+
+BlockEvents.rightClicked('minecraft:end_stone', event => { 
+    const {item, block} = event
+    if(item.id == "thermal:phytogro") {
+        item.shrink(1)
+        
+        let tblock = event.level.getBlock([block.x, block.y, block.z])
+        /*const m = ["minecraft:potted_dandelion", "minecraft:potted_poppy","minecraft:potted_blue_orchid", "minecraft:potted_allium", "minecraft:potted_azure_bluet", 
+        "minecraft:potted_red_tulip", "minecraft:potted_orange_tulip", "minecraft:potted_white_tulip", "minecraft:potted_pink_tulip", "minecraft:potted_oxeye_daisy", 
+        "minecraft:potted_cornflower", "minecraft:potted_lily_of_the_valley"]
+        let r = Math.floor(Math.random()*m.length)*/
+        tblock.up.set("minecraft:chorus_flower")
+    }
+})

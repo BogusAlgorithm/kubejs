@@ -5,6 +5,14 @@ console.info('Hello, World! (You will see this line every time client resources 
 JEIEvents.hideItems(event => {
 	// Hide items in JEI here
 	// event.hide('minecraft:cobblestone')
+  event.hide(`/powah:ender_gate_/`)
+  event.hide(`/powah:furnator_/`)
+  event.hide(`/powah:magmator_/`)
+  event.hide(`/powah:thermo_generator_/`)
+  event.hide(`/powah:solar_panel_/`)
+  event.hide(`/powah:player_transmitter_/`)
+  event.hide(`/powah:energy_hopper_/`)
+  event.hide(`/powah:energy_discharger_/`)
 })
 
 ItemEvents.tooltip(event => {

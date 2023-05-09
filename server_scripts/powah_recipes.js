@@ -7,6 +7,15 @@ ServerEvents.recipes(event => {
 
     event.remove({id: "powah:energizing/energized_steel"})
 
+    event.remove({id: `/powah:crafting\/ender_gate_.*/`})
+    event.remove({id: `/powah:crafting\/furnator_.*/`})
+    event.remove({id: `/powah:crafting\/magmator_.*/`})
+    event.remove({id: `/powah:crafting\/thermo_generator_.*/`})
+    event.remove({id: `/powah:crafting\/solar_panel_.*/`})
+    event.remove({id: `/powah:crafting\/player_tranmitter_.*/`})
+    event.remove({id: `/powah:crafting\/energy_hopper_.*/`})
+    event.remove({id: `/powah:crafting\/energy_discharger_.*/`})
+
     event.remove({id: "powah:crafting/cable_starter"})
     event.shaped(
         Item.of('powah:energy_cable_starter', 12), 
