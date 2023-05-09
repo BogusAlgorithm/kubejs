@@ -221,9 +221,9 @@ ServerEvents.recipes(event => {
   event.remove({id: "thermal:tools/xp_crystal"})
   event.shaped(Item.of("thermal:xp_crystal"), 
   [ 
-    'XXX', 
+    ' X ', 
     'XQX', 
-    'XXX'  
+    ' X '  
     ],{
     Q: 'minecraft:quartz',
     X: 'create:experience_nugget'
