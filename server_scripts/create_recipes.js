@@ -170,15 +170,12 @@ ServerEvents.recipes(event => {
     S: 'createaddition:copper_spool'
   })
 
-  event.recipes.create.compacting([Fluid.of('minecraft:water', 100)], '#minecraft:leaves')
-
-  event.recipes.create.compacting(["minecraft:magma_block"], ["minecraft:basalt"]).superheated()
-
-  event.recipes.create.compacting(["minecraft:spruce_slab", Fluid.of("thermal:resin", 100)], ["minecraft:spruce_planks"]).heated()
-
-  event.recipes.create.compacting(["minecraft:jungle_slab", Fluid.of("thermal:latex", 100)], ["minecraft:jungle_planks"]).heated()
-
-  //event.recipes.create.cutting('thermal:chiller_rod_cast', 'thermal:bronze_plate').processingTime(500)
+  event.remove({id: "create:filling/redstone"})
+  event.remove({id: "create:filling/glowstone"})
+  event.remove({id: "create:filling/gunpowder"})
+  event.recipes.create.filling("minecraft:redstone", ["create:cinder_flour", Fluid.of("create:potion", 50, '{"Bottle": "REGULAR", "Potion": "minecraft:strength"}')])
+  event.recipes.create.filling("minecraft:glowstone_dust", ["create:cinder_flour", Fluid.of("create:potion", 100, '{"Bottle": "REGULAR", "Potion": "minecraft:night_vision"}')])
+  event.recipes.create.filling("minecraft:gunpowder", ["create:cinder_flour", Fluid.of("create:potion", 50, '{"Bottle": "REGULAR", "Potion": "minecraft:harming"}')])
 
   event.recipes.create.milling(["minecraft:string"], '#thermal:rockwool')
 
@@ -195,13 +192,13 @@ ServerEvents.recipes(event => {
   event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone"])
   event.recipes.create.mixing(["minecraft:amethyst_shard"], ["minecraft:quartz", "minecraft:purple_dye", "minecraft:purple_dye", "minecraft:purple_dye", "minecraft:purple_dye"])
 
-  event.recipes.create.mixing([Fluid.of('minecraft:milk', 500)], [Fluid.of('minecraft:water', 500), "minecraft:bone_meal"]).heated()
-
   event.recipes.create.mixing([Fluid.of('create:honey', 1000)], [Fluid.of('thermal:syrup', 1000), "minecraft:sugar", "minecraft:sugar", "minecraft:sugar", "minecraft:sugar"]).heated()
 
   event.recipes.create.mixing("2x kubejs:brass_dust", ["thermal:copper_dust", "kubejs:zinc_dust"])
 
   event.recipes.create.mixing([Fluid.of('minecraft:milk', 250)], [Fluid.of('minecraft:water', 250), "minecraft:bone_meal"]).heated()
+
+  event.recipes.create.compacting([Fluid.of('minecraft:water', 100)], '#minecraft:leaves')
 
   event.recipes.create.pressing(["thermal:lead_plate"], ["thermal:lead_ingot"])
   event.recipes.create.pressing(["thermal:silver_plate"], ["thermal:silver_ingot"])
