@@ -27,43 +27,220 @@ ServerEvents.recipes(event => {
 
   event.remove({id: "thermal:tools/rf_potato"})
   event.remove({id: "thermal:flux_capacitor"})
-  /*
-  event.remove({id: "thermal:dynamo_stirling"})
-  event.remove({id: "thermal:dynamo_magmatic"})
-  event.remove({id: "thermal:dynamo_disenchantment"})
-  event.remove({id: "thermal:dynamo_gourmand"})
-  event.remove({id: "thermal:dynamo_lapidary"})
-  event.remove({id: "thermal:dynamo_numismatic"})*/
   
   event.shapeless("2x minecraft:fire_charge", ["minecraft:blaze_powder", "minecraft:gunpowder", '2x thermal:sawdust'])
 
   event.replaceInput({id: "thermal:chiller_ball_cast"}, "thermal:bronze_plate", "thermal:gold_plate")
 
   event.remove({id: "thermal:hazmat_fabric"})
-  event.shaped(
-    Item.of('thermal:hazmat_fabric'), 
-      [ 
-      'RSR', 
-      'SLS', 
-      'RSR'  
-      ],{
-      L: 'thermal:lead_plate',
-      R: 'thermal:cured_rubber',
-      S: 'minecraft:string'
-    }) 
+  event.shaped(Item.of('thermal:hazmat_fabric'), 
+    [ 
+    'RSR', 
+    'SLS', 
+    'RSR'  
+    ],{
+    L: 'thermal:lead_plate',
+    R: 'thermal:cured_rubber',
+    S: 'minecraft:string'
+  }) 
 
-    event.remove({id: "thermal:tinker_bench"})
-    event.shaped(Item.of('thermal:tinker_bench'), [ 
-        'PIP', 
-        'GCG', 
-        'PBP'  
-        ],{
-        B: 'minecraft:crafting_table',  
-        C: 'create:andesite_casing',  
-        G: '#forge:glass',
-        I: '#forge:plates/iron',
-        P: '#minecraft:planks'
-    })
+  event.remove({id: "thermal:drill_head"})
+  event.shaped(Item.of("thermal:drill_head"), 
+    [ 
+    ' S ', 
+    'SSS'  
+    ],{
+    S: 'thermal:steel_ingot'
+  })
+  
+  event.remove({id: "thermal:flux_drill"})
+  event.shaped(Item.of("thermal:flux_drill"), 
+    [ 
+    ' H ', 
+    'RSR',
+    'RCR' 
+    ],{
+    H: 'thermal:drill_head',
+    R: 'thermal:cured_rubber',
+    C: 'thermal:rf_coil',
+    S: 'thermal:redstone_servo'
+  })
+
+  event.remove({id: "thermal:saw_blade"})
+  event.shaped(Item.of("thermal:saw_blade"), 
+    [ 
+    ' I ', 
+    'ICI',
+    ' I '  
+    ],{
+    I: 'minecraft:iron_ingot',
+    C: 'minecraft:copper_ingot'
+  })
+  
+  event.remove({id: "thermal:flux_saw"})
+  event.shaped(Item.of("thermal:flux_saw"), 
+    [ 
+    ' H ', 
+    'RSR',
+    'RCR' 
+    ],{
+    H: 'thermal:saw_blade',
+    R: 'thermal:cured_rubber',
+    C: 'thermal:rf_coil',
+    S: 'thermal:redstone_servo'
+  })
+
+  event.remove({id: "thermal:fluid_reservoir"})
+  event.shaped(Item.of("thermal:fluid_reservoir"), 
+    [ 
+    'RTR', 
+    'RPC',
+    ' B ' 
+    ],{
+    T: 'itank:tank',
+    B: 'minecraft:bucket',
+    R: 'thermal:cured_rubber',
+    P: 'create:mechanical_pump',
+    C: 'create:hand_crank'
+  })
+  //thermal:augments/upgrade_augment_1
+  event.remove({id: "/thermal:augments/upgrade_augment_./"})
+  event.shaped(Item.of('thermal:upgrade_augment_1'), 
+    [ 
+    'NCN', 
+    'OGO', 
+    'NCN'  
+    ],{
+    C: 'powah:capacitor_basic_large',
+    G: 'thermal:quartz_gear',
+    N: 'thermal:nickel_plate',
+    O: 'thermal:obsidian_glass'
+  })
+
+  event.shaped(Item.of('thermal:upgrade_augment_2'), 
+    [ 
+    'NCN', 
+    'OGO', 
+    'NCN'  
+    ],{
+    C: 'powah:capacitor_hardened',
+    G: 'thermal:upgrade_augment_1',
+    N: 'thermal:signalum_plate',
+    O: 'thermal:signalum_glass'
+  })
+
+  event.shaped(Item.of('thermal:upgrade_augment_3'), 
+    [ 
+    'NCN', 
+    'OGO', 
+    'NCN'  
+    ],{
+    C: 'powah:capacitor_blazing',
+    G: 'thermal:upgrade_augment_2',
+    N: 'thermal:enderium_plate',
+    O: 'thermal:enderium_glass'
+  })
+
+  event.remove({id: "thermal:augments/area_radius_augment"})
+  event.shaped(Item.of('thermal:area_radius_augment'), 
+  [ 
+    ' P ', 
+    'PGP', 
+    ' P '  
+    ],{
+    G: 'thermal:lumium_gear',
+    P: 'thermal:silver_plate'
+  })
+
+  event.remove({id: "thermal:augments/machine_cycle_augment"})
+  event.shaped(Item.of("thermal:machine_cycle_augment"), 
+  [ 
+    ' P ', 
+    'PGP', 
+    ' P '  
+    ],{
+    G: 'thermal:steel_gear',
+    P: 'thermal:silver_plate'
+  })
+
+  event.remove({id: "thermal:augments/dynamo_fuel_augment"})
+  event.shaped(Item.of("thermal:dynamo_fuel_augment"), 
+  [ 
+    ' P ', 
+    'PGP', 
+    ' P '  
+    ],{
+    G: 'thermal:signalum_gear',
+    P: 'thermal:lumium_plate'
+  })
+
+  event.remove({id: "thermal:augments/machine_speed_augment"})
+  event.shaped(Item.of("thermal:machine_speed_augment"), 
+  [ 
+    ' P ', 
+    'PGP', 
+    ' P '  
+    ],{
+    G: 'thermal:lumium_gear',
+    P: 'thermal:signalum_ingot'
+  })
+
+  event.remove({id: "thermal:augments/machine_efficiency_augment"})
+  event.shaped(Item.of("thermal:machine_efficiency_augment"), 
+  [ 
+    ' P ', 
+    'PGP', 
+    ' P '  
+    ],{
+    G: 'thermal:signalum_gear',
+    P: 'thermal:lumium_ingot'
+  })
+
+  event.remove({id: "thermal:augments/dynamo_output_augment"})
+  event.shaped(Item.of("thermal:dynamo_output_augment"), 
+  [ 
+    ' P ', 
+    'PGP', 
+    ' P '  
+    ],{
+    G: 'thermal:lumium_gear',
+    P: 'thermal:signalum_plate'
+  })
+  
+  event.remove({id: "thermal:augments/xp_storage_augment"})
+  event.shaped(Item.of("thermal:xp_storage_augment"), 
+  [ 
+    ' P ', 
+    'PBP', 
+    ' P '  
+    ],{
+    B: 'minecraft:writable_book',
+    P: '#forge:plates/silver'
+  })
+
+  event.remove({id: "thermal:tools/xp_crystal"})
+  event.shaped(Item.of("thermal:xp_crystal"), 
+  [ 
+    'XXX', 
+    'XQX', 
+    'XXX'  
+    ],{
+    Q: 'minecraft:quartz',
+    X: 'create:experience_nugget'
+  })
+
+  event.remove({id: "thermal:tinker_bench"})
+  event.shaped(Item.of('thermal:tinker_bench'), [ 
+    'PIP', 
+    'GCG', 
+    'PBP'  
+    ],{
+    B: 'minecraft:crafting_table',  
+    C: 'create:andesite_casing',  
+    G: '#forge:glass',
+    I: '#forge:plates/iron',
+    P: '#minecraft:planks'
+  })
 
   event.remove({id: "thermal:device_tree_extractor"})
   event.shaped(Item.of('thermal:device_tree_extractor'), [ 
@@ -164,6 +341,19 @@ ServerEvents.recipes(event => {
       I: 'thermal:iron_plate',
       T: 'thermal:tin_gear'
     })
+
+    event.remove({id: "thermal:charge_bench"})
+    event.shaped("thermal:charge_bench", [ 
+        'ICI', 
+        'AFA', 
+        'IGI'  
+        ],{
+        C: 'createaddition:tesla_coil',
+        F: 'thermal:machine_frame',
+        A: 'createaddition:capacitor',
+        I: 'thermal:iron_plate',
+        G: 'thermal:electrum_gear'
+      })  
 
   event.remove({id: "thermal:machine_press"})
   event.recipes.create.mechanicalCrafting('thermal:machine_press', [ 
@@ -482,6 +672,8 @@ ServerEvents.recipes(event => {
     ],
     "energy": 5000
   })
+
+  event.recipes.thermal.press("thermal:quartz_gear", [Item.of("minecraft:quartz", 6).toJson(), 'thermal:press_gear_die'])
 
   event.recipes.thermal.centrifuge([Item.of("thermal:ender_pearl_dust").withChance(0.5)], "minecraft:chorus_fruit").energy(3000)
 
