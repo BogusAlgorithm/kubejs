@@ -111,6 +111,10 @@ ServerEvents.recipes(event => {
     summonegg("minecraft:cat_spawn_egg", "minecraft:rotten_flesh", "#forge:foods/fish/raw")
     summonegg("minecraft:wolf_spawn_egg", "minecraft:rotten_flesh", "minecraft:bone")
     summonegg("2x minecraft:bee_spawn_egg", "minecraft:honey_bottle", "#minecraft:flowers")
+    summonegg("minecraft:rabbit_spawn_egg", "minecraft:rabbit", "minecraft:carrot")
+    summonegg("minecraft:magma_cube_spawn_egg", "minecraft:magma_cream", "minecraft:magma_cream")
+
+    //event.remove({ id: spawn_})
 
     event.remove({ id: 'minecraft:rail'})
     event.shaped(
@@ -181,21 +185,6 @@ ServerEvents.recipes(event => {
     
     //misc
     event.recipes.create.pressing(["minecraft:bone"], ["minecraft:bone_block"])
-    
-    //Enchanyment
-    
-    /*event.recipes.create.mechanicalCrafting(Item.of("minecraft:enchanted_book",1,'{StoredEnchantments: [{lvl: 1, id: "minecraft:efficiency"}]}'), [
-    //event.shaped(Item.of('drinkbeer:mixed_beer', '{BlockEntityTag:{MixedBeer:{beerId:1,spiceList:[I;2]}}}'), [
-        'XGX',
-        'XBX',
-        'XXX'], {
-        X: "create:experience_nugget",
-        G: 'thermal:iron_gear',
-        B: 'minecraft:book'
-      }).modifyResult((inventory, itemstack) => {
-        itemstack.nbt='{StoredEnchantments: [{lvl: 5, id: "minecraft:efficiency"}]}';
-        return itemstack
-        })*/
 
     //Ore refinement
     event.remove({ id: `thermal:machines/pulverizer/pulverizer_raw_iron`})

@@ -22,11 +22,11 @@ const ores = [
 
 const organics = [
     ["minecraft:slime_ball", 1],
-    ["minecraft:spider_eye", 1],
-    ["minecraft:ink_sac", 1],
-    ["minecraft:leather", 1],
-    ["minecraft:feather:", 1]//,
-    //["thermal:", 1]
+    ["minecraft:spider_eye", 2],
+    ["minecraft:ink_sac", 2],
+    ["minecraft:leather", 2],
+    ["minecraft:feather:", 2],
+    ["minecraft:frogspawn", 1]
   ];
 
 const plants = [
