@@ -1,13 +1,6 @@
 console.info('Loading CREATE recipes...')
 
 ServerEvents.recipes(event => {
-
-  event.replaceInput({ id: 'create:crafting/kinetics/steam_engine'}, '#forge:plates/gold', 'create:brass_sheet')
-  event.replaceInput({ id: 'create:crafting/kinetics/goggles'}, '#forge:plates/gold', 'create:brass_sheet')
-  event.replaceInput({ id: 'create:crafting/kinetics/wrench'}, '#forge:plates/gold', 'create:brass_sheet')
-
-  event.shapeless("create:blaze_cake", ["create:blaze_cake_base", "3x minecraft:magma_cream"])
-
   event.remove({id: "createaddition:crafting/connector"})
   event.remove({id: "createaddition:crafting/redstone_relay"})
   event.remove({id: "createaddition:crafting/spool"})
@@ -16,6 +9,15 @@ ServerEvents.recipes(event => {
   event.remove({id: "createaddition:mechanical_crafting/electric_motor"})
 
   event.remove({id: "create:crushing/prismarine_crystals"})
+
+  event.remove({id: "create:crafting/kinetics/windmill_bearing"})
+  event.remove({id: "create:crafting/kinetics/white_sail"})
+
+  event.replaceInput({ id: 'create:crafting/kinetics/steam_engine'}, '#forge:plates/gold', 'create:brass_sheet')
+  event.replaceInput({ id: 'create:crafting/kinetics/goggles'}, '#forge:plates/gold', 'create:brass_sheet')
+  event.replaceInput({ id: 'create:crafting/kinetics/wrench'}, '#forge:plates/gold', 'create:brass_sheet')
+
+  event.shapeless("create:blaze_cake", ["create:blaze_cake_base", "3x minecraft:magma_cream"])
 
   event.replaceInput({ id: 'createaddition:crafting/modular_accumulator'}, 'createaddition:gold_wire', 'createaddition:copper_wire')
   event.replaceInput({ id: 'createaddition:crafting/copper_spool'}, 'createaddition:spool', 'minecraft:stick')
@@ -112,16 +114,43 @@ ServerEvents.recipes(event => {
       I: 'minecraft:iron_ingot',
       L: 'create:andesite_alloy'
     })
-
-  event.remove({id: "createaddition:liquid_burning/biofuel"})
+  
+  event.remove({type: "createaddition:liquid_burning"})
+  //event.remove({id: "createaddition:liquid_burning/biofuel"})
   event.custom({
     "type":"createaddition:liquid_burning",
     "input": {
           "fluidTag": "forge:biofuel",
           "amount": 1000
     },
-    "burnTime": 320,
-    "superheated": true
+    "burnTime": 5760
+  })
+
+  event.custom({
+    "type":"createaddition:liquid_burning",
+    "input": {
+          "fluidTag": "forge:plantoil",
+          "amount": 1000
+    },
+    "burnTime": 1600
+  })
+
+  /*event.custom({
+    "type":"createaddition:liquid_burning",
+    "input": {
+          "fluid": "thermal:heavy_oil",
+          "amount": 1000
+    },
+    "burnTime": 1600
+  })*/
+
+  event.custom({
+    "type":"createaddition:liquid_burning",
+    "input": {
+          "fluidTag": "forge:creosote",
+          "amount": 1000
+    },
+    "burnTime": 480
   })
 
   event.custom({
@@ -179,8 +208,8 @@ ServerEvents.recipes(event => {
 
   event.recipes.create.milling(["minecraft:string"], '#thermal:rockwool')
 
-  event.recipes.create.milling(["kubejs:zinc_dust"], 'create:zinc_ingot')//~~~
-  event.recipes.create.milling(["thermal:copper_dust"], 'minecraft:copper_ingot')//~~~
+  event.recipes.create.milling(["kubejs:zinc_dust"], 'create:zinc_ingot')
+  event.recipes.create.milling(["thermal:copper_dust"], 'minecraft:copper_ingot')
 
   event.remove({id: "create:milling/calcite"})
   event.recipes.create.milling(["minecraft:bone_meal"], 'minecraft:calcite')
@@ -198,7 +227,10 @@ ServerEvents.recipes(event => {
 
   event.recipes.create.mixing([Fluid.of('minecraft:milk', 250)], [Fluid.of('minecraft:water', 250), "minecraft:bone_meal"]).heated()
 
+  //event.recipes.create.crushing("create:experience_nugget", "enchanted_book")
+
   event.recipes.create.compacting([Fluid.of('minecraft:water', 100)], '#minecraft:leaves')
+  event.recipes.create.compacting([Fluid.of('createaddition:seed_oil', 100)], ['#forge:seeds','#forge:seeds','#forge:seeds','#forge:seeds','#forge:seeds'])
 
   event.recipes.create.pressing(["thermal:lead_plate"], ["thermal:lead_ingot"])
   event.recipes.create.pressing(["thermal:silver_plate"], ["thermal:silver_ingot"])
@@ -225,7 +257,7 @@ ServerEvents.recipes(event => {
     ]).transitionalItem(inter).loops(1) // set the transitional item and the loops (amount of repetitions)
 
   event.remove({id: "create:sequenced_assembly/sturdy_sheet"})
-  inter = 'create:iron_sheet'
+  inter = 'kubejs:incomplete_sturdy_plate'
   event.recipes.createSequencedAssembly([ 
     "create:sturdy_sheet"
     ],'thermal:lead_plate',[

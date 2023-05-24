@@ -1,0 +1,33 @@
+// priority: 0
+
+StartupEvents.registry('block', event => {
+	event.create('block_gen', 'entity').displayName('Block generator')
+	.entity(builder => { // adds a BlockEntity onto this block
+      builder.ticker((level, pos, state, be) => { 
+        if(!level.clientSide) { // ALWAYS check side, the tick method is called on both CLIENT and SERVER
+				  if(level.levelData.gameTime % 20 == 0) {
+            if(level.getBlock(pos.above()).id == "minecraft:chest" ) {
+              let count = 0
+              for (let i = 0; i < 5; i++) {
+                let block_id = "";
+                switch(i) {
+                  case 0: block_id = level.getBlock(pos.below()).id; break;
+                  case 1: block_id = level.getBlock(pos.north()).id; break;
+                  case 2: block_id = level.getBlock(pos.east()).id; break;
+                  case 3: block_id = level.getBlock(pos.south()).id; break;
+                  default:block_id = level.getBlock(pos.west()).id; 
+                }
+                switch(block_id) {
+                  case ('minecraft:red_wool'): count+=1; break;
+                  case ('minecraft:green_wool'): count+=2; break;
+                  case ('minecraft:blue_wool'): count+=3; break;
+                  default:;
+                }
+              }
+              level.getBlock(pos.above()).inventory.insertItem(0, Item.of('minecraft:cobblestone', count), false)
+            }
+          }
+        }
+      })
+  })
+})

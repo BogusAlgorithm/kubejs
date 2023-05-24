@@ -31,13 +31,12 @@ const organics = [
 
 const plants = [
     ["minecraft:oak_leaves", 1],
+    ["thermal:tea", 1],
+    ["thermal:coffee_seeds", 1],
     ["minecraft:wheat_seeds", 1],
-    ["minecraft:pumpkin_seeds", 1],
-    ["minecraft:melon_seeds", 1],
     ["minecraft:sugar_cane", 1],
     ["minecraft:kelp", 1],
     ["minecraft:cocoa_beans", 1]
-    //["thermal:amaranth:", 1]
   ];
 
 const trees = [
@@ -56,7 +55,9 @@ const food = [
     ["minecraft:apple", 1],
     ["minecraft:potato", 1],
     ["minecraft:carrot", 1],
-    ["minecraft:beetroot", 1]//,
+    ["minecraft:pumpkin", 1],
+    ["minecraft:melon", 1],
+    ["minecraft:beetroot", 2]//,
     //["minecraft:acacia_sapling", 1],
     //["minecraft:mangrove_propagule", 1],
     //["minecraft:azalea", 1]
@@ -79,7 +80,6 @@ const food = [
     ["thermal:amaranth", 1],
     ["thermal:barley", 1],
     ["thermal:bell_pepper", 1],
-    ["thermal:coffee", 1],
     ["thermal:corn", 1],
     ["thermal:eggplant", 1],
     ["thermal:flax", 1],
@@ -91,7 +91,6 @@ const food = [
     ["thermal:sadiroot", 1],
     ["thermal:spinach", 1],
     ["thermal:strawberry", 1],
-    ["thermal:tea", 1],
     ["thermal:tomato", 1]
   ];
 
@@ -156,14 +155,14 @@ const mstk = 3;
 const decr = 4;
 const mltp = 5;
 const modes = [ [stones, 0.02, "minecraft:raw_iron", 64, 3, 0.5],
-                [ores, 0.02, "minecraft:nether_quartz_ore", 64, 3, 0.5],
+                [ores, 0.02, "minecraft:quartz", 64, 3, 0.5],
                 [organics, 0.02, "minecraft:egg", 16, 4, 0.5],
                 [plants, 0.02, "minecraft:cactus", 64, 4, 0.5],
                 [trees, 0.02, "minecraft:bamboo", 64, 4, 0.5],
                 [food, 0.02, "thermal:frost_melon_slice", 64, 6, 0.5],
                 [soils, 0.02, "minecraft:soul_soil", 64, 4, 0.5],
                 [protein, 0.00, "minecraft:air", 64, 16, 0.5],
-                [minerals, 0.00, "minecraft:air", 64, 2, 0.5],
+                [minerals, 0.01, "minecraft:coal", 64, 2, 0.25],
                 [gems, 0.00, "minecraft:air", 64, 8, 0.5],
                 [crops_2, 0.00, "minecraft:air", 64, 4, 0.5],
                 [stones2, 0.00, "minecraft:air", 64, 8, 0.5],

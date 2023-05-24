@@ -2,8 +2,6 @@
 
 console.info('Hello, World! (You will only see this line once in console, during startup)')
 
-//const $SA = Java.loadClass('net.minecraft.world.item.Items.stone_axe')
-
 StartupEvents.registry('enchantment', event => {
 	// Register new items here
 	

@@ -13,6 +13,7 @@ JEIEvents.hideItems(event => {
   event.hide(`/powah:player_transmitter_/`)
   event.hide(`/powah:energy_hopper_/`)
   event.hide(`/powah:energy_discharger_/`)
+  event.hide(`/powah:ender_cell_/`)
 })
 
 ItemEvents.tooltip(event => {

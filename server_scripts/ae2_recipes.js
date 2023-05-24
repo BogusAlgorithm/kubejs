@@ -33,7 +33,7 @@ quartz fiber */
     'QC '], {
     I: 'minecraft:iron_ingot',
     Q: 'minecraft:quartz',
-    C: "powah:capacitor_basic_large"
+    C: "createaddition:capacitor"
   })
 
   event.shaped('ae2:charger', [

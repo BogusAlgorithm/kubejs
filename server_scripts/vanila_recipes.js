@@ -8,9 +8,17 @@ ServerEvents.recipes(event => {
 
      //let metals = ["iron", "gold", "copper", "zinc", "lead", "silver", "nickel", "tin"]
 
+    event.remove({output: "minecraft:grindstone"})
+    
     event.remove({type: `minecraft:smelting`, input: '#forge:ores'})
     event.remove({type: `minecraft:smelting`, input: '/.*:raw_.*/', output: '#forge:ingots'})
     event.remove({type: `minecraft:blasting`, input: '/.*:raw_.*/', output: '#forge:ingots'})
+
+    event.remove({type: `create:crushing`, input: '#forge:raw_materials'})
+
+    event.remove({input: '#create:crushed_ores'})
+
+    event.remove({input: `/.*_dust/`, output: '#forge:ingots'})
     
     event.smelting('8x minecraft:iron_nugget', 'minecraft:raw_iron')
     event.smelting('8x minecraft:gold_nugget', 'minecraft:raw_gold')
@@ -20,8 +28,6 @@ ServerEvents.recipes(event => {
     event.smelting('8x thermal:silver_nugget', 'thermal:raw_silver')
     event.smelting('8x thermal:nickel_nugget', 'thermal:raw_nickel')
     event.smelting('8x thermal:tin_nugget', 'thermal:raw_tin')
-
-    event.remove({type: `create:crushing`, input: '#forge:raw_materials'}) 
 
     event.recipes.create.milling("2x create:crushed_iron_ore", "minecraft:raw_iron")
     event.recipes.create.milling("2x create:crushed_gold_ore", "minecraft:raw_gold")
@@ -41,8 +47,6 @@ ServerEvents.recipes(event => {
     event.recipes.create.crushing("4x thermal:nickel_dust", "thermal:raw_nickel")
     event.recipes.create.crushing("4x thermal:tin_dust", "thermal:raw_tin")
      
-    event.remove({input: '#create:crushed_ores'})
-    
     event.smelting('5x minecraft:iron_nugget', 'create:crushed_iron_ore')
     event.smelting('5x minecraft:gold_nugget', 'create:crushed_gold_ore')
     event.smelting('5x create:copper_nugget', 'create:crushed_copper_ore')
@@ -61,8 +65,6 @@ ServerEvents.recipes(event => {
     event.recipes.create.milling("4x thermal:nickel_dust", "create:crushed_nickel_ore")
     event.recipes.create.milling("4x thermal:tin_dust", "create:crushed_tin_ore")
 
-    event.remove({input: `/.*_dust/`, output: '#forge:ingots'})
-
     event.smelting('3x minecraft:iron_nugget', 'thermal:iron_dust')
     event.smelting('3x minecraft:gold_nugget', 'thermal:gold_dust')
     event.smelting('3x create:copper_nugget', 'thermal:copper_dust')
@@ -75,22 +77,40 @@ ServerEvents.recipes(event => {
     event.smelting('3x thermal:electrum_nugget', 'thermal:electrum_dust')
     event.smelting('3x thermal:invar_nugget', 'thermal:invar_dust')
 
-    //event.shapeless("3x thermal:invar_ingot", ["thermal:nickel_ingot", "2x minecraft:iron_ingot", "minecraft:fire_charge"])
-    //event.shapeless("2x thermal:electrum_ingot", ["minecraft:gold_ingot", "thermal:silver_ingot", "minecraft:fire_charge"])
-
     event.shaped(
         Item.of('minecraft:turtle_egg'), 
           [ 
-          'KSK', 
+          'KKK', 
           'KEK', 
           'KBK'  
           ],{
           B: 'minecraft:water_bucket',
           E: 'minecraft:egg',
-          K: 'minecraft:kelp',
-          S: 'minecraft:sand'
+          K: 'minecraft:kelp'
           }
     ).replaceIngredient("minecraft:water_bucket", "minecraft:bucket")    
+
+    let summonegg = (output, ingr1, ingr2) => {
+        event.shaped(
+            output, 
+              [ 
+              'AAA', 
+              'AEA', 
+              'ABA'  
+              ],{
+              A: ingr1,
+              B: ingr2,
+              E: 'minecraft:egg'
+              }
+        )
+    }
+
+    summonegg("minecraft:cow_spawn_egg", "minecraft:beef", "minecraft:wheat")
+    summonegg("minecraft:pig_spawn_egg", "minecraft:porkchop", "minecraft:beetroot")
+    summonegg("minecraft:sheep_spawn_egg", "minecraft:mutton", "minecraft:grass")
+    summonegg("minecraft:cat_spawn_egg", "minecraft:rotten_flesh", "#forge:foods/fish/raw")
+    summonegg("minecraft:wolf_spawn_egg", "minecraft:rotten_flesh", "minecraft:bone")
+    summonegg("2x minecraft:bee_spawn_egg", "minecraft:honey_bottle", "#minecraft:flowers")
 
     event.remove({ id: 'minecraft:rail'})
     event.shaped(
@@ -146,24 +166,58 @@ ServerEvents.recipes(event => {
 
     event.shapeless('minecraft:dirt', ['#forge:tools/hoes', 'minecraft:coarse_dirt']).damageIngredient('#forge:tools/hoes', 2)
 
+    event.shapeless("4x minecraft:pointed_dripstone", "minecraft:dripstone_block")
 
     event.replaceInput({ id: 'minecraft:campfire'}, '#minecraft:coals', 'minecraft:torch')
 
     //event.shapeless(Item.of("minecraft:book").enchant('kubejs:cust_enchant', 1), ["minecraft:book", 'minecraft:diamond'])
 
-    //event.recipes.create.compacting(Item.of("minecraft:iron_pickaxe").enchant("efficiency", 5), ["minecraft:iron_pickaxe", "minecraft:iron_block"])
     event.shapeless(Item.of("minecraft:iron_pickaxe").enchant("efficiency", 5), [Item.of("minecraft:iron_pickaxe").strongNBT(), "minecraft:iron_block"])
 
     event.shapeless("minecraft:crimson_nylium", ["minecraft:netherrack", "thermal:compost", "thermal:slag", "minecraft:crimson_fungus"])
     event.shapeless("minecraft:warped_nylium", ["minecraft:netherrack", "thermal:compost", "thermal:slag", "minecraft:warped_fungus"])
+
+    event.shapeless("minecraft:end_portal_frame", "minecraft:stone")
     
-    //event.shapeless("minecraft:ametist_bud", ["4x minecraft:ametist_shard"])
+    //misc
+    event.recipes.create.pressing(["minecraft:bone"], ["minecraft:bone_block"])
     
+    //Enchanyment
+    
+    /*event.recipes.create.mechanicalCrafting(Item.of("minecraft:enchanted_book",1,'{StoredEnchantments: [{lvl: 1, id: "minecraft:efficiency"}]}'), [
+    //event.shaped(Item.of('drinkbeer:mixed_beer', '{BlockEntityTag:{MixedBeer:{beerId:1,spiceList:[I;2]}}}'), [
+        'XGX',
+        'XBX',
+        'XXX'], {
+        X: "create:experience_nugget",
+        G: 'thermal:iron_gear',
+        B: 'minecraft:book'
+      }).modifyResult((inventory, itemstack) => {
+        itemstack.nbt='{StoredEnchantments: [{lvl: 5, id: "minecraft:efficiency"}]}';
+        return itemstack
+        })*/
+
     //Ore refinement
     event.remove({ id: `thermal:machines/pulverizer/pulverizer_raw_iron`})
     event.remove({ id: `thermal:machines/pulverizer/pulverizer_raw_copper`})
-
+    //event.remove({ id: thermal:tea_})
     event.recipes.thermal.pulverizer([Item.of(`thermal:nickel_dust`).withChance(3)], "minecraft:raw_iron").energy(4000)
     event.recipes.thermal.pulverizer([Item.of(`thermal:tin_dust`).withChance(3)], "create:raw_zinc").energy(4000)
     event.recipes.thermal.pulverizer([Item.of(`thermal:gold_dust`).withChance(3)], "minecraft:raw_copper").energy(4000)
+})
+
+ServerEvents.blockLootTables (event => {
+    //event.addSimpleBlock("minecraft:end_portal_frame")
+    event.addBlock('minecraft:tall_grass', table => {
+        table.addPool(pool => {
+            pool.addItem("thermal:hops")
+        })
+    })
+})
+
+BlockEvents.rightClicked('minecraft:end_portal_frame', event => { 
+    const {item, block} = event
+    if(item.id == 'create:wrench') {
+        block.popItem("minecraft:end_portal_frame")
+    }
 })

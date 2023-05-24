@@ -1,5 +1,7 @@
 // priority: 0
 
+///summon AreaEffectCloud ~ ~1 ~ {Duration:100,Radius:3.0f,OwnerUUIDLeast:1l,OwnerUUIDMost:1l}
+
 const Mth = Java.loadClass("net.minecraft.util.Mth")
 const Boolean = Java.loadClass('java.lang.Boolean')
 
