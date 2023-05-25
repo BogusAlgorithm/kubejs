@@ -186,17 +186,34 @@ ServerEvents.recipes(event => {
     //misc
     event.recipes.create.pressing(["minecraft:bone"], ["minecraft:bone_block"])
 
+    //Color.DYE.forEach((col, ind) => {
+    /*Color.DYE.forEach(col => {
+        event.shaped("minecraft:snowball", ["powah:charged_snowball", `ae2:${col}_lumen_paint_ball`])//.customIngredientAction("thermal:flux_magnet", "magnetize")
+    })*/
+
+    Ingredient.registerCustomIngredientAction("lumen_transform", (itemstack, index, inventory) => {
+        let rand_val = Math.random()
+
+        if (rand_val<0.1) itemstack = Item.of('kubejs:kubit_0', 1)
+        else if (rand_val<0.3) itemstack = Item.of('kubejs:kubit_1', 1)
+        else if (rand_val<0.6) itemstack = Item.of('kubejs:kubit_2', 1)
+        else itemstack = Item.of('minecraft:air')
+
+        return itemstack;
+    })
+
+    event.shaped("minecraft:snowball", ["powah:charged_snowball", `#minecraft:lumen_balls`]).customIngredientAction(`#minecraft:lumen_balls`, "lumen_transform")
+
     //Ore refinement
     event.remove({ id: `thermal:machines/pulverizer/pulverizer_raw_iron`})
     event.remove({ id: `thermal:machines/pulverizer/pulverizer_raw_copper`})
-    //event.remove({ id: thermal:tea_})
+
     event.recipes.thermal.pulverizer([Item.of(`thermal:nickel_dust`).withChance(3)], "minecraft:raw_iron").energy(4000)
     event.recipes.thermal.pulverizer([Item.of(`thermal:tin_dust`).withChance(3)], "create:raw_zinc").energy(4000)
     event.recipes.thermal.pulverizer([Item.of(`thermal:gold_dust`).withChance(3)], "minecraft:raw_copper").energy(4000)
 })
 
 ServerEvents.blockLootTables (event => {
-    //event.addSimpleBlock("minecraft:end_portal_frame")
     event.addBlock('minecraft:tall_grass', table => {
         table.addPool(pool => {
             pool.addItem("thermal:hops")

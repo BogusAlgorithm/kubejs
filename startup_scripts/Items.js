@@ -15,4 +15,8 @@ StartupEvents.registry('item', event => {
 
     event.create('crystallizer').texture("createaddition:item/diamond_grit").displayName('Crystallizer Compound')
 
+    for (let i=0; i<16; i++)
+    {
+        event.create(`kubit_${i}`).texture(`kubejs:item/kubit_${i}`).displayName(`Kubbit (${i})`)
+    }
 })
