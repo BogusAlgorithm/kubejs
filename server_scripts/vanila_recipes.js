@@ -6,8 +6,6 @@ console.info('Loading VANILA recipes...')
 
 ServerEvents.recipes(event => {
 
-     //let metals = ["iron", "gold", "copper", "zinc", "lead", "silver", "nickel", "tin"]
-
     event.remove({output: "minecraft:grindstone"})
     
     event.remove({type: `minecraft:smelting`, input: '#forge:ores'})
@@ -193,10 +191,24 @@ ServerEvents.recipes(event => {
 
     Ingredient.registerCustomIngredientAction("lumen_transform", (itemstack, index, inventory) => {
         let rand_val = Math.random()
+        const colors_array = ["magenta", "pink", "green", "lime", "light_gray", "yellow", "black", "light_blue", "brown", "cyan", "orange", "red", "gray", "white", "blue", "purple"]
 
-        if (rand_val<0.1) itemstack = Item.of('kubejs:kubit_0', 1)
-        else if (rand_val<0.3) itemstack = Item.of('kubejs:kubit_1', 1)
-        else if (rand_val<0.6) itemstack = Item.of('kubejs:kubit_2', 1)
+        let current_color = /^ae2:(.+)_lumen_paint_ball$/.exec(itemstack.id)[1]
+
+        console.info(`ae2:${current_color}_paint_ball`)
+
+        if (rand_val<0.1) 
+        {
+            itemstack = Item.of(`kubejs:kubit_${colors_array.indexOf(current_color, 0)}`)
+        }
+        else if (rand_val<0.3) 
+        {
+            itemstack = Item.of(`ae2:${colors_array[Math.floor(Math.random()*16)]}_paint_ball`)
+        }
+        else if (rand_val<0.6) 
+        {
+            itemstack = Item.of(`ae2:${current_color}_paint_ball`)
+        }
         else itemstack = Item.of('minecraft:air')
 
         return itemstack;
