@@ -21,10 +21,10 @@ ServerEvents.recipes(event => {
       ]).transitionalItem(inter).loops(1)
   }
 
-    book_maker("create:fluid_tank", "cofh_core:holding", 4)
+    book_maker("minecraft:bucket", "cofh_core:holding", 4)
     book_maker("thermal:iron_gear", "minecraft:efficiency", 5)
     book_maker("minecraft:anvil", "minecraft:mending", 1)
-    book_maker("create:copper_casing", "create:capacity", 3)
+    book_maker("create:fluid_tank", "create:capacity", 3)
     //pro iron helm
-    //fireprot magma
+    //fireprot blaze rod magma
 })

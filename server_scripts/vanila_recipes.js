@@ -184,18 +184,11 @@ ServerEvents.recipes(event => {
     //misc
     event.recipes.create.pressing(["minecraft:bone"], ["minecraft:bone_block"])
 
-    //Color.DYE.forEach((col, ind) => {
-    /*Color.DYE.forEach(col => {
-        event.shaped("minecraft:snowball", ["powah:charged_snowball", `ae2:${col}_lumen_paint_ball`])//.customIngredientAction("thermal:flux_magnet", "magnetize")
-    })*/
-
     Ingredient.registerCustomIngredientAction("lumen_transform", (itemstack, index, inventory) => {
         let rand_val = Math.random()
         const colors_array = ["magenta", "pink", "green", "lime", "light_gray", "yellow", "black", "light_blue", "brown", "cyan", "orange", "red", "gray", "white", "blue", "purple"]
 
         let current_color = /^ae2:(.+)_lumen_paint_ball$/.exec(itemstack.id)[1]
-
-        console.info(`ae2:${current_color}_paint_ball`)
 
         if (rand_val<0.1) 
         {
