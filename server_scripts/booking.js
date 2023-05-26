@@ -25,6 +25,7 @@ ServerEvents.recipes(event => {
     book_maker("thermal:iron_gear", "minecraft:efficiency", 5)
     book_maker("minecraft:anvil", "minecraft:mending", 1)
     book_maker("create:fluid_tank", "create:capacity", 3)
-    //pro iron helm
-    //fireprot blaze rod magma
+    book_maker("minecraft:iron_helmet", "minecraft:protection", 4)
+    book_maker("minecraft:blaze_rod", "minecraft:fire_protection", 4)
+    book_maker("minecraft:iron_sword", "minecraft:sharpness", 4)
 })

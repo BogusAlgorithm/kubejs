@@ -11,6 +11,7 @@ ServerEvents.recipes(event => {
     event.remove({type: `minecraft:smelting`, input: '#forge:ores'})
     event.remove({type: `minecraft:smelting`, input: '/.*:raw_.*/', output: '#forge:ingots'})
     event.remove({type: `minecraft:blasting`, input: '/.*:raw_.*/', output: '#forge:ingots'})
+    event.remove({id: "minecraft:enchanting_table"})
 
     event.remove({type: `create:crushing`, input: '#forge:raw_materials'})
 
