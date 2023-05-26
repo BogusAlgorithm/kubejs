@@ -20,3 +20,13 @@ StartupEvents.registry('item', event => {
         event.create(`kubit_${i}`).texture(`kubejs:item/kubit_${i}`).displayName(`Kubbit (${i})`)
     }
 })
+
+ItemEvents.modification(event => {
+    event.modify(/^ae2:.*_paint_ball$/, item => {
+        item.maxStackSize = 1
+    })
+
+    event.modify("powah:charged_snowball", item => {
+        item.maxStackSize = 1
+    })
+})

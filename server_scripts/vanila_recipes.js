@@ -176,8 +176,8 @@ ServerEvents.recipes(event => {
 
     event.shapeless(Item.of("minecraft:iron_pickaxe").enchant("efficiency", 5), [Item.of("minecraft:iron_pickaxe").strongNBT(), "minecraft:iron_block"])
 
-    event.shapeless("minecraft:crimson_nylium", ["minecraft:netherrack", "thermal:compost", "thermal:slag", "minecraft:crimson_fungus"])
-    event.shapeless("minecraft:warped_nylium", ["minecraft:netherrack", "thermal:compost", "thermal:slag", "minecraft:warped_fungus"])
+    //event.shapeless("minecraft:crimson_nylium", ["minecraft:netherrack", "thermal:compost", "thermal:slag", "minecraft:crimson_fungus"])
+    //event.shapeless("minecraft:warped_nylium", ["minecraft:netherrack", "thermal:compost", "thermal:slag", "minecraft:warped_fungus"])
 
     event.shapeless("minecraft:end_portal_frame", "minecraft:stone")
     

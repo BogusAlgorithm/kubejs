@@ -16,6 +16,8 @@ ServerEvents.recipes(event => {
 
   event.remove({id: "ae2:network/blocks/inscribers"})
   event.remove({id: "ae2:network/blocks/crank"})
+  event.remove({id: "ae2:network/cables/glass_fluix"})
+  
 
   event.remove({id: `/ae2:tools/paintballs_lumen_.*/`})
   Color.DYE.forEach(color => {
@@ -87,6 +89,8 @@ quartz fiber */
     E: 'thermal:enderium_glass',
     G: '#forge:glass'
   })*/
+
+  event.recipes.thermal.smelter("4x ae2:fluix_glass_cable", ['ae2:quartz_fiber', "2x ae2:fluix_crystal"])
 
   event.shaped('ae2:inscriber', [
     'IDI',

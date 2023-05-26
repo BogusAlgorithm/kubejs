@@ -8,6 +8,7 @@ ServerEvents.recipes(event => {
     event.remove({id: "powah:crafting/dielectric_paste_2"})
 
     event.remove({id: "powah:energizing/energized_steel"})
+    event.remove({id: "powah:energizing/charged_snowball"})
 
     event.remove({id: `/powah:crafting\/ender_gate_.*/`})
     event.remove({id: `/powah:crafting\/furnator_.*/`})
@@ -191,17 +192,6 @@ ServerEvents.recipes(event => {
         }}
     )
 
-/*    event.custom({
-        "type": "powah:energizing",
-        "ingredients": [
-            {"item": "thermal:steel_ingot"}
-            ],
-            "energy": "20000",
-            "result": {
-            "item": "powah:steel_energized"
-        }}
-    )*/
-
     event.custom({
         "type": "powah:energizing",
         "ingredients": [
@@ -242,21 +232,20 @@ ServerEvents.recipes(event => {
         }}
     )
 
-/*    event.custom({
+    event.custom({
         "type": "powah:energizing",
         "ingredients": [
-            {"item": "minecraft:book"},
-            {"item": "thermal:iron_gear"}
+            {"item": "minecraft:snowball"},
+            {"item": "minecraft:snowball"},
+            {"item": "minecraft:snowball"},
+            {"item": "minecraft:snowball"},
+            {"item": "minecraft:snowball"},
+            {"item": "minecraft:snowball"}
             ],
-            "energy": "5000",
+            "energy": "18000",
             "result": {
-            "item": "minecraft:enchanted_book",
-            "nbt": {
-                "StoredEnchantments": [{
-                    "lvl": 1,
-                    "id": "minecraft:efficiency"}
-                ]
-              }
+            "item": "powah:charged_snowball",
+            "count": 6
         }}
-    )*/
+    )
 })
