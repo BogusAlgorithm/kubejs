@@ -139,9 +139,51 @@ ServerEvents.recipes(event => {
             I: 'minecraft:iron_ingot'
     })
 
-    //event.smelting('minecraft:soul_sand', 'minecraft:soul_soil')
+    event.shaped(
+        'kubejs:kubit_16', 
+            [ 
+            'QWE', 
+            'R T', 
+            'YUI'  
+            ],{
+            Q: 'kubejs:kubit_0',
+            W: 'kubejs:kubit_1',
+            E: 'kubejs:kubit_2',
+            R: 'kubejs:kubit_3',
+            T: 'kubejs:kubit_4',
+            Y: 'kubejs:kubit_5',
+            U: 'kubejs:kubit_6',
+            I: 'kubejs:kubit_7'
+    })
 
-    //event.smelting('create:brass_ingot', 'kubejs:brass_dust')
+    event.shaped(
+        'kubejs:kubit_17', 
+            [ 
+            'QWE', 
+            'R T', 
+            'YUI'  
+            ],{
+            Q: 'kubejs:kubit_8',
+            W: 'kubejs:kubit_9',
+            E: 'kubejs:kubit_10',
+            R: 'kubejs:kubit_11',
+            T: 'kubejs:kubit_12',
+            Y: 'kubejs:kubit_13',
+            U: 'kubejs:kubit_14',
+            I: 'kubejs:kubit_15'
+    })
+
+    event.shaped(
+        `minecraft:end_portal_frame`, 
+            [ 
+            'SBS', 
+            'SQS', 
+            'SSS'  
+            ],{
+            B: 'thermal:ender_bucket',
+            Q: 'kubejs:kubit_18',
+            S: 'minecraft:end_stone'
+    }).replaceIngredient("thermal:ender_bucket", Item.of("minecraft:bucket"))
 
 /*  event.shapeless("minecraft:wooden_pickaxe", ["minecraft:stick", 'minecraft:wooden_pickaxe']).modifyResult((inventory, itemstack) => {
         let item = inventory.find(Item.of("minecraft:wooden_pickaxe").ignoreNBT())
@@ -161,6 +203,8 @@ ServerEvents.recipes(event => {
 
     event.shapeless('minecraft:paper', ['minecraft:wooden_pickaxe', 'minecraft:book']).customIngredientAction("minecraft:wooden_pickaxe", "apply_enchantment")
 */
+    event.shapeless("kubejs:kubit_18", ["kubejs:kubit_16" ,"kubejs:kubit_17" ])
+
     event.remove({ type: 'minecraft:smelting', output: 'minecraft:charcoal' })
     event.shapeless('minecraft:torch', ['minecraft:stick', 'minecraft:flint_and_steel']).damageIngredient('minecraft:flint_and_steel')
 
@@ -179,8 +223,6 @@ ServerEvents.recipes(event => {
 
     //event.shapeless("minecraft:crimson_nylium", ["minecraft:netherrack", "thermal:compost", "thermal:slag", "minecraft:crimson_fungus"])
     //event.shapeless("minecraft:warped_nylium", ["minecraft:netherrack", "thermal:compost", "thermal:slag", "minecraft:warped_fungus"])
-
-    event.shapeless("minecraft:end_portal_frame", "minecraft:stone")
     
     //misc
     event.recipes.create.pressing(["minecraft:bone"], ["minecraft:bone_block"])

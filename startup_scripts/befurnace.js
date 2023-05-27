@@ -95,7 +95,7 @@ const food = [
   ];
 
   const protein = [
-    ['minecraft:rotten_flash',1],
+    ['minecraft:rotten_flesh',1],
     ['minecraft:beef',1],
     ['minecraft:porkchop',1],
     ['minecraft:chicken',1],

@@ -17,8 +17,11 @@ StartupEvents.registry('item', event => {
 
     for (let i=0; i<16; i++)
     {
-        event.create(`kubit_${i}`).texture(`kubejs:item/kubit_${i}`).displayName(`Kubbit (${i})`)
+        event.create(`kubit_${i}`).texture(`kubejs:item/kubit_${i}`).displayName(`Kubbit (${i})`).maxStackSize(1)
     }
+    event.create(`kubit_16`).texture(`kubejs:item/kubit_16`).displayName(`Kubbyte (1)`).maxStackSize(1)
+    event.create(`kubit_17`).texture(`kubejs:item/kubit_17`).displayName(`Kubbyte (2)`).maxStackSize(1)
+    event.create(`kubit_18`).texture(`kubejs:item/kubit_18`).displayName(`Double Kubbyte`).maxStackSize(1)
 })
 
 ItemEvents.modification(event => {

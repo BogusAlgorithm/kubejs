@@ -80,7 +80,7 @@ quartz fiber */
     G: '#forge:glass'
   })*/
 
-  event.recipes.thermal.smelter("ae2:quartz_fiber", ['thermal:enderium_glass', "ae2:fluix_dust"])
+  event.recipes.thermal.smelter("4x ae2:quartz_fiber", ['thermal:enderium_glass', "ae2:fluix_dust"])
   /*event.shaped('3x ae2:quartz_fiber', [
     'GGG',
     'DED',
@@ -90,7 +90,7 @@ quartz fiber */
     G: '#forge:glass'
   })*/
 
-  event.recipes.thermal.smelter("4x ae2:fluix_glass_cable", ['ae2:quartz_fiber', "2x ae2:fluix_crystal"])
+  event.recipes.thermal.smelter("2x ae2:fluix_glass_cable", ['ae2:quartz_fiber', "ae2:fluix_crystal"])
 
   event.shaped('ae2:inscriber', [
     'IDI',
