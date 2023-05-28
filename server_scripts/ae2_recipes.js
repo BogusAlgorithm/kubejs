@@ -19,8 +19,9 @@ ServerEvents.recipes(event => {
   event.remove({id: "ae2:network/cables/glass_fluix"})
   
 
-  event.remove({id: `/ae2:tools/paintballs_lumen_.*/`})
+  event.remove({id: `/ae2:tools/paintballs_.*/`})
   Color.DYE.forEach(color => {
+    event.shapeless(`ae2:${color}_paint_ball`,["ae2:matter_ball", `minecraft:${color}_dye`])
     event.recipes.thermal.smelter(`ae2:${color}_lumen_paint_ball`,[`ae2:${color}_paint_ball`, "minecraft:redstone", "minecraft:glowstone_dust"]).energy(2000)
   })
 
@@ -85,7 +86,7 @@ quartz fiber */
         }
       ],
       "result": {
-        "item": "flawless_budding_quartz"
+        "item": "ae2:flawless_budding_quartz"
       }
   })
 

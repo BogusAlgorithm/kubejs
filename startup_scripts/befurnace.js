@@ -24,9 +24,8 @@ const organics = [
     ["minecraft:slime_ball", 1],
     ["minecraft:spider_eye", 2],
     ["minecraft:ink_sac", 2],
-    ["minecraft:leather", 2],
     ["minecraft:feather:", 2],
-    ["minecraft:frogspawn", 1]
+    ["minecraft:frogspawn", 2]
   ];
 
 const plants = [
@@ -57,22 +56,16 @@ const food = [
     ["minecraft:carrot", 1],
     ["minecraft:pumpkin", 1],
     ["minecraft:melon", 1],
-    ["minecraft:beetroot", 2]//,
-    //["minecraft:acacia_sapling", 1],
-    //["minecraft:mangrove_propagule", 1],
-    //["minecraft:azalea", 1]
+    ["minecraft:beetroot", 2]
   ];
 
   const soils = [
     ["minecraft:grass_block", 1],
-    ["minecraft:podzol", 1],
-    ["minecraft:mycelium", 1],
-    ["minecraft:crimson_nylium", 1],
-    ["minecraft:warped_nylium", 1],
+    ["minecraft:podzol", 2],
+    ["minecraft:mycelium", 2],
+    ["minecraft:crimson_nylium", 2],
+    ["minecraft:warped_nylium", 2],
     ["minecraft:moss_block", 1]
-    //["minecraft:sugar_cane", 1],
-    //["minecraft:kelp", 1]//,
-    //["thermal:", 1]
   ];
 
   
@@ -121,11 +114,11 @@ const food = [
   ];
 
   const stones2 = [
-    ['create:scoria',2],
-    ['create:asurine',2],
-    ['create:crimsite',2],
-    ['create:limestone',2],
-    ['create:veridium',2]
+    ['create:scoria',1],
+    ['create:asurine',1],
+    ['create:crimsite',1],
+    ['create:limestone',1],
+    ['create:veridium',1]
   ];
 
   const colors = [

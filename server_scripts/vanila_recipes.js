@@ -185,6 +185,20 @@ ServerEvents.recipes(event => {
             S: 'minecraft:end_stone'
     }).replaceIngredient("thermal:ender_bucket", Item.of("minecraft:bucket"))
 
+    event.shaped(
+        `kubejs:befurnace`, 
+            [ 
+            ' S ', 
+            'WCM', 
+            ' E '  
+            ],{
+            C: 'thermal:machine_frame',
+            E: 'thermal:ender_bucket',
+            M: 'minecraft:lava_bucket',
+            S: 'minecraft:brewing_stand',
+            W: 'minecraft:water_bucket'
+    })
+
 /*  event.shapeless("minecraft:wooden_pickaxe", ["minecraft:stick", 'minecraft:wooden_pickaxe']).modifyResult((inventory, itemstack) => {
         let item = inventory.find(Item.of("minecraft:wooden_pickaxe").ignoreNBT())
 
