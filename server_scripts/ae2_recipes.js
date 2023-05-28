@@ -69,6 +69,26 @@ quartz fiber */
     G: 'ae2:quartz_glass',
     C: 'createaddition:copper_spool'
   })
+ 
+  event.custom({
+      "type": "ae2:transform",
+      "circumstance": {
+        "type": "fluid",
+        "tag": "minecraft:water"
+      },
+      "ingredients": [
+        {
+          "item": "ae2:charged_certus_quartz_crystal"
+        },
+        {
+          "item": "ae2:flawed_budding_quartz"
+        }
+      ],
+      "result": {
+        "item": "flawless_budding_quartz"
+      }
+  })
+
 
   event.recipes.thermal.smelter("ae2:quartz_glass", ['thermal:enderium_glass', "ae2:certus_quartz_dust"])
   /*event.shaped('4x ae2:quartz_glass', [

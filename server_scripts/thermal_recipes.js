@@ -378,6 +378,19 @@ ServerEvents.recipes(event => {
       S: 'create:sturdy_sheet'
     })
 
+  event.recipes.create.mechanicalCrafting('thermal:machine_press', [
+    'PIP', 
+    'PFP', 
+    'CGS'  
+    ],{
+    F: 'thermal:machine_frame',
+    G: 'thermal:steel_gear',
+    I: 'minecraft:iron_block',
+    P: 'thermal:invar_plate',
+    C: 'thermal:rf_coil',
+    S: 'thermal:redstone_servo'
+  })
+
   event.remove({id: "thermal:machine_pulverizer"})
   event.recipes.create.mechanicalCrafting('thermal:machine_pulverizer', [ 
       'LPL', 
@@ -702,9 +715,9 @@ ServerEvents.recipes(event => {
   event.recipes.thermal.brewer([Fluid.of("kubejs:solution_4", 1000)], [Item.of("thermal:blizz_rod"), Fluid.of("kubejs:solution_3",1000)]).energy(20000)
 
   event.remove({type: "thermal:crystallizer"})
-  thermacryst("ae2:certus_quartz_crystal", 1000, "ae2:certus_quartz_dust", "kubejs:crystallizer", 20000)
-  thermacryst("minecraft:diamond", 1000, "thermal:diamond_dust","kubejs:crystallizer", 20000)
-  thermacryst("minecraft:emerald", 1000, "thermal:emerald_dust","kubejs:crystallizer", 20000)
+  thermacryst("ae2:certus_quartz_crystal", 1000, "ae2:certus_quartz_dust", "kubejs:crystallizer", 10000)
+  thermacryst("minecraft:diamond", 1000, "thermal:diamond_dust","kubejs:crystallizer", 10000)
+  thermacryst("minecraft:emerald", 1000, "thermal:emerald_dust","kubejs:crystallizer", 10000)
   thermacryst("minecraft:prismarine_crystals", 1000, "thermal:quartz_dust", "minecraft:green_dye",5000)
   thermacryst("minecraft:amethyst_shard", 1000, "thermal:quartz_dust", "minecraft:purple_dye",5000)
   thermacryst("create:rose_quartz", 1000, "thermal:quartz_dust", "minecraft:redstone", 5000)
@@ -773,9 +786,6 @@ ServerEvents.recipes(event => {
 
   event.remove({id: "thermal:electrum_dust_2"})
   event.recipes.create.mixing(Item.of("thermal:electrum_dust", 2), ["thermal:gold_dust", "thermal:silver_dust"])
-
-  //event.remove({id: "thermal:obsidian_glass"})
-  //event.recipes.create.mixing("thermal:obsidian_glass", ["minecraft:obsidian", "minecraft:obsidian", "thermal:quartz_dust", "thermal:quartz_dust"]).superheated()
 
   event.remove({id: "thermal:press_gear_die"})
   let inter = 'kubejs:incomplete_gear_dye'
