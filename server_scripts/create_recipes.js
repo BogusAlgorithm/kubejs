@@ -114,6 +114,19 @@ ServerEvents.recipes(event => {
       I: 'minecraft:iron_ingot',
       L: 'create:andesite_alloy'
     })
+
+  event.remove({id: "create:crafting/curiosities/brown_toolbox"})
+  event.shaped(
+    Item.of("create:brown_toolbox"), 
+      [ 
+      'GSG', 
+      'SCS', 
+      'GSG'  
+      ],{
+      C: 'minecraft:chest',
+      G: 'create:cogwheel',
+      S: 'create:brass_sheet'
+    })
   
   event.remove({type: "createaddition:liquid_burning"})
   //event.remove({id: "createaddition:liquid_burning/biofuel"})
@@ -134,15 +147,6 @@ ServerEvents.recipes(event => {
     },
     "burnTime": 1600
   })
-
-  /*event.custom({
-    "type":"createaddition:liquid_burning",
-    "input": {
-          "fluid": "thermal:heavy_oil",
-          "amount": 1000
-    },
-    "burnTime": 1600
-  })*/
 
   event.custom({
     "type":"createaddition:liquid_burning",
@@ -227,8 +231,6 @@ ServerEvents.recipes(event => {
 
   event.recipes.create.mixing([Fluid.of('minecraft:milk', 250)], [Fluid.of('minecraft:water', 250), "minecraft:bone_meal"]).heated()
 
-  //event.recipes.create.crushing("create:experience_nugget", "enchanted_book")
-
   event.recipes.create.compacting([Fluid.of('minecraft:water', 100)], '#minecraft:leaves')
   event.recipes.create.compacting([Fluid.of('createaddition:seed_oil', 100)], ['#forge:seeds','#forge:seeds','#forge:seeds','#forge:seeds','#forge:seeds'])
 
@@ -236,13 +238,13 @@ ServerEvents.recipes(event => {
   event.recipes.create.pressing(["thermal:silver_plate"], ["thermal:silver_ingot"])
 
   event.remove({id: "create:splashing/red_sand"})
-  event.recipes.create.splashing([Item.of('minecraft:redstone').withChance(0.1)], 'minecraft:red_sand')
+  event.recipes.create.splashing([Item.of('minecraft:redstone').withChance(0.15)], 'minecraft:red_sand')
 
   event.recipes.create.splashing([Item.of("thermal:tin_dust", 1).withChance(0.5)], Item.of("kubejs:zinc_dust"))
   event.recipes.create.splashing([Item.of("thermal:nickel_dust", 1).withChance(0.5)], Item.of("thermal:iron_dust"))
   event.recipes.create.splashing([Item.of("thermal:gold_dust", 1).withChance(0.5)], Item.of("thermal:copper_dust"))
 
-  event.recipes.create.haunting(Item.of("create:cinder_flour").withChance(0.1), "create:wheat_flour")
+  event.recipes.create.haunting(Item.of("create:cinder_flour").withChance(0.15), "create:wheat_flour")
 
   event.remove({id: "create:crafting/kinetics/super_glue"})
   let inter = 'kubejs:incomplete_glue'
