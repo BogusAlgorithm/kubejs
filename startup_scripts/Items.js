@@ -8,8 +8,10 @@ StartupEvents.registry('item', event => {
     event.create('kubejs:pulp','create:sequenced_assembly').maxStackSize(1)//.texture('thermal:item/sawdust.png')
     event.create('kubejs:incomplete_book').maxStackSize(1).displayName('Incomplete book').texture("minecraft:item/book")//.modelJson({"parent": "item/generated","textures": {"layer0" : "createaddition:item/iron_wire"}})
     
-    event.create('zinc_dust').texture("kubejs:item/zinc_dust").displayName('Zinc Dust')
-    event.create('brass_dust').texture("kubejs:item/brass_dust").displayName('Brass Dust')
+    //event.create('zinc_dust').texture("kubejs:item/zinc_dust").displayName('Zinc Dust')
+    //event.create('brass_dust').texture("kubejs:item/brass_dust").displayName('Brass Dust')
+    event.create('thermal:zinc_dust').texture("kubejs:item/zinc_dust").displayName('Zinc Dust')
+    event.create('thermal:brass_dust').texture("kubejs:item/brass_dust").displayName('Brass Dust')
 
     event.create('silver_wire').texture("createaddition:item/silver_wire").modelJson({"parent": "item/generated","textures": {"layer0" : "createaddition:item/iron_wire"}}).displayName('Silver wire')
 
@@ -17,11 +19,11 @@ StartupEvents.registry('item', event => {
 
     for (let i=0; i<16; i++)
     {
-        event.create(`kubit_${i}`).texture(`kubejs:item/kubit_${i}`).displayName(`Kubbit (${i})`).maxStackSize(1)
+        event.create(`kubit_${i}`).texture(`kubejs:item/kubit_${i}`).displayName(`KubBit (${i})`).maxStackSize(1)
     }
-    event.create(`kubit_16`).texture(`kubejs:item/kubit_16`).displayName(`Kubbyte (1)`).maxStackSize(1)
-    event.create(`kubit_17`).texture(`kubejs:item/kubit_17`).displayName(`Kubbyte (2)`).maxStackSize(1)
-    event.create(`kubit_18`).texture(`kubejs:item/kubit_18`).displayName(`Double Kubbyte`).maxStackSize(1)
+    event.create(`kubit_16`).texture(`kubejs:item/kubit_16`).displayName(`KubByte (1)`).maxStackSize(1)
+    event.create(`kubit_17`).texture(`kubejs:item/kubit_17`).displayName(`KubByte (2)`).maxStackSize(1)
+    event.create(`kubit_18`).texture(`kubejs:item/kubit_18`).displayName(`Double KubByte`).maxStackSize(1)
 })
 
 ItemEvents.modification(event => {

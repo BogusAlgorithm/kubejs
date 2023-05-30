@@ -212,7 +212,8 @@ ServerEvents.recipes(event => {
 
   event.recipes.create.milling(["minecraft:string"], '#thermal:rockwool')
 
-  event.recipes.create.milling(["kubejs:zinc_dust"], 'create:zinc_ingot')
+  //event.recipes.create.milling(["kubejs:zinc_dust"], 'create:zinc_ingot')
+  event.recipes.create.milling(["thermal:zinc_dust"], 'create:zinc_ingot')
   event.recipes.create.milling(["thermal:copper_dust"], 'minecraft:copper_ingot')
 
   event.remove({id: "create:milling/calcite"})
@@ -227,7 +228,8 @@ ServerEvents.recipes(event => {
 
   event.recipes.create.mixing([Fluid.of('create:honey', 1000)], [Fluid.of('thermal:syrup', 1000), "minecraft:sugar", "minecraft:sugar", "minecraft:sugar", "minecraft:sugar"]).heated()
 
-  event.recipes.create.mixing("2x kubejs:brass_dust", ["thermal:copper_dust", "kubejs:zinc_dust"])
+  //event.recipes.create.mixing("2x kubejs:brass_dust", ["thermal:copper_dust", "kubejs:zinc_dust"])
+  event.recipes.create.mixing("2x thermal:brass_dust", ["thermal:copper_dust", "thermal:zinc_dust"])
 
   event.recipes.create.mixing([Fluid.of('minecraft:milk', 250)], [Fluid.of('minecraft:water', 250), "minecraft:bone_meal"]).heated()
 
@@ -240,7 +242,8 @@ ServerEvents.recipes(event => {
   event.remove({id: "create:splashing/red_sand"})
   event.recipes.create.splashing([Item.of('minecraft:redstone').withChance(0.15)], 'minecraft:red_sand')
 
-  event.recipes.create.splashing([Item.of("thermal:tin_dust", 1).withChance(0.5)], Item.of("kubejs:zinc_dust"))
+  //event.recipes.create.splashing([Item.of("thermal:tin_dust", 1).withChance(0.5)], Item.of("kubejs:zinc_dust"))
+  event.recipes.create.splashing([Item.of("thermal:tin_dust", 1).withChance(0.5)], Item.of("thermal:zinc_dust"))
   event.recipes.create.splashing([Item.of("thermal:nickel_dust", 1).withChance(0.5)], Item.of("thermal:iron_dust"))
   event.recipes.create.splashing([Item.of("thermal:gold_dust", 1).withChance(0.5)], Item.of("thermal:copper_dust"))
 

@@ -7,18 +7,18 @@ console.info('Loading VANILA recipes...')
 ServerEvents.recipes(event => {
 
     event.remove({output: "minecraft:grindstone"})
+    event.remove({id: "minecraft:enchanting_table"})
     
     event.remove({type: `minecraft:smelting`, input: '#forge:ores'})
     event.remove({type: `minecraft:smelting`, input: '/.*:raw_.*/', output: '#forge:ingots'})
     event.remove({type: `minecraft:blasting`, input: '/.*:raw_.*/', output: '#forge:ingots'})
-    event.remove({id: "minecraft:enchanting_table"})
 
     event.remove({type: `create:crushing`, input: '#forge:raw_materials'})
-
     event.remove({input: '#create:crushed_ores'})
 
     event.remove({input: `/.*_dust/`, output: '#forge:ingots'})
-    
+
+    //Shrink, move everything to minecraft:
     event.smelting('8x minecraft:iron_nugget', 'minecraft:raw_iron')
     event.smelting('8x minecraft:gold_nugget', 'minecraft:raw_gold')
     event.smelting('8x create:copper_nugget', 'minecraft:raw_copper')
@@ -40,7 +40,8 @@ ServerEvents.recipes(event => {
     event.recipes.create.crushing("4x thermal:iron_dust", "minecraft:raw_iron")
     event.recipes.create.crushing("4x thermal:gold_dust", "minecraft:raw_gold")
     event.recipes.create.crushing("4x thermal:copper_dust", "minecraft:raw_copper")
-    event.recipes.create.crushing("4x kubejs:zinc_dust", "create:raw_zinc")
+    //event.recipes.create.crushing("4x kubejs:zinc_dust", "create:raw_zinc")
+    event.recipes.create.crushing("4x thermal:zinc_dust", "create:raw_zinc")
     event.recipes.create.crushing("4x thermal:lead_dust", "thermal:raw_lead")
     event.recipes.create.crushing("4x thermal:silver_dust", "thermal:raw_silver")
     event.recipes.create.crushing("4x thermal:nickel_dust", "thermal:raw_nickel")
@@ -58,7 +59,8 @@ ServerEvents.recipes(event => {
     event.recipes.create.milling("4x thermal:iron_dust", "create:crushed_iron_ore")
     event.recipes.create.milling("4x thermal:gold_dust", "create:crushed_gold_ore")
     event.recipes.create.milling("4x thermal:copper_dust", "create:crushed_copper_ore")
-    event.recipes.create.milling("4x kubejs:zinc_dust", "create:crushed_zinc_ore")
+    //event.recipes.create.milling("4x kubejs:zinc_dust", "create:crushed_zinc_ore")
+    event.recipes.create.milling("4x thermal:zinc_dust", "create:crushed_zinc_ore")
     event.recipes.create.milling("4x thermal:lead_dust", "create:crushed_lead_ore")
     event.recipes.create.milling("4x thermal:silver_dust", "create:crushed_silver_ore")
     event.recipes.create.milling("4x thermal:nickel_dust", "create:crushed_nickel_ore")
@@ -67,12 +69,14 @@ ServerEvents.recipes(event => {
     event.smelting('3x minecraft:iron_nugget', 'thermal:iron_dust')
     event.smelting('3x minecraft:gold_nugget', 'thermal:gold_dust')
     event.smelting('3x create:copper_nugget', 'thermal:copper_dust')
-    event.smelting('3x create:zinc_nugget', 'kubejs:zinc_dust')
+    //event.smelting('3x create:zinc_nugget', 'kubejs:zinc_dust')
+    event.smelting('3x create:zinc_nugget', 'thermal:zinc_dust')
     event.smelting('3x thermal:lead_nugget', 'thermal:lead_dust')
     event.smelting('3x thermal:silver_nugget', 'thermal:silver_dust')
     event.smelting('3x thermal:nickel_nugget', 'thermal:nickel_dust')
     event.smelting('3x thermal:tin_nugget', 'thermal:tin_dust')
-    event.smelting('3x create:brass_nugget', 'kubejs:brass_dust')
+    //event.smelting('3x create:brass_nugget', 'kubejs:brass_dust')
+    event.smelting('3x create:brass_nugget', 'thermal:brass_dust')
     event.smelting('3x thermal:electrum_nugget', 'thermal:electrum_dust')
     event.smelting('3x thermal:invar_nugget', 'thermal:invar_dust')
 
@@ -113,8 +117,6 @@ ServerEvents.recipes(event => {
     summonegg("minecraft:rabbit_spawn_egg", "minecraft:rabbit", "minecraft:carrot")
     summonegg("minecraft:magma_cube_spawn_egg", "minecraft:magma_cream", "minecraft:magma_cream")
 
-    //event.remove({ id: spawn_})
-
     event.remove({ id: 'minecraft:rail'})
     event.shaped(
         Item.of('minecraft:rail', 16), 
@@ -125,6 +127,19 @@ ServerEvents.recipes(event => {
             ],{
             R: 'createaddition:iron_rod',
             S: 'minecraft:stick'
+    })
+
+    event.remove({ id: 'minecraft:powered_rail'})
+    event.shaped(
+        Item.of('minecraft:powered_rail', 6), 
+            [ 
+            'GSG', 
+            'GRG', 
+            'GSG'  
+            ],{
+            G: 'createaddition:gold_rod',
+            S: 'minecraft:stick',
+            R: 'minecraft:redstone'
     })
 
     event.remove({ id: 'itank:tank'})
@@ -231,12 +246,7 @@ ServerEvents.recipes(event => {
 
     event.replaceInput({ id: 'minecraft:campfire'}, '#minecraft:coals', 'minecraft:torch')
 
-    //event.shapeless(Item.of("minecraft:book").enchant('kubejs:cust_enchant', 1), ["minecraft:book", 'minecraft:diamond'])
-
     event.shapeless(Item.of("minecraft:iron_pickaxe").enchant("efficiency", 5), [Item.of("minecraft:iron_pickaxe").strongNBT(), "minecraft:iron_block"])
-
-    //event.shapeless("minecraft:crimson_nylium", ["minecraft:netherrack", "thermal:compost", "thermal:slag", "minecraft:crimson_fungus"])
-    //event.shapeless("minecraft:warped_nylium", ["minecraft:netherrack", "thermal:compost", "thermal:slag", "minecraft:warped_fungus"])
     
     //misc
     event.recipes.create.pressing(["minecraft:bone"], ["minecraft:bone_block"])
@@ -264,7 +274,7 @@ ServerEvents.recipes(event => {
         return itemstack;
     })
 
-    event.shaped("minecraft:snowball", ["powah:charged_snowball", `#minecraft:lumen_balls`]).customIngredientAction(`#minecraft:lumen_balls`, "lumen_transform")
+    event.shaped("minecraft:snowball", ["powah:charged_snowball", `#minecraft:lumen_balls`]).customIngredientAction(`#minecraft:lumen_balls`, "lumen_transform").id('kubejs:kubit_reacipe_manual_only')
 
     //Ore refinement
     event.remove({ id: `thermal:machines/pulverizer/pulverizer_raw_iron`})

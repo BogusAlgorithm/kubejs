@@ -714,8 +714,6 @@ ServerEvents.recipes(event => {
   event.recipes.thermal.brewer([Fluid.of("kubejs:solution_3", 1000)], [Item.of("thermal:basalz_rod"), Fluid.of("kubejs:solution_2",1000)]).energy(20000)
   event.recipes.thermal.brewer([Fluid.of("kubejs:solution_4", 1000)], [Item.of("thermal:blizz_rod"), Fluid.of("kubejs:solution_3",1000)]).energy(20000)
 
-  //event.recipes.thermal.chiller([Item.of("minecraft:obsidian")], [Item.of("minecraft:magma_block")])
-
   event.remove({type: "thermal:crystallizer"})
   thermacryst("ae2:certus_quartz_crystal", 1000, "ae2:certus_quartz_dust", "kubejs:crystallizer", 10000)
   thermacryst("minecraft:diamond", 1000, "thermal:diamond_dust","kubejs:crystallizer", 10000)
