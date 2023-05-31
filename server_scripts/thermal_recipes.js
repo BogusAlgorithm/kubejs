@@ -121,9 +121,9 @@ ServerEvents.recipes(event => {
       }
     )
   
-  augm_upgrade('thermal:upgrade_augment_1', 'thermal:nickel_plate','powah:capacitor_basic_large','thermal:obsidian_glass')
-  augm_upgrade('thermal:upgrade_augment_2', 'thermal:signalum_plate','powah:capacitor_hardened','thermal:signalum_glass')
-  augm_upgrade('thermal:upgrade_augment_3', 'thermal:enderium_plate','powah:capacitor_blazing','thermal:enderium_glass')
+  augm_upgrade('thermal:upgrade_augment_1', 'thermal:nickel_plate','powah:capacitor_basic_large','thermal:obsidian_glass', 'thermal:quartz_gear')
+  augm_upgrade('thermal:upgrade_augment_2', 'thermal:signalum_plate','powah:capacitor_hardened','thermal:signalum_glass', 'thermal:upgrade_augment_1')
+  augm_upgrade('thermal:upgrade_augment_3', 'thermal:enderium_plate','powah:capacitor_blazing','thermal:enderium_glass', 'thermal:upgrade_augment_2')
   /*
   event.shaped(Item.of('thermal:upgrade_augment_1'), 
     [ 
@@ -172,9 +172,8 @@ ServerEvents.recipes(event => {
     P: 'thermal:silver_plate'
   })
 
-  /*!!!
-  event.remove({id: "thermal:augments/tank"})
-  event.shaped(Item.of('thermal:tank'), 
+  event.remove({id: "thermal:augments/fluid_tank_augment"})
+  event.shaped(Item.of("thermal:fluid_tank_augment"), 
   [ 
     ' P ', 
     'PGP', 
@@ -183,8 +182,7 @@ ServerEvents.recipes(event => {
     G: 'itank:tank',
     P: 'thermal:silver_plate'
   })
-  */
-
+  
   //CrisCrosCraft("thermal:fluid_cell", 'thermal:steel_plate', 'itank:tank', 'thermal:lapis_gear')
   event.shaped(Item.of("thermal:fluid_cell"), 
   [ 
