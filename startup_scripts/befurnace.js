@@ -14,7 +14,7 @@ const stones = [
 
 const ores = [
     ["minecraft:raw_iron", 2],
-    ["minecraft:raw_copper", 3],
+    ["create:raw_copper", 3],
     ["create:raw_zinc", 2],
     ["thermal:raw_lead", 1],
     ["thermal:raw_silver", 1]

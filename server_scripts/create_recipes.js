@@ -129,7 +129,6 @@ ServerEvents.recipes(event => {
     })
   
   event.remove({type: "createaddition:liquid_burning"})
-  //event.remove({id: "createaddition:liquid_burning/biofuel"})
   event.custom({
     "type":"createaddition:liquid_burning",
     "input": {

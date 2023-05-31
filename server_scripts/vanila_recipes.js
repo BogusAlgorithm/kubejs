@@ -18,35 +18,64 @@ ServerEvents.recipes(event => {
 
     event.remove({input: `/.*_dust/`, output: '#forge:ingots'})
 
+    const materials = [
+        ['minecraft', 'iron'],
+        ['minecraft', 'gold'],
+        ['create', 'copper'],
+        ['create', 'zinc'],
+        ['thermal', 'lead'],
+        ['thermal', 'silver'],
+        ['thermal', 'nickel'],
+        ['thermal', 'tin']
+    ]
+
+    materials.forEach(mat => {
+        event.smelting(`8x ${mat[0]}:${mat[1]}_nugget`, `${mat[0]}:raw_${mat[1]}`)    
+    })
+
     //Shrink
     event.smelting('8x minecraft:iron_nugget', 'minecraft:raw_iron')
     event.smelting('8x minecraft:gold_nugget', 'minecraft:raw_gold')
-    event.smelting('8x create:copper_nugget', 'minecraft:raw_copper')
+    event.smelting('8x create:copper_nugget', 'create:raw_copper')
+    //event.smelting('8x create:copper_nugget', 'minecraft:raw_copper')
     event.smelting('8x create:zinc_nugget', 'create:raw_zinc')
     event.smelting('8x thermal:lead_nugget', 'thermal:raw_lead')
     event.smelting('8x thermal:silver_nugget', 'thermal:raw_silver')
     event.smelting('8x thermal:nickel_nugget', 'thermal:raw_nickel')
     event.smelting('8x thermal:tin_nugget', 'thermal:raw_tin')
 
+    materials.forEach(mat => {
+        event.recipes.create.milling(`2x create:crushed_${mat[1]}_ore`, `${mat[0]}:raw_${mat[1]}`)
+    })
+
     event.recipes.create.milling("2x create:crushed_iron_ore", "minecraft:raw_iron")
     event.recipes.create.milling("2x create:crushed_gold_ore", "minecraft:raw_gold")
-    event.recipes.create.milling("2x create:crushed_copper_ore", "minecraft:raw_copper")
+    //event.recipes.create.milling("2x create:crushed_copper_ore", "minecraft:raw_copper")
+    event.recipes.create.milling("2x create:crushed_copper_ore", "create:raw_copper")
     event.recipes.create.milling("2x create:crushed_zinc_ore", "create:raw_zinc")
     event.recipes.create.milling("2x create:crushed_lead_ore", "thermal:raw_lead")
     event.recipes.create.milling("2x create:crushed_silver_ore", "thermal:raw_silver")
     event.recipes.create.milling("2x create:crushed_nickel_ore", "thermal:raw_nickel")
     event.recipes.create.milling("2x create:crushed_tin_ore", "thermal:raw_tin")
 
+    materials.forEach(mat => {
+        event.recipes.create.crushing(`4x thermal:${mat[1]}_dust`, `${mat[0]}:raw_${mat[1]}`)
+    })
+
     event.recipes.create.crushing("4x thermal:iron_dust", "minecraft:raw_iron")
     event.recipes.create.crushing("4x thermal:gold_dust", "minecraft:raw_gold")
-    event.recipes.create.crushing("4x thermal:copper_dust", "minecraft:raw_copper")
+    event.recipes.create.crushing("4x thermal:copper_dust", "create:raw_copper")
     //event.recipes.create.crushing("4x kubejs:zinc_dust", "create:raw_zinc")
     event.recipes.create.crushing("4x thermal:zinc_dust", "create:raw_zinc")
     event.recipes.create.crushing("4x thermal:lead_dust", "thermal:raw_lead")
     event.recipes.create.crushing("4x thermal:silver_dust", "thermal:raw_silver")
     event.recipes.create.crushing("4x thermal:nickel_dust", "thermal:raw_nickel")
     event.recipes.create.crushing("4x thermal:tin_dust", "thermal:raw_tin")
-     
+    
+    materials.forEach(mat => {
+        event.smelting(`5x ${mat[0]}:${mat[1]}_nugget`, `create:crushed_${mat[1]}_ore`)
+    })
+
     event.smelting('5x minecraft:iron_nugget', 'create:crushed_iron_ore')
     event.smelting('5x minecraft:gold_nugget', 'create:crushed_gold_ore')
     event.smelting('5x create:copper_nugget', 'create:crushed_copper_ore')
@@ -55,6 +84,10 @@ ServerEvents.recipes(event => {
     event.smelting('5x thermal:silver_nugget', 'create:crushed_silver_ore')
     event.smelting('5x thermal:nickel_nugget', 'create:crushed_nickel_ore')
     event.smelting('5x thermal:tin_nugget', 'create:crushed_tin_ore')
+
+    materials.forEach(mat => {
+        event.recipes.create.milling(`4x thermal:${mat[1]}_dust`, `create:crushed_${mat[1]}_ore`)
+    })
 
     event.recipes.create.milling("4x thermal:iron_dust", "create:crushed_iron_ore")
     event.recipes.create.milling("4x thermal:gold_dust", "create:crushed_gold_ore")
@@ -66,6 +99,11 @@ ServerEvents.recipes(event => {
     event.recipes.create.milling("4x thermal:nickel_dust", "create:crushed_nickel_ore")
     event.recipes.create.milling("4x thermal:tin_dust", "create:crushed_tin_ore")
 
+    materials.forEach(mat => {
+        //event.recipes.create.milling(`4x thermal:${mat[1]}_dust`, `create:crushed_${mat[1]}_ore`)
+        event.smelting(`3x ${mat[0]}:${mat[1]}_nugget`, `thermal:${mat[1]}_dust`)
+    })
+
     event.smelting('3x minecraft:iron_nugget', 'thermal:iron_dust')
     event.smelting('3x minecraft:gold_nugget', 'thermal:gold_dust')
     event.smelting('3x create:copper_nugget', 'thermal:copper_dust')
@@ -75,6 +113,8 @@ ServerEvents.recipes(event => {
     event.smelting('3x thermal:silver_nugget', 'thermal:silver_dust')
     event.smelting('3x thermal:nickel_nugget', 'thermal:nickel_dust')
     event.smelting('3x thermal:tin_nugget', 'thermal:tin_dust')
+    
+    
     //event.smelting('3x create:brass_nugget', 'kubejs:brass_dust')
     event.smelting('3x create:brass_nugget', 'thermal:brass_dust')
     event.smelting('3x thermal:electrum_nugget', 'thermal:electrum_dust')
@@ -245,8 +285,6 @@ ServerEvents.recipes(event => {
     event.shapeless("4x minecraft:pointed_dripstone", "minecraft:dripstone_block")
 
     event.replaceInput({ id: 'minecraft:campfire'}, '#minecraft:coals', 'minecraft:torch')
-
-    event.shapeless(Item.of("minecraft:iron_pickaxe").enchant("efficiency", 5), [Item.of("minecraft:iron_pickaxe").strongNBT(), "minecraft:iron_block"])
     
     //misc
     event.recipes.create.pressing(["minecraft:bone"], ["minecraft:bone_block"])

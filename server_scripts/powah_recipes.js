@@ -1,3 +1,5 @@
+// priority: 1
+
 console.info('Loading POWAH recipes...')
 
 ServerEvents.recipes(event => {
@@ -46,6 +48,20 @@ ServerEvents.recipes(event => {
             A: cris,
             B: cros,
             C: cntr
+            }    
+        )
+    }
+
+    let CrosCraft = (output, cros, cntr) => {
+        event.shaped(
+            output, 
+            [ 
+            ' A ', 
+            'ABA', 
+            ' A '  
+            ],{
+            A: cros,
+            B: cntr
             }    
         )
     }

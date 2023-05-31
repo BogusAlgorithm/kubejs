@@ -31,6 +31,7 @@ ServerEvents.recipes(event => {
   event.shapeless("2x minecraft:fire_charge", ["minecraft:blaze_powder", "minecraft:gunpowder", '2x thermal:sawdust'])
 
   event.replaceInput({id: "thermal:chiller_ball_cast"}, "thermal:bronze_plate", "thermal:gold_plate")
+  event.replaceInput({id: "thermal:tools/satchel"}, "thermal:tin_ingot", "thermal:tin_gear")//!!!
 
   event.remove({id: "thermal:hazmat_fabric"})
   event.shaped(Item.of('thermal:hazmat_fabric'), 
@@ -103,8 +104,27 @@ ServerEvents.recipes(event => {
     P: 'create:mechanical_pump',
     C: 'create:hand_crank'
   })
-  //thermal:augments/upgrade_augment_1
+
   event.remove({id: "/thermal:augments/upgrade_augment_./"})
+  let augm_upgrade = (output, item1, item2, item3, item4) => 
+    event.shaped(
+      output,
+      [
+        'ABA', 
+        'CDC', 
+        'ABA'
+      ],{
+        A: item1,
+        B: item2,
+        C: item3,
+        D: item4
+      }
+    )
+  
+  augm_upgrade('thermal:upgrade_augment_1', 'thermal:nickel_plate','powah:capacitor_basic_large','thermal:obsidian_glass')
+  augm_upgrade('thermal:upgrade_augment_2', 'thermal:signalum_plate','powah:capacitor_hardened','thermal:signalum_glass')
+  augm_upgrade('thermal:upgrade_augment_3', 'thermal:enderium_plate','powah:capacitor_blazing','thermal:enderium_glass')
+  /*
   event.shaped(Item.of('thermal:upgrade_augment_1'), 
     [ 
     'NCN', 
@@ -140,7 +160,7 @@ ServerEvents.recipes(event => {
     N: 'thermal:enderium_plate',
     O: 'thermal:enderium_glass'
   })
-
+*/
   event.remove({id: "thermal:augments/area_radius_augment"})
   event.shaped(Item.of('thermal:area_radius_augment'), 
   [ 
@@ -152,6 +172,20 @@ ServerEvents.recipes(event => {
     P: 'thermal:silver_plate'
   })
 
+  /*!!!
+  event.remove({id: "thermal:augments/tank"})
+  event.shaped(Item.of('thermal:tank'), 
+  [ 
+    ' P ', 
+    'PGP', 
+    ' P '  
+    ],{
+    G: 'itank:tank',
+    P: 'thermal:silver_plate'
+  })
+  */
+
+  //CrisCrosCraft("thermal:fluid_cell", 'thermal:steel_plate', 'itank:tank', 'thermal:lapis_gear')
   event.shaped(Item.of("thermal:fluid_cell"), 
   [ 
     'PTP', 
@@ -164,6 +198,7 @@ ServerEvents.recipes(event => {
   })
 
   event.remove({id: "thermal:augments/machine_cycle_augment"})
+  //CrosCraft("thermal:machine_cycle_augment", 'thermal:silver_plate', 'thermal:steel_gear')
   event.shaped(Item.of("thermal:machine_cycle_augment"), 
   [ 
     ' P ', 
