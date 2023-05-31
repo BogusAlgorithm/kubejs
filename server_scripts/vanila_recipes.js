@@ -18,7 +18,7 @@ ServerEvents.recipes(event => {
 
     event.remove({input: `/.*_dust/`, output: '#forge:ingots'})
 
-    //Shrink, move everything to minecraft:
+    //Shrink
     event.smelting('8x minecraft:iron_nugget', 'minecraft:raw_iron')
     event.smelting('8x minecraft:gold_nugget', 'minecraft:raw_gold')
     event.smelting('8x create:copper_nugget', 'minecraft:raw_copper')
