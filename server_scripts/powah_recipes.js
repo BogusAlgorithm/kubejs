@@ -36,7 +36,7 @@ ServerEvents.recipes(event => {
         {
             event.shapeless(`powah:energy_cell_${val}`, [`powah:battery_${val}`, "powah:dielectric_casing"])
         })*/
-
+/*
     let CrisCrosCraft = (output, cris, cros, cntr) => {
         event.shaped(
             output, 
@@ -92,7 +92,7 @@ ServerEvents.recipes(event => {
             B: cntr
             }    
         )
-    }
+    }*/
 
     let energize1 = (output, input1, energy) => {
         event.custom({
@@ -134,7 +134,7 @@ ServerEvents.recipes(event => {
             D: 'powah:dielectric_rod'
         })    
 
-    event.recipes.create.mixing("8x powah:dielectric_paste", ["minecraft:clay_ball", "minecraft:clay_ball", "minecraft:blaze_powder", "create:powdered_obsidian", "create:powdered_obsidian"])
+    event.recipes.create.mixing("8x powah:dielectric_paste", ["minecraft:clay_ball", "minecraft:clay_ball", "minecraft:clay_ball", "minecraft:clay_ball", "minecraft:blaze_powder", "create:powdered_obsidian", "create:powdered_obsidian"])
 
     energize2("powah:capacitor_hardened", 'powah:capacitor_basic_large', 'powah:steel_energized', 5000)
     energize2("powah:capacitor_blazing",  'powah:capacitor_basic_large', 'powah:crystal_blazing', 10000)
@@ -142,7 +142,7 @@ ServerEvents.recipes(event => {
     energize2("powah:capacitor_spirited", 'powah:capacitor_basic_large', 'powah:crystal_spirited', 40000)
     energize2("powah:capacitor_nitro", 'powah:capacitor_basic_large', 'powah:crystal_nitro', 80000)
 
-    CrisCrosCraft("powah:battery_starter", "thermal:cured_rubber", "powah:dielectric_paste", "createaddition:capacitor")
+    global.CrisCrosCraft("powah:battery_starter", "thermal:cured_rubber", "powah:dielectric_paste", "createaddition:capacitor")
     energize2("powah:battery_basic", 'powah:battery_starter', 'powah:capacitor_basic_large', 10000)
 
     energize1("powah:steel_energized", "thermal:steel_ingot", 10000)
@@ -150,20 +150,20 @@ ServerEvents.recipes(event => {
     energize2("powah:crystal_spirited", 'minecraft:diamond', "powah:crystal_niotic", 40000)
     energize2("powah:crystal_nitro", 'minecraft:nether_star', "powah:crystal_spirited", 80000)
 
-    CrisCrosCraft("4x powah:reactor_starter", "ae2:sky_stone_block", "createaddition:capacitor", 'powah:dielectric_casing')
-    CrisCrosCraft("4x powah:reactor_basic", "powah:reactor_starter", 'powah:capacitor_basic_large', 'powah:dielectric_casing')
-    CrisCrosCraft("powah:energy_cell_basic", "powah:dielectric_paste", 'powah:capacitor_basic_large', 'powah:dielectric_casing')
+    global.CrisCrosCraft("4x powah:reactor_starter", "ae2:sky_stone_block", "createaddition:capacitor", 'powah:dielectric_casing')
+    global.CrisCrosCraft("4x powah:reactor_basic", "powah:reactor_starter", 'powah:capacitor_basic_large', 'powah:dielectric_casing')
+    global.CrisCrosCraft("powah:energy_cell_basic", "powah:dielectric_paste", 'powah:capacitor_basic_large', 'powah:dielectric_casing')
 
-    sandwich('12x powah:energy_cable_starter', "powah:dielectric_paste", 'kubejs:silver_wire')
-    doughnut('8x powah:energy_cable_basic', "powah:energy_cable_starter", 'thermal:electrum_plate')
-    doughnut(`8x powah:energy_cable_hardened`, "powah:energy_cable_basic", `powah:steel_energized`)
+    global.sandwich('12x powah:energy_cable_starter', "powah:dielectric_paste", 'kubejs:silver_wire')
+    global.doughnut('8x powah:energy_cable_basic', "powah:energy_cable_starter", 'thermal:electrum_plate')
+    global.doughnut(`8x powah:energy_cable_hardened`, "powah:energy_cable_basic", `powah:steel_energized`)
 
     powah_tiers.forEach((val, ind) => 
     {
         if (ind>1) energize2(`powah:battery_${val}`, `powah:battery_${powah_tiers[ind-1]}`, `powah:capacitor_${val}`, ((ind*ind)*1000).toString())
-        if (ind>1) CrisCrosCraft(`4x powah:reactor_${val}`, `powah:reactor_${powah_tiers[ind-1]}`, `powah:capacitor_${val}`, 'powah:dielectric_casing')
-        if (ind>1) CrisCrosCraft(`powah:energy_cell_${val}`, "powah:dielectric_paste", `powah:capacitor_${val}`, 'powah:dielectric_casing')
-        if (ind>2) doughnut(`8x powah:energy_cable_${val}`, "powah:energy_cable_basic", `powah:crystal_${val}`)
+        if (ind>1) global.CrisCrosCraft(`4x powah:reactor_${val}`, `powah:reactor_${powah_tiers[ind-1]}`, `powah:capacitor_${val}`, 'powah:dielectric_casing')
+        if (ind>1) global.CrisCrosCraft(`powah:energy_cell_${val}`, "powah:dielectric_paste", `powah:capacitor_${val}`, 'powah:dielectric_casing')
+        if (ind>2) global.doughnut(`8x powah:energy_cable_${val}`, "powah:energy_cable_basic", `powah:crystal_${val}`)
     })
 
     event.custom({

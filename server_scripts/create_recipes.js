@@ -9,7 +9,6 @@ ServerEvents.recipes(event => {
   event.remove({id: "createaddition:mechanical_crafting/electric_motor"})
 
   event.remove({id: "create:crushing/prismarine_crystals"})
-  //event.remove({id: "create:crushing/dripstone_block"})!!!
 
   event.remove({id: "create:crafting/kinetics/windmill_bearing"})
   event.remove({id: "create:crafting/kinetics/white_sail"})
@@ -218,8 +217,10 @@ ServerEvents.recipes(event => {
   event.remove({id: "create:milling/calcite"})
   event.recipes.create.milling(["minecraft:bone_meal"], 'minecraft:calcite')
 
+  event.remove({id: "create:milling/dripstone_block"})
+  event.recipes.create.milling([Item.of("minecraft:clay_ball", 2), Item.of("minecraft:clay_ball").withChance(0.5)], "minecraft:dripstone_block")
+
   event.recipes.create.crushing("2x thermal:iron_dust", "minecraft:iron_ingot")
-  //event.recipes.create.crushing([Item.of("minecraft:clay_ball", 2), Item.of("minecraft:clay_ball").withChance(0.5)], "minecraft:dripstone_block")!!!
 
   event.remove({id: "create:crafting/materials/rose_quartz"})
   event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye"])

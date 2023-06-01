@@ -53,6 +53,7 @@ quartz fiber */
     C: 'ae2:certus_quartz_crystal'
   })
 
+  global.CrisCrosCraft('ae2:condenser', 'minecraft:iron_ingot', 'ae2:quartz_glass', 'ae2:annihilation_core')/*
   event.shaped('ae2:condenser', [
     'IGI',
     'GPG',
@@ -60,8 +61,9 @@ quartz fiber */
     I: 'minecraft:iron_ingot',
     G: 'ae2:quartz_glass',
     P: 'ae2:annihilation_core'
-  })
+  })*/
 
+  global.CrisCrosCraft('ae2:energy_acceptor', 'minecraft:iron_ingot', 'ae2:quartz_glass', 'createaddition:copper_spool')/*
   event.shaped('ae2:energy_acceptor', [
     'IGI',
     'GCG',
@@ -69,7 +71,7 @@ quartz fiber */
     I: 'minecraft:iron_ingot',
     G: 'ae2:quartz_glass',
     C: 'createaddition:copper_spool'
-  })
+  })*/
  
   event.custom({
       "type": "ae2:transform",

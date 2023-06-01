@@ -785,8 +785,8 @@ ServerEvents.recipes(event => {
   event.remove({id: "thermal:machines/pulverizer/pulverizer_andesite"})
   event.remove({id: "thermal:machines/pulverizer/pulverizer_diorite"})
   event.remove({id: "thermal:machines/pulverizer/pulverizer_granite"})
-  //event.remove({id: "thermal:machines/pulverizer/raw_silver"})//!!!
-  //event.remove({id: "thermal:machines/pulverizer/raw_lead"})//!!!
+  event.remove({id: "thermal:machines/pulverizer/pulverizer_raw_silver"})
+  event.remove({id: "thermal:machines/pulverizer/pulverizer_raw_lead"})
   event.recipes.thermal.pulverizer(Item.of("thermal:quartz_dust"), Item.of("minecraft:andesite"))
   event.recipes.thermal.pulverizer(Item.of("thermal:quartz_dust"), Item.of("minecraft:diorite"))
   event.recipes.thermal.pulverizer(Item.of("thermal:quartz_dust"), Item.of("minecraft:granite"))
