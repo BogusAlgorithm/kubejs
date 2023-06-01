@@ -1,4 +1,5 @@
 // priority: 0
+
 //const $EnchantmentHelper = Java.loadClass('net.minecraft.world.item.enchantment.EnchantmentHelper')
 //const $RandomSource = Java.loadClass('net.minecraft.util.RandomSource')
 
@@ -6,7 +7,7 @@ console.info('Loading VANILA recipes...')
 
 ServerEvents.recipes(event => {
 
-    event.remove({output: "minecraft:grindstone"})
+    //event.remove({output: "minecraft:grindstone"})
     event.remove({id: "minecraft:enchanting_table"})
     
     event.remove({type: `minecraft:smelting`, input: '#forge:ores'})
@@ -33,7 +34,6 @@ ServerEvents.recipes(event => {
     })
     event.smelting('8x create:copper_nugget', 'minecraft:raw_copper')
     /*
-    //Shrink
     event.smelting('8x minecraft:iron_nugget', 'minecraft:raw_iron')
     event.smelting('8x minecraft:gold_nugget', 'minecraft:raw_gold')
     event.smelting('8x create:copper_nugget', 'create:raw_copper')
@@ -118,8 +118,6 @@ ServerEvents.recipes(event => {
     event.smelting('3x thermal:nickel_nugget', 'thermal:nickel_dust')
     event.smelting('3x thermal:tin_nugget', 'thermal:tin_dust')*/
     
-    
-    //event.smelting('3x create:brass_nugget', 'kubejs:brass_dust')
     event.smelting('3x create:brass_nugget', 'thermal:brass_dust')
     event.smelting('3x thermal:electrum_nugget', 'thermal:electrum_dust')
     event.smelting('3x thermal:invar_nugget', 'thermal:invar_dust')
@@ -196,6 +194,17 @@ ServerEvents.recipes(event => {
             ],{
             G: 'minecraft:glass',
             I: 'minecraft:iron_ingot'
+    })
+
+    event.shaped(
+        'minecraft:name_tag', 
+            [ 
+            '  S', 
+            ' P ', 
+            'P  '  
+            ],{
+            S: 'minecraft:string',
+            P: 'minecraft:paper'
     })
 
     event.shaped(

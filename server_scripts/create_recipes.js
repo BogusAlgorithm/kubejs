@@ -9,6 +9,7 @@ ServerEvents.recipes(event => {
   event.remove({id: "createaddition:mechanical_crafting/electric_motor"})
 
   event.remove({id: "create:crushing/prismarine_crystals"})
+  //event.remove({id: "create:crushing/dripstone_block"})!!!
 
   event.remove({id: "create:crafting/kinetics/windmill_bearing"})
   event.remove({id: "create:crafting/kinetics/white_sail"})
@@ -211,14 +212,14 @@ ServerEvents.recipes(event => {
 
   event.recipes.create.milling(["minecraft:string"], '#thermal:rockwool')
 
-  //event.recipes.create.milling(["kubejs:zinc_dust"], 'create:zinc_ingot')
   event.recipes.create.milling(["thermal:zinc_dust"], 'create:zinc_ingot')
   event.recipes.create.milling(["thermal:copper_dust"], 'minecraft:copper_ingot')
 
   event.remove({id: "create:milling/calcite"})
   event.recipes.create.milling(["minecraft:bone_meal"], 'minecraft:calcite')
 
-  event.recipes.create.crushing("thermal:iron_dust", "minecraft:iron_ingot")
+  event.recipes.create.crushing("2x thermal:iron_dust", "minecraft:iron_ingot")
+  //event.recipes.create.crushing([Item.of("minecraft:clay_ball", 2), Item.of("minecraft:clay_ball").withChance(0.5)], "minecraft:dripstone_block")!!!
 
   event.remove({id: "create:crafting/materials/rose_quartz"})
   event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye"])
@@ -227,7 +228,6 @@ ServerEvents.recipes(event => {
 
   event.recipes.create.mixing([Fluid.of('create:honey', 1000)], [Fluid.of('thermal:syrup', 1000), "minecraft:sugar", "minecraft:sugar", "minecraft:sugar", "minecraft:sugar"]).heated()
 
-  //event.recipes.create.mixing("2x kubejs:brass_dust", ["thermal:copper_dust", "kubejs:zinc_dust"])
   event.recipes.create.mixing("2x thermal:brass_dust", ["thermal:copper_dust", "thermal:zinc_dust"])
 
   event.recipes.create.mixing([Fluid.of('minecraft:milk', 250)], [Fluid.of('minecraft:water', 250), "minecraft:bone_meal"]).heated()
