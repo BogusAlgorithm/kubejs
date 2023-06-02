@@ -116,7 +116,8 @@ ServerEvents.recipes(event => {
     })
 
   event.remove({id: "create:crafting/curiosities/brown_toolbox"})
-  event.shaped(
+  global.CrisCrosCraft("create:brown_toolbox", 'create:cogwheel', 'create:brass_sheet', 'minecraft:chest')
+  /*event.shaped(
     Item.of("create:brown_toolbox"), 
       [ 
       'GSG', 
@@ -126,7 +127,7 @@ ServerEvents.recipes(event => {
       C: 'minecraft:chest',
       G: 'create:cogwheel',
       S: 'create:brass_sheet'
-    })
+    })*/
   
   event.remove({type: "createaddition:liquid_burning"})
   event.custom({
@@ -242,7 +243,6 @@ ServerEvents.recipes(event => {
   event.remove({id: "create:splashing/red_sand"})
   event.recipes.create.splashing([Item.of('minecraft:redstone').withChance(0.15)], 'minecraft:red_sand')
 
-  //event.recipes.create.splashing([Item.of("thermal:tin_dust", 1).withChance(0.5)], Item.of("kubejs:zinc_dust"))
   event.recipes.create.splashing([Item.of("thermal:tin_dust", 1).withChance(0.5)], Item.of("thermal:zinc_dust"))
   event.recipes.create.splashing([Item.of("thermal:nickel_dust", 1).withChance(0.5)], Item.of("thermal:iron_dust"))
   event.recipes.create.splashing([Item.of("thermal:gold_dust", 1).withChance(0.5)], Item.of("thermal:copper_dust"))
@@ -271,8 +271,9 @@ ServerEvents.recipes(event => {
     event.recipes.createPressing(inter, inter),
     event.recipes.createFilling(inter,[inter, Fluid.of("thermal:resin", 1000)]),
     event.recipes.createPressing(inter, inter)
-    ]).transitionalItem(inter).loops(1) // set the transitional item and the loops (amount of repetitions)
+    ]).transitionalItem(inter).loops(1)
   
+  //Remove maybe???
   inter = 'kubejs:pulp'
   event.recipes.createSequencedAssembly([ 
     "minecraft:paper"
@@ -280,7 +281,7 @@ ServerEvents.recipes(event => {
     event.recipes.createFilling(inter,[inter, Fluid.of("minecraft:water", 1000)]),
     event.recipes.createPressing(inter, inter),
     event.recipes.createPressing(inter, inter),
-    ]).transitionalItem(inter).loops(1) // set the transitional item and the loops (amount of repetitions)
+    ]).transitionalItem(inter).loops(1)
 
   event.remove({id: "create:sequenced_assembly/precision_mechanism"})
   inter = 'create:incomplete_precision_mechanism'
@@ -290,5 +291,5 @@ ServerEvents.recipes(event => {
       event.recipes.createDeploying(inter,[inter,"create:cogwheel"]),
       event.recipes.createDeploying(inter,[inter,"create:large_cogwheel"]),
       event.recipes.createDeploying(inter,[inter,"minecraft:iron_nugget"])
-    ]).transitionalItem(inter).loops(5) // set the transitional item and the loops (amount of repetitions)
+    ]).transitionalItem(inter).loops(5)
 })

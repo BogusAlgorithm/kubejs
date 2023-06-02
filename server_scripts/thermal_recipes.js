@@ -34,7 +34,8 @@ ServerEvents.recipes(event => {
   event.replaceInput({id: "thermal:tools/satchel"}, "thermal:tin_ingot", "thermal:tin_gear")//!!!
 
   event.remove({id: "thermal:hazmat_fabric"})
-  event.shaped(Item.of('thermal:hazmat_fabric'), 
+  global.CrisCrosCraft('thermal:hazmat_fabric', 'thermal:cured_rubber', 'minecraft:string')
+  /*event.shaped(Item.of('thermal:hazmat_fabric'), 
     [ 
     'RSR', 
     'SLS', 
@@ -43,7 +44,7 @@ ServerEvents.recipes(event => {
     L: 'thermal:lead_plate',
     R: 'thermal:cured_rubber',
     S: 'minecraft:string'
-  }) 
+  })*/
 
   event.remove({id: "thermal:drill_head"})
   event.shaped(Item.of("thermal:drill_head"), 
@@ -68,7 +69,8 @@ ServerEvents.recipes(event => {
   })
 
   event.remove({id: "thermal:saw_blade"})
-  event.shaped(Item.of("thermal:saw_blade"), 
+  global.CrosCraft("thermal:saw_blade", 'thermal:iron_plate', 'thermal:copper_plate')
+  /*event.shaped(Item.of("thermal:saw_blade"), 
     [ 
     ' I ', 
     'ICI',
@@ -76,7 +78,7 @@ ServerEvents.recipes(event => {
     ],{
     I: 'minecraft:iron_ingot',
     C: 'minecraft:copper_ingot'
-  })
+  })*/
   
   event.remove({id: "thermal:flux_saw"})
   event.shaped(Item.of("thermal:flux_saw"), 
@@ -162,7 +164,8 @@ ServerEvents.recipes(event => {
   })
 */
   event.remove({id: "thermal:augments/area_radius_augment"})
-  event.shaped(Item.of('thermal:area_radius_augment'), 
+  global.CrosCraft('thermal:area_radius_augment', 'thermal:silver_plate', 'thermal:lumium_gear')
+  /*event.shaped(Item.of('thermal:area_radius_augment'), 
   [ 
     ' P ', 
     'PGP', 
@@ -170,10 +173,11 @@ ServerEvents.recipes(event => {
     ],{
     G: 'thermal:lumium_gear',
     P: 'thermal:silver_plate'
-  })
+  })*/
 
   event.remove({id: "thermal:augments/fluid_tank_augment"})
-  event.shaped(Item.of("thermal:fluid_tank_augment"), 
+  global.CrosCraft("thermal:fluid_tank_augment", 'thermal:silver_plate', 'itank:tank')
+  /*event.shaped(Item.of("thermal:fluid_tank_augment"), 
   [ 
     ' P ', 
     'PGP', 
@@ -181,10 +185,10 @@ ServerEvents.recipes(event => {
     ],{
     G: 'itank:tank',
     P: 'thermal:silver_plate'
-  })
+  })*/
   
-  //CrisCrosCraft("thermal:fluid_cell", 'thermal:steel_plate', 'itank:tank', 'thermal:lapis_gear')
-  event.shaped(Item.of("thermal:fluid_cell"), 
+  global.CrisCrosCraft("thermal:fluid_cell", 'thermal:steel_plate', 'itank:tank', 'thermal:lapis_gear')
+  /*event.shaped(Item.of("thermal:fluid_cell"), 
   [ 
     'PTP', 
     'TGT', 
@@ -193,11 +197,11 @@ ServerEvents.recipes(event => {
     T: 'itank:tank',
     G: 'thermal:lapis_gear',
     P: 'thermal:steel_plate'
-  })
+  })*/
 
   event.remove({id: "thermal:augments/machine_cycle_augment"})
-  //CrosCraft("thermal:machine_cycle_augment", 'thermal:silver_plate', 'thermal:steel_gear')
-  event.shaped(Item.of("thermal:machine_cycle_augment"), 
+  global.CrosCraft("thermal:machine_cycle_augment", 'thermal:silver_plate', 'thermal:steel_gear')
+  /*event.shaped(Item.of("thermal:machine_cycle_augment"), 
   [ 
     ' P ', 
     'PGP', 
@@ -205,10 +209,11 @@ ServerEvents.recipes(event => {
     ],{
     G: 'thermal:steel_gear',
     P: 'thermal:silver_plate'
-  })
+  })*/
 
   event.remove({id: "thermal:augments/dynamo_fuel_augment"})
-  event.shaped(Item.of("thermal:dynamo_fuel_augment"), 
+  global.CrosCraft("thermal:dynamo_fuel_augment", 'thermal:lumium_plate', 'thermal:signalum_gear')
+  /*event.shaped(Item.of("thermal:dynamo_fuel_augment"), 
   [ 
     ' P ', 
     'PGP', 
@@ -216,10 +221,11 @@ ServerEvents.recipes(event => {
     ],{
     G: 'thermal:signalum_gear',
     P: 'thermal:lumium_plate'
-  })
+  })*/
 
   event.remove({id: "thermal:augments/machine_speed_augment"})
-  event.shaped(Item.of("thermal:machine_speed_augment"), 
+  global.CrosCraft("thermal:machine_speed_augment", 'thermal:signalum_ingot', 'thermal:lumium_gear')
+  /*event.shaped(Item.of("thermal:machine_speed_augment"), 
   [ 
     ' P ', 
     'PGP', 
@@ -227,10 +233,11 @@ ServerEvents.recipes(event => {
     ],{
     G: 'thermal:lumium_gear',
     P: 'thermal:signalum_ingot'
-  })
+  })*/
 
   event.remove({id: "thermal:augments/machine_efficiency_augment"})
-  event.shaped(Item.of("thermal:machine_efficiency_augment"), 
+  global.CrosCraft("thermal:machine_efficiency_augment", 'thermal:lumium_ingot', 'thermal:signalum_gear')
+  /*event.shaped(Item.of("thermal:machine_efficiency_augment"), 
   [ 
     ' P ', 
     'PGP', 
@@ -238,10 +245,11 @@ ServerEvents.recipes(event => {
     ],{
     G: 'thermal:signalum_gear',
     P: 'thermal:lumium_ingot'
-  })
+  })*/
 
   event.remove({id: "thermal:augments/dynamo_output_augment"})
-  event.shaped(Item.of("thermal:dynamo_output_augment"), 
+  global.CrosCraft("thermal:dynamo_output_augment", 'thermal:signalum_plate', 'thermal:lumium_gear')
+  /*event.shaped(Item.of("thermal:dynamo_output_augment"), 
   [ 
     ' P ', 
     'PGP', 
@@ -249,10 +257,11 @@ ServerEvents.recipes(event => {
     ],{
     G: 'thermal:lumium_gear',
     P: 'thermal:signalum_plate'
-  })
+  })*/
   
   event.remove({id: "thermal:augments/xp_storage_augment"})
-  event.shaped(Item.of("thermal:xp_storage_augment"), 
+  global.CrosCraft("thermal:xp_storage_augment", '#forge:plates/silver', 'minecraft:writable_book')
+  /*event.shaped(Item.of("thermal:xp_storage_augment"), 
   [ 
     ' P ', 
     'PBP', 
@@ -260,10 +269,11 @@ ServerEvents.recipes(event => {
     ],{
     B: 'minecraft:writable_book',
     P: '#forge:plates/silver'
-  })
+  })*/
 
   event.remove({id: "thermal:tools/xp_crystal"})
-  event.shaped(Item.of("thermal:xp_crystal"), 
+  global.CrosCraft("thermal:xp_crystal", 'create:experience_nugget', 'minecraft:quartz')
+  /*event.shaped(Item.of("thermal:xp_crystal"), 
   [ 
     ' X ', 
     'XQX', 
@@ -271,7 +281,7 @@ ServerEvents.recipes(event => {
     ],{
     Q: 'minecraft:quartz',
     X: 'create:experience_nugget'
-  })
+  })*/
 
   event.remove({id: "thermal:tinker_bench"})
   event.shaped(Item.of('thermal:tinker_bench'), [ 
@@ -764,7 +774,7 @@ ServerEvents.recipes(event => {
   event.remove({id: "thermal:fire_charge/enderium_glass_2"})
   event.recipes.thermal.smelter("thermal:signalum_ingot", ["thermal:nickel_ingot", Item.of("minecraft:redstone", 5).toJson()]).energy(10000)
   event.recipes.thermal.smelter("thermal:lumium_ingot", ["minecraft:gold_ingot", Item.of("minecraft:glowstone_dust", 2).toJson()]).energy(10000)
-  //event.recipes.thermal.smelter("thermal:enderium_ingot", ["thermal:gold_ingot", Item.of("minecraft:glowstone", 2).toJson()]).energy(15000)
+  //event.recipes.thermal.smelter("thermal:enderium_ingot", ["thermal:gold_ingot", Item.of("minecraft:glowstone", 2).toJson()]).energy(15000)???
 
   event.recipes.thermal.smelter('thermal:signalum_glass', ["thermal:signalum_ingot", "thermal:obsidian_glass"])
   event.recipes.thermal.smelter('thermal:lumium_glass', ["thermal:lumium_ingot", "thermal:obsidian_glass"])

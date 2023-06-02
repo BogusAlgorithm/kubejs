@@ -115,6 +115,7 @@ quartz fiber */
 
   event.recipes.thermal.smelter("2x ae2:fluix_glass_cable", ['ae2:quartz_fiber', "ae2:fluix_crystal"])
 
+  //machinecraft!!!
   event.shaped('ae2:inscriber', [
     'IDI',
     'LNE',
