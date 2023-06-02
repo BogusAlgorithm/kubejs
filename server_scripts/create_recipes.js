@@ -9,9 +9,10 @@ ServerEvents.recipes(event => {
   event.remove({id: "createaddition:mechanical_crafting/electric_motor"})
 
   event.remove({id: "create:crushing/prismarine_crystals"})
-
   event.remove({id: "create:crafting/kinetics/windmill_bearing"})
   event.remove({id: "create:crafting/kinetics/white_sail"})
+
+  event.remove({id: "create:splashing/ice"})
 
   event.replaceInput({ id: 'create:crafting/kinetics/steam_engine'}, '#forge:plates/gold', 'create:brass_sheet')
   event.replaceInput({ id: 'create:crafting/kinetics/goggles'}, '#forge:plates/gold', 'create:brass_sheet')

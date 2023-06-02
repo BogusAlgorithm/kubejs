@@ -31,10 +31,10 @@ ServerEvents.recipes(event => {
   event.shapeless("2x minecraft:fire_charge", ["minecraft:blaze_powder", "minecraft:gunpowder", '2x thermal:sawdust'])
 
   event.replaceInput({id: "thermal:chiller_ball_cast"}, "thermal:bronze_plate", "thermal:gold_plate")
-  event.replaceInput({id: "thermal:tools/satchel"}, "thermal:tin_ingot", "thermal:tin_gear")//!!!
+  event.replaceInput({id: "thermal:tools/satchel"}, "thermal:tin_ingot", "thermal:tin_gear")
 
   event.remove({id: "thermal:hazmat_fabric"})
-  global.CrisCrosCraft('thermal:hazmat_fabric', 'thermal:cured_rubber', 'minecraft:string')
+  global.CrisCrosCraft('thermal:hazmat_fabric', 'thermal:cured_rubber', 'minecraft:string', 'thermal:lead_plate')
   /*event.shaped(Item.of('thermal:hazmat_fabric'), 
     [ 
     'RSR', 
