@@ -740,6 +740,25 @@ ServerEvents.recipes(event => {
     "energy": 5000
   })
 
+  event.custom({
+    "type": "thermal:crystallizer",
+    "ingredients": [
+      {
+        "fluid": "minecraft:water",
+        "amount": 1000
+      },
+      {
+        "item": "ae2:certus_quartz_dust"
+      }
+    ],
+    "result": [
+      {
+        "item": "ae2:certus_quartz_crystal"
+      }
+    ],
+    "energy": 5000
+  })
+
   event.recipes.thermal.press("thermal:quartz_gear", [Item.of("minecraft:quartz", 6).toJson(), 'thermal:press_gear_die'])
   event.recipes.thermal.press("thermal:lapis_gear", [Item.of("minecraft:lapis_lazuli", 6).toJson(), 'thermal:press_gear_die'])
 
@@ -758,7 +777,7 @@ ServerEvents.recipes(event => {
   event.recipes.thermal.brewer([Fluid.of("kubejs:solution_4", 1000)], [Item.of("thermal:blizz_rod"), Fluid.of("kubejs:solution_3",1000)]).energy(20000)
 
   event.remove({type: "thermal:crystallizer"})
-  thermacryst("ae2:certus_quartz_crystal", 1000, "ae2:certus_quartz_dust", "kubejs:crystallizer", 10000)
+  //thermacryst("ae2:certus_quartz_crystal", 1000, "ae2:certus_quartz_dust", "kubejs:crystallizer", 10000)
   thermacryst("minecraft:diamond", 1000, "thermal:diamond_dust","kubejs:crystallizer", 10000)
   thermacryst("minecraft:emerald", 1000, "thermal:emerald_dust","kubejs:crystallizer", 10000)
   thermacryst("minecraft:prismarine_crystals", 1000, "thermal:quartz_dust", "minecraft:green_dye",5000)
@@ -800,6 +819,7 @@ ServerEvents.recipes(event => {
   event.recipes.thermal.pulverizer(Item.of("thermal:quartz_dust"), Item.of("minecraft:andesite"))
   event.recipes.thermal.pulverizer(Item.of("thermal:quartz_dust"), Item.of("minecraft:diorite"))
   event.recipes.thermal.pulverizer(Item.of("thermal:quartz_dust"), Item.of("minecraft:granite"))
+  event.recipes.thermal.pulverizer(Item.of("ae2:certus_quartz_dust"), Item.of("ae2:certus_quartz_crystal"))
 
   event.recipes.thermal.pulverizer(Item.of("minecraft:prismarine_shard").withChance(2.5), 'minecraft:prismarine_crystals')//.energy(100)
   
