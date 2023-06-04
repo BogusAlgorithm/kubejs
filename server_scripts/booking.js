@@ -28,4 +28,5 @@ ServerEvents.recipes(event => {
     book_maker("minecraft:minecart", "minecraft:protection", 4)
     book_maker("minecraft:blaze_rod", "minecraft:fire_protection", 4)
     book_maker("thermal:saw_blade", "minecraft:sharpness", 4)
+    book_maker("ae2:fluix_block", "minecraft:fortune", 3)
 })

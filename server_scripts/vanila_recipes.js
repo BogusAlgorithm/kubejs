@@ -291,7 +291,9 @@ ServerEvents.recipes(event => {
     event.shapeless('minecraft:torch', ['minecraft:stick', 'minecraft:flint_and_steel']).damageIngredient('minecraft:flint_and_steel')
 
     event.remove({ id: 'minecraft:iron_bars'})
-    event.shapeless('minecraft:iron_bars', ['createaddition:iron_rod', 'createaddition:iron_rod', 'createaddition:iron_rod', 'createaddition:iron_rod'])
+    //event.shapeless('minecraft:iron_bars', ['createaddition:iron_rod', 'createaddition:iron_rod', 'createaddition:iron_rod', 'createaddition:iron_rod'])
+    event.shapeless('minecraft:iron_bars', ['4x createaddition:iron_rod'])//!!!
+
 
     event.shapeless('minecraft:dirt', ['#forge:tools/hoes', 'minecraft:coarse_dirt']).damageIngredient('#forge:tools/hoes', 2)
 
@@ -300,12 +302,15 @@ ServerEvents.recipes(event => {
     event.replaceInput({ id: 'minecraft:campfire'}, '#minecraft:coals', 'minecraft:torch')
     
     //misc
-    event.recipes.create.pressing(["minecraft:bone"], ["minecraft:bone_block"])
-    event.recipes.create.cutting("minecraft:leather", "minecraft:leather_helmet")
-    event.recipes.create.cutting("minecraft:leather", "minecraft:leather_chestplate")
-    event.recipes.create.cutting("minecraft:leather", "minecraft:leather_leggings")
-    event.recipes.create.cutting("minecraft:leather", "minecraft:leather_boots")
+    //event.recipes.create.pressing(["minecraft:bone"], ["minecraft:bone_block"])
+    event.recipes.create.cutting(["minecraft:leather", Item.of("minecraft:leather").withChance(0.25)], "minecraft:leather_helmet")
+    event.recipes.create.cutting(["2x minecraft:leather"], "minecraft:leather_chestplate")
+    event.recipes.create.cutting(["minecraft:leather", Item.of("minecraft:leather").withChance(0.75)], "minecraft:leather_leggings")
+    event.recipes.create.cutting(["minecraft:leather"], "minecraft:leather_boots")
 
+    event.shapeless("minecraft:verdant_froglight", "minecraft:pearlescent_froglight")
+    event.shapeless("minecraft:pearlescent_froglight", "minecraft:ochre_froglight")
+    event.shapeless("minecraft:ochre_froglight", "minecraft:verdant_froglight")
 
     Ingredient.registerCustomIngredientAction("lumen_transform", (itemstack, index, inventory) => {
         let rand_val = Math.random()
