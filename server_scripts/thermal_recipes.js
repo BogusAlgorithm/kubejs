@@ -819,7 +819,6 @@ ServerEvents.recipes(event => {
   event.recipes.thermal.pulverizer(Item.of("thermal:quartz_dust"), Item.of("minecraft:andesite"))
   event.recipes.thermal.pulverizer(Item.of("thermal:quartz_dust"), Item.of("minecraft:diorite"))
   event.recipes.thermal.pulverizer(Item.of("thermal:quartz_dust"), Item.of("minecraft:granite"))
-  event.recipes.thermal.pulverizer(Item.of("ae2:certus_quartz_dust"), Item.of("ae2:certus_quartz_crystal"))
 
   event.recipes.thermal.pulverizer(Item.of("minecraft:prismarine_shard").withChance(2.5), 'minecraft:prismarine_crystals')//.energy(100)
   

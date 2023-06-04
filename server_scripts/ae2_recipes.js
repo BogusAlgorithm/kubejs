@@ -93,7 +93,7 @@ quartz fiber */
   })
 
 
-  event.recipes.thermal.smelter("ae2:quartz_glass", ['thermal:enderium_glass', "ae2:certus_quartz_dust"])
+  event.recipes.thermal.smelter("2x ae2:quartz_glass", ['thermal:enderium_glass', "ae2:certus_quartz_dust"])
   /*event.shaped('4x ae2:quartz_glass', [
     'GDG',
     'DED',
@@ -149,4 +149,7 @@ quartz fiber */
   printmaker("ae2:silicon", "ae2:printed_silicon")
 
   event.recipes.thermal.furnace(Item.of("ae2:silicon"), "ae2:certus_quartz_dust").energy(5000)
+
+  event.recipes.thermal.pulverizer(Item.of("ae2:certus_quartz_dust"), Item.of("ae2:certus_quartz_crystal"))
+  event.recipes.thermal.pulverizer(Item.of("ae2:fluix_dust"), Item.of("ae2:fluix_crystal"))
 })

@@ -301,10 +301,10 @@ ServerEvents.recipes(event => {
     
     //misc
     event.recipes.create.pressing(["minecraft:bone"], ["minecraft:bone_block"])
-    event.recipes.create.milling("minecraft:leather", "minecraft:leather_helmet")
-    event.recipes.create.milling("minecraft:leather", "minecraft:leather_chestplate")
-    event.recipes.create.milling("minecraft:leather", "minecraft:leather_leggings")
-    event.recipes.create.milling("minecraft:leather", "minecraft:leather_boots")
+    event.recipes.create.cutting("minecraft:leather", "minecraft:leather_helmet")
+    event.recipes.create.cutting("minecraft:leather", "minecraft:leather_chestplate")
+    event.recipes.create.cutting("minecraft:leather", "minecraft:leather_leggings")
+    event.recipes.create.cutting("minecraft:leather", "minecraft:leather_boots")
 
 
     Ingredient.registerCustomIngredientAction("lumen_transform", (itemstack, index, inventory) => {
