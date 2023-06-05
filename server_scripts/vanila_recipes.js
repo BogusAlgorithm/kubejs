@@ -322,20 +322,20 @@ ServerEvents.recipes(event => {
         {
             itemstack = Item.of(`kubejs:kubit_${colors_array.indexOf(current_color, 0)}`)
         }
-        else if (rand_val<0.3) 
+        else if (rand_val<0.7) 
         {
-            itemstack = Item.of(`ae2:${colors_array[Math.floor(Math.random()*16)]}_paint_ball`)
-        }
-        else if (rand_val<0.6) 
-        {
-            itemstack = Item.of(`ae2:${current_color}_paint_ball`)
+            const c = Math.floor(Math.random()*16)
+            if (c == colors_array.indexOf(current_color))
+                itemstack = Item.of('minecraft:air')
+            else 
+                itemstack = Item.of(`ae2:${colors_array[c]}_paint_ball`)
         }
         else itemstack = Item.of('minecraft:air')
 
         return itemstack;
     })
 
-    event.shaped("minecraft:snowball", ["powah:charged_snowball", `#minecraft:lumen_balls`]).customIngredientAction(`#minecraft:lumen_balls`, "lumen_transform").id('kubejs:kubit_reacipe_manual_only')
+    event.shaped("thermal:blizz_powder", ["powah:charged_snowball", `#minecraft:lumen_balls`]).customIngredientAction(`#minecraft:lumen_balls`, "lumen_transform").id('kubejs:kubit_reacipe_manual_only')
 
     //Ore refinement
     event.remove({ id: `thermal:machines/pulverizer/pulverizer_raw_iron`})

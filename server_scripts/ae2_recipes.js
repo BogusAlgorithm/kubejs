@@ -44,6 +44,16 @@ quartz fiber */
     C: "createaddition:capacitor"
   })
 
+  event.remove({id: "ae2:network/parts/toggle_bus"})
+  event.shaped('ae2:toggle_bus', [
+    'G',
+    'L',
+    'R'], {
+    G: 'minecraft:glass',
+    L: 'minecraft:lever',
+    R: "minecraft:redstone"
+  })
+
   event.shaped('ae2:charger', [
     'IPI',
     'I  ',
