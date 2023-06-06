@@ -324,11 +324,14 @@ ServerEvents.recipes(event => {
         }
         else if (rand_val<0.7) 
         {
-            const c = Math.floor(Math.random()*16)
-            if (c == colors_array.indexOf(current_color))
+            const rc = Math.floor(Math.random()*15)//16
+            if (rc >= colors_array.indexOf(current_color)) rc++
+            itemstack = Item.of(`ae2:${colors_array[rc]}_paint_ball`)
+            /*
+            if (rc == cc)
                 itemstack = Item.of('minecraft:air')
             else 
-                itemstack = Item.of(`ae2:${colors_array[c]}_paint_ball`)
+                itemstack = Item.of(`ae2:${colors_array[rc]}_paint_ball`)*/
         }
         else itemstack = Item.of('minecraft:air')
 

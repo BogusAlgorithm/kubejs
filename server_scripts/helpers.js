@@ -44,7 +44,7 @@ ServerEvents.recipes(event => {
         )
     }
 
-    global.doughnut = (output, cont, cntr) => {
+    global.doughnut = (output, outer, cntr) => {
         event.shaped(
             output, 
             [ 
@@ -52,8 +52,21 @@ ServerEvents.recipes(event => {
             'ABA', 
             'AAA'  
             ],{
-            A: cont,
+            A: outer,
             B: cntr
+            }    
+        )
+    }
+
+    global.ring = (output, outer) => {
+        event.shaped(
+            output, 
+            [ 
+            'AAA', 
+            'A A', 
+            'AAA'  
+            ],{
+            A: outer
             }    
         )
     }

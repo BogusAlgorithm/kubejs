@@ -200,7 +200,8 @@ ServerEvents.recipes(event => {
         "type": "powah:energizing",
         "ingredients": [
             {"tag": "forge:dusts/certus_quartz"},
-            {"tag": "forge:dusts/obsidian"}
+            {"tag": "forge:dusts/obsidian"},
+            {"item": "thermal:lead_dust"}
             ],
             "energy": "50000",
             "result": {
