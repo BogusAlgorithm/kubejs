@@ -196,7 +196,7 @@ ServerEvents.recipes(event => {
             "item": "powah:capacitor_basic_large"
         }}
     )
-    
+    /*
     event.custom({
         "type": "powah:energizing",
         "ingredients": [
@@ -208,7 +208,7 @@ ServerEvents.recipes(event => {
             "result": {
             "item": "ae2:sky_dust"
         }}
-    )
+    )*/
 
     event.custom({
         "type": "powah:energizing",

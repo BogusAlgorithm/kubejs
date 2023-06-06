@@ -4,6 +4,7 @@ ServerEvents.recipes(event => {
 
   event.remove({id: "ae2:blasting/silicon_from_certus_quartz_dust"})
   event.remove({id: "ae2:smelting/silicon_from_certus_quartz_dust"})
+  event.remove({type: "smelting", output: "ae2:sky_stone_block"})
 
   event.remove({id: "ae2:transform/certus_quartz_crystals"})
 
@@ -34,6 +35,9 @@ quartz fiber */
   event.remove({id: "ae2:decorative/quartz_glass"})
   event.remove({id: "ae2:network/parts/quartz_fiber_part"})
 
+  event.shapeless("ae2:sky_dust", ["#forge:dusts/certus_quartz", "#forge:dusts/obsidian", "thermal:lead_dust"])
+  event.recipes.thermal.smelter("ae2:sky_stone_block", "ae2:sky_dust").energy(10000)
+ 
   event.remove({id: "ae2:tools/misctools_charged_staff"})
   event.shaped('ae2:charged_staff', [
     '  I',
