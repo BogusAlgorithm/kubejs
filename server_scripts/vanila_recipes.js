@@ -347,6 +347,10 @@ ServerEvents.recipes(event => {
     event.recipes.thermal.pulverizer([Item.of(`thermal:nickel_dust`).withChance(3)], "minecraft:raw_iron").energy(4000)
     event.recipes.thermal.pulverizer([Item.of(`thermal:tin_dust`).withChance(3)], "create:raw_zinc").energy(4000)
     event.recipes.thermal.pulverizer([Item.of(`thermal:gold_dust`).withChance(3)], "minecraft:raw_copper").energy(4000)
+
+    //CC
+    //Computers, alt Computers , modems, wires
+    //Remove turtles, handhelds
 })
 
 ServerEvents.blockLootTables (event => {
@@ -361,5 +365,7 @@ BlockEvents.rightClicked('minecraft:end_portal_frame', event => {
     const {item, block} = event
     if(item.id == 'create:wrench') {
         block.popItem("minecraft:end_portal_frame")
+        //Check for ender eye
+        //block.popItem("minecraft:ender_eye")
     }
 })

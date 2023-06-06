@@ -164,6 +164,7 @@ ServerEvents.recipes(event => {
         if (ind>1) global.CrisCrosCraft(`4x powah:reactor_${val}`, `powah:reactor_${powah_tiers[ind-1]}`, `powah:capacitor_${val}`, 'powah:dielectric_casing')
         if (ind>1) global.CrisCrosCraft(`powah:energy_cell_${val}`, "powah:dielectric_paste", `powah:capacitor_${val}`, 'powah:dielectric_casing')
         if (ind>2) global.doughnut(`8x powah:energy_cable_${val}`, "powah:energy_cable_basic", `powah:crystal_${val}`)
+        //Energize Rod
     })
 
     event.custom({
