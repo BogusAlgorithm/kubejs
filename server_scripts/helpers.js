@@ -16,6 +16,22 @@ ServerEvents.recipes(event => {
         )
     }
 
+    global.CrisCrosCraft2 = (output, cris, updw, ltrt, cntr) => {
+        event.shaped(
+            output, 
+            [ 
+            'ABA', 
+            'CDC', 
+            'ABA'  
+            ],{
+            A: cris,
+            B: updw,
+            C: ltrt,
+            D: cntr
+            }    
+        )
+    }
+
     global.CrosCraft = (output, cros, cntr) => {
         event.shaped(
             output, 

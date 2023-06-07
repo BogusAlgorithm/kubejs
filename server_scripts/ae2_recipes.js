@@ -35,7 +35,7 @@ quartz fiber */
   event.remove({id: "ae2:decorative/quartz_glass"})
   event.remove({id: "ae2:network/parts/quartz_fiber_part"})
 
-  event.shapeless("ae2:sky_dust", ["#forge:dusts/certus_quartz", "#forge:dusts/obsidian", "thermal:lead_dust"])
+  event.recipes.create.mixing("ae2:sky_dust", ["#forge:dusts/certus_quartz", "#forge:dusts/obsidian", "thermal:lead_dust", "thermal:lead_dust"])
   event.recipes.thermal.smelter("ae2:sky_stone_block", "ae2:sky_dust").energy(10000)
  
   event.remove({id: "ae2:tools/misctools_charged_staff"})

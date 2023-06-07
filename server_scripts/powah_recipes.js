@@ -16,7 +16,7 @@ ServerEvents.recipes(event => {
     event.remove({id: `/powah:crafting\/furnator_.*/`})
     event.remove({id: `/powah:crafting\/magmator_.*/`})
     event.remove({id: `/powah:crafting\/thermo_generator_.*/`})
-    event.remove({id: `/powah:crafting\/solar_panel_.*/`})
+    event.remove({id: `/powah:crafting\/solar_panel_.*/`})//!!! Make one for passive energy
     event.remove({id: `/powah:crafting\/player_tranmitter_.*/`})
     event.remove({id: `/powah:crafting\/energy_hopper_.*/`})
     event.remove({id: `/powah:crafting\/energy_discharger_.*/`})
@@ -36,63 +36,6 @@ ServerEvents.recipes(event => {
         {
             event.shapeless(`powah:energy_cell_${val}`, [`powah:battery_${val}`, "powah:dielectric_casing"])
         })*/
-/*
-    let CrisCrosCraft = (output, cris, cros, cntr) => {
-        event.shaped(
-            output, 
-            [ 
-            'ABA', 
-            'BCB', 
-            'ABA'  
-            ],{
-            A: cris,
-            B: cros,
-            C: cntr
-            }    
-        )
-    }
-
-    let CrosCraft = (output, cros, cntr) => {
-        event.shaped(
-            output, 
-            [ 
-            ' A ', 
-            'ABA', 
-            ' A '  
-            ],{
-            A: cros,
-            B: cntr
-            }    
-        )
-    }
-
-    let doughnut = (output, cont, cntr) => {
-        event.shaped(
-            output, 
-            [ 
-            'AAA', 
-            'ABA', 
-            'AAA'  
-            ],{
-            A: cont,
-            B: cntr
-            }    
-        )
-    }
-
-    let sandwich = (output, layer, cntr) => {
-        event.shaped(
-            output, 
-            [ 
-            'AAA', 
-            'BBB', 
-            'AAA'  
-            ],{
-            A: layer,
-            B: cntr
-            }    
-        )
-    }*/
 
     let energize1 = (output, input1, energy) => {
         event.custom({
@@ -150,7 +93,7 @@ ServerEvents.recipes(event => {
     energize2("powah:crystal_spirited", 'minecraft:diamond', "powah:crystal_niotic", 40000)
     energize2("powah:crystal_nitro", 'minecraft:nether_star', "powah:crystal_spirited", 80000)
 
-    global.CrisCrosCraft("4x powah:reactor_starter", "ae2:sky_stone_block", "createaddition:capacitor", 'powah:dielectric_casing')
+    global.CrisCrosCraft2("4x powah:reactor_starter", "ae2:sky_stone_block", "createaddition:capacitor", "thermal:invar_plate", 'powah:dielectric_casing')
     global.CrisCrosCraft("4x powah:reactor_basic", "powah:reactor_starter", 'powah:capacitor_basic_large', 'powah:dielectric_casing')
     global.CrisCrosCraft("powah:energy_cell_basic", "powah:dielectric_paste", 'powah:capacitor_basic_large', 'powah:dielectric_casing')
 
@@ -164,7 +107,7 @@ ServerEvents.recipes(event => {
         if (ind>1) global.CrisCrosCraft(`4x powah:reactor_${val}`, `powah:reactor_${powah_tiers[ind-1]}`, `powah:capacitor_${val}`, 'powah:dielectric_casing')
         if (ind>1) global.CrisCrosCraft(`powah:energy_cell_${val}`, "powah:dielectric_paste", `powah:capacitor_${val}`, 'powah:dielectric_casing')
         if (ind>2) global.doughnut(`8x powah:energy_cable_${val}`, "powah:energy_cable_basic", `powah:crystal_${val}`)
-        //Energize Rod
+        if (ind>1) event.shapeless(`powah:energizing_rod_${val}`, [`powah:energizing_rod_${powah_tiers[ind-1]}` , `2x powah:capacitor_${val}`])
     })
 
     event.custom({
