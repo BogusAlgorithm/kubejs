@@ -795,9 +795,9 @@ ServerEvents.recipes(event => {
   event.recipes.thermal.smelter("thermal:lumium_ingot", ["minecraft:gold_ingot", Item.of("minecraft:glowstone_dust", 2).toJson()]).energy(10000)
   //event.recipes.thermal.smelter("thermal:enderium_ingot", ["thermal:gold_ingot", Item.of("minecraft:glowstone", 2).toJson()]).energy(15000)???
 
-  event.recipes.thermal.smelter('thermal:signalum_glass', ["thermal:signalum_ingot", "thermal:obsidian_glass"])
-  event.recipes.thermal.smelter('thermal:lumium_glass', ["thermal:lumium_ingot", "thermal:obsidian_glass"])
-  event.recipes.thermal.smelter('thermal:enderium_glass', ["thermal:enderium_ingot", "thermal:obsidian_glass"])
+  //event.recipes.thermal.smelter('thermal:signalum_glass', ["thermal:signalum_ingot", "thermal:obsidian_glass"])
+  //event.recipes.thermal.smelter('thermal:lumium_glass', ["thermal:lumium_ingot", "thermal:obsidian_glass"])
+  //event.recipes.thermal.smelter('thermal:enderium_glass', ["thermal:enderium_ingot", "thermal:obsidian_glass"])
 
   event.recipes.thermal.smelter([Item.of("create:brass_ingot", 2)], ["minecraft:copper_ingot", "create:zinc_ingot"])
   event.recipes.thermal.smelter([Item.of("thermal:electrum_ingot", 2)], ["minecraft:gold_ingot", "thermal:silver_ingot"])
@@ -808,6 +808,7 @@ ServerEvents.recipes(event => {
   event.recipes.thermal.bottler('thermal:signalum_glass', [Fluid.of('thermal:redstone', 500), 'thermal:obsidian_glass'])
   event.recipes.thermal.bottler('thermal:lumium_glass', [Fluid.of('thermal:glowstone', 500), 'thermal:obsidian_glass'])
   event.recipes.thermal.bottler('thermal:enderium_glass', [Fluid.of('thermal:ender', 250), 'thermal:obsidian_glass'])
+  event.recipes.thermal.bottler('thermal:enderium_ingot', [Fluid.of('thermal:ender', 500), 'thermal:lead_ingot'])
 
   event.recipes.thermal.bottler('minecraft:end_stone', [Fluid.of('thermal:ender', 1000), 'minecraft:stone'])
 

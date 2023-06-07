@@ -16,7 +16,7 @@ ServerEvents.recipes(event => {
     event.remove({id: `/powah:crafting\/furnator_.*/`})
     event.remove({id: `/powah:crafting\/magmator_.*/`})
     event.remove({id: `/powah:crafting\/thermo_generator_.*/`})
-    event.remove({id: `/powah:crafting\/solar_panel_.*/`})//!!! Make one for passive energy
+    event.remove({id: `/powah:crafting\/solar_panel_/`})
     event.remove({id: `/powah:crafting\/player_tranmitter_.*/`})
     event.remove({id: `/powah:crafting\/energy_hopper_.*/`})
     event.remove({id: `/powah:crafting\/energy_discharger_.*/`})
@@ -77,6 +77,21 @@ ServerEvents.recipes(event => {
             D: 'powah:dielectric_rod'
         })    
 
+    event.shaped(
+        Item.of('powah:solar_panel_starter'), 
+            [ 
+            'LLL', 
+            'ACA', 
+            'DDD'  
+            ],{
+            A: 'powah:capacitor_basic_large',
+            C: 'powah:dielectric_casing',
+            D: 'powah:dielectric_rod',
+            L: 'minecraft:daylight_detector'
+        })
+    
+    event.recipes.thermal.bottler("powah:lens_of_ender", ["minecraft:glass", Fluid.of("thermal:ender", 1000)])
+
     event.recipes.create.mixing("8x powah:dielectric_paste", ["minecraft:clay_ball", "minecraft:clay_ball", "minecraft:clay_ball", "minecraft:clay_ball", "minecraft:blaze_powder", "create:powdered_obsidian", "create:powdered_obsidian"])
 
     energize2("powah:capacitor_hardened", 'powah:capacitor_basic_large', 'powah:steel_energized', 5000)
@@ -95,6 +110,7 @@ ServerEvents.recipes(event => {
 
     global.CrisCrosCraft2("4x powah:reactor_starter", "ae2:sky_stone_block", "createaddition:capacitor", "thermal:invar_plate", 'powah:dielectric_casing')
     global.CrisCrosCraft("4x powah:reactor_basic", "powah:reactor_starter", 'powah:capacitor_basic_large', 'powah:dielectric_casing')
+
     global.CrisCrosCraft("powah:energy_cell_basic", "powah:dielectric_paste", 'powah:capacitor_basic_large', 'powah:dielectric_casing')
 
     global.sandwich('12x powah:energy_cable_starter', "powah:dielectric_paste", 'kubejs:silver_wire')
