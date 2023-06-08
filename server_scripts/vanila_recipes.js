@@ -269,9 +269,7 @@ ServerEvents.recipes(event => {
     event.shapeless('minecraft:torch', ['minecraft:stick', 'minecraft:flint_and_steel']).damageIngredient('minecraft:flint_and_steel')
 
     event.remove({ id: 'minecraft:iron_bars'})
-    //event.shapeless('minecraft:iron_bars', ['createaddition:iron_rod', 'createaddition:iron_rod', 'createaddition:iron_rod', 'createaddition:iron_rod'])
-    event.shapeless('minecraft:iron_bars', ['4x createaddition:iron_rod'])//!!!
-
+    event.shapeless('minecraft:iron_bars', ['4x createaddition:iron_rod'])
 
     event.shapeless('minecraft:dirt', ['#forge:tools/hoes', 'minecraft:coarse_dirt']).damageIngredient('#forge:tools/hoes', 2)
 
@@ -325,6 +323,22 @@ ServerEvents.recipes(event => {
     //Remove turtles, handhelds
 
     //Calculator
+    event.remove({id: "jecalculation:item_calculator_craft"})
+    event.remove({id: "jecalculation:item_calculator_math"})
+
+    event.shaped(
+        "jecalculation:item_calculator_craft", 
+            [ 
+            'BGB', 
+            'WRW', 
+            'BPB'  
+            ],{
+            B: '#minecraft:wooden_buttons',
+            G: 'minecraft:glass',
+            P: '#forge:plates/iron',
+            R: 'minecraft:redstone',
+            W: 'createaddition:copper_wire'
+    })
 })
 
 ServerEvents.blockLootTables (event => {

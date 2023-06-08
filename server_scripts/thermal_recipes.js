@@ -27,6 +27,8 @@ ServerEvents.recipes(event => {
 
   event.remove({id: "thermal:tools/rf_potato"})
   event.remove({id: "thermal:flux_capacitor"})
+
+  event.remove({id: `/thermal:compat/create/bottler_.*/`})
   
   event.shapeless("2x minecraft:fire_charge", ["minecraft:blaze_powder", "minecraft:gunpowder", '2x thermal:sawdust'])
 
@@ -799,13 +801,20 @@ ServerEvents.recipes(event => {
   //event.recipes.thermal.smelter('thermal:lumium_glass', ["thermal:lumium_ingot", "thermal:obsidian_glass"])
   //event.recipes.thermal.smelter('thermal:enderium_glass', ["thermal:enderium_ingot", "thermal:obsidian_glass"])
 
+  event.recipes.thermal.smelter([Item.of("create:brass_nugget", 6)], ["thermal:copper_dust", "thermal:zinc_dust"])
+  event.recipes.thermal.smelter([Item.of("thermal:electrum_nugget", 6)], ["thermal:gold_dust", "thermal:silver_dust"])
+  event.recipes.thermal.smelter([Item.of("thermal:invar_nugget", 9)], ["2x thermal:iron_dust", "thermal:nickel_dust"])
+
   event.recipes.thermal.smelter([Item.of("create:brass_ingot", 2)], ["minecraft:copper_ingot", "create:zinc_ingot"])
   event.recipes.thermal.smelter([Item.of("thermal:electrum_ingot", 2)], ["minecraft:gold_ingot", "thermal:silver_ingot"])
   event.recipes.thermal.smelter([Item.of("thermal:invar_ingot", 3)], ["2x minecraft:iron_ingot", "thermal:nickel_ingot"])
 
   event.recipes.thermal.smelter('thermal:steel_ingot', ["minecraft:iron_ingot", "thermal:coal_coke"])
 
-  //Redstone, Glowstone, Gunpowder filling change !!!
+  //event.recipes.thermal.bottler('minecraft:redstone', [Fluid.of("cofh_core:potion", 50, '{"Potion": "minecraft:strength"}'), 'create:cinder_flour'])
+  //event.recipes.thermal.bottler('minecraft:glowstone_dust', [Fluid.of("cofh_core:potion", 100, '{"Bottle": "REGULAR", "Potion": "minecraft:night_vision"}'), 'create:cinder_flour'])
+  //event.recipes.thermal.bottler('minecraft:gunpowder', [Fluid.of("cofh_core:potion", 50, '{"Bottle": "REGULAR", "Potion": "minecraft:harming"}'), 'create:cinder_flour'])
+
   event.recipes.thermal.bottler('thermal:signalum_glass', [Fluid.of('thermal:redstone', 500), 'thermal:obsidian_glass'])
   event.recipes.thermal.bottler('thermal:lumium_glass', [Fluid.of('thermal:glowstone', 500), 'thermal:obsidian_glass'])
   event.recipes.thermal.bottler('thermal:enderium_glass', [Fluid.of('thermal:ender', 250), 'thermal:obsidian_glass'])

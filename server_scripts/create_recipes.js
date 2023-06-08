@@ -23,8 +23,6 @@ ServerEvents.recipes(event => {
   event.replaceInput({ id: 'createaddition:crafting/modular_accumulator'}, 'createaddition:gold_wire', 'createaddition:copper_wire')
   event.replaceInput({ id: 'createaddition:crafting/copper_spool'}, 'createaddition:spool', 'minecraft:stick')
   event.replaceInput({ id: 'createaddition:crafting/gold_spool'}, 'createaddition:spool', 'minecraft:stick')
-  //event.remove({id: "createaddition:crafting/materials/ createaddition:electric_motor"})
-  //event.remove({id: "createaddition:crafting/materials/ createaddition:alternator"})
   event.shapeless("createaddition:alternator", "createaddition:electric_motor")
   event.shapeless("createaddition:electric_motor", "createaddition:alternator")
   
