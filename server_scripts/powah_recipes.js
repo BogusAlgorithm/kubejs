@@ -81,7 +81,7 @@ ServerEvents.recipes(event => {
             ],{
             A: 'powah:capacitor_basic_large',
             C: 'powah:dielectric_casing',
-            D: 'powah:dielectric_rod',
+            D: 'powah:dielectric_rod_horizontal',
             L: 'minecraft:daylight_detector'
         })
     
@@ -99,9 +99,9 @@ ServerEvents.recipes(event => {
     energize2("powah:battery_basic", 'powah:battery_starter', 'powah:capacitor_basic_large', 10000)
 
     energize1("powah:steel_energized", "thermal:steel_ingot", 10000)
-    energize2("powah:crystal_niotic", 'minecraft:emerald', "powah:crystal_blazing", 20000)
-    energize2("powah:crystal_spirited", 'minecraft:diamond', "powah:crystal_niotic", 40000)
-    energize2("powah:crystal_nitro", 'minecraft:nether_star', "powah:crystal_spirited", 80000)
+    energize2("powah:crystal_niotic", 'minecraft:emerald', "powah:crystal_blazing", 100000)
+    energize2("powah:crystal_spirited", 'minecraft:diamond', "powah:crystal_niotic", 200000)
+    energize2("powah:crystal_nitro", 'minecraft:nether_star', "powah:crystal_spirited", 400000)
 
     global.CrisCrosCraft2("4x powah:reactor_starter", "ae2:sky_stone_block", "createaddition:capacitor", "thermal:invar_plate", 'powah:dielectric_casing')
     global.CrisCrosCraft("4x powah:reactor_basic", "powah:reactor_starter", 'powah:capacitor_basic_large', 'powah:dielectric_casing')
@@ -114,7 +114,7 @@ ServerEvents.recipes(event => {
 
     powah_tiers.forEach((val, ind) => 
     {
-        if (ind>1) energize2(`powah:battery_${val}`, `powah:battery_${powah_tiers[ind-1]}`, `powah:capacitor_${val}`, ((ind*ind)*1000).toString())
+        if (ind>1) event.shapeless(`powah:battery_${val}`, [`powah:battery_${powah_tiers[ind-1]}`, `powah:capacitor_${val}`])
         if (ind>1) global.CrisCrosCraft(`4x powah:reactor_${val}`, `powah:reactor_${powah_tiers[ind-1]}`, `powah:capacitor_${val}`, 'powah:dielectric_casing')
         if (ind>1) global.CrisCrosCraft(`powah:energy_cell_${val}`, "powah:dielectric_paste", `powah:capacitor_${val}`, 'powah:dielectric_casing')
         if (ind>2) global.doughnut(`8x powah:energy_cable_${val}`, "powah:energy_cable_basic", `powah:crystal_${val}`)
@@ -129,7 +129,7 @@ ServerEvents.recipes(event => {
             {"item": "thermal:basalz_rod"},
             {"item": "thermal:blizz_rod"}
             ],
-            "energy": "10000",
+            "energy": "50000",
             "result": {
             "item": "powah:crystal_blazing"
         }}

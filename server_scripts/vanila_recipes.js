@@ -323,6 +323,8 @@ ServerEvents.recipes(event => {
     //CC
     //Computers, alt Computers , modems, wires
     //Remove turtles, handhelds
+
+    //Calculator
 })
 
 ServerEvents.blockLootTables (event => {

@@ -8,8 +8,6 @@ StartupEvents.registry('item', event => {
     event.create('kubejs:pulp','create:sequenced_assembly').maxStackSize(1)//.texture('thermal:item/sawdust.png')
     event.create('kubejs:incomplete_book').maxStackSize(1).displayName('Incomplete book').texture("minecraft:item/book")//.modelJson({"parent": "item/generated","textures": {"layer0" : "createaddition:item/iron_wire"}})
     
-    //event.create('zinc_dust').texture("kubejs:item/zinc_dust").displayName('Zinc Dust')
-    //event.create('brass_dust').texture("kubejs:item/brass_dust").displayName('Brass Dust')
     event.create('thermal:zinc_dust').texture("kubejs:item/zinc_dust").displayName('Zinc Dust')
     event.create('thermal:brass_dust').texture("kubejs:item/brass_dust").displayName('Brass Dust')
 
