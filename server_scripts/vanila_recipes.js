@@ -1,13 +1,9 @@
 // priority: 0
 
-//const $EnchantmentHelper = Java.loadClass('net.minecraft.world.item.enchantment.EnchantmentHelper')
-//const $RandomSource = Java.loadClass('net.minecraft.util.RandomSource')
-
 console.info('Loading VANILA recipes...')
 
 ServerEvents.recipes(event => {
 
-    //event.remove({output: "minecraft:grindstone"})
     event.remove({id: "minecraft:enchanting_table"})
     
     event.remove({type: `minecraft:smelting`, input: '#forge:ores'})
@@ -267,24 +263,6 @@ ServerEvents.recipes(event => {
             W: 'minecraft:water_bucket'
     })
 
-/*  event.shapeless("minecraft:wooden_pickaxe", ["minecraft:stick", 'minecraft:wooden_pickaxe']).modifyResult((inventory, itemstack) => {
-        let item = inventory.find(Item.of("minecraft:wooden_pickaxe").ignoreNBT())
-
-        item.nbt.Damage = item.nbt.Damage - 1;
-        return item
-    })
-*/
-
-/*    event.shapeless('minecraft:wooden_pickaxe', ['minecraft:wooden_pickaxe', 'minecraft:book']).modifyResult((grid, result) => {
-        return $EnchantmentHelper.enchantItem($RandomSource.create(), result, 30, false)
-        })
-
-    Ingredient.registerCustomIngredientAction("apply_enchantment", (itemstack, index, inventory) => {
-        return  $EnchantmentHelper.enchantItem($RandomSource.create(), itemstack, 30, false);
-        })
-
-    event.shapeless('minecraft:paper', ['minecraft:wooden_pickaxe', 'minecraft:book']).customIngredientAction("minecraft:wooden_pickaxe", "apply_enchantment")
-*/
     event.shapeless("kubejs:kubit_18", ["kubejs:kubit_16" ,"kubejs:kubit_17" ])
 
     event.remove({ type: 'minecraft:smelting', output: 'minecraft:charcoal' })
@@ -302,7 +280,6 @@ ServerEvents.recipes(event => {
     event.replaceInput({ id: 'minecraft:campfire'}, '#minecraft:coals', 'minecraft:torch')
     
     //misc
-    //event.recipes.create.pressing(["minecraft:bone"], ["minecraft:bone_block"])
     event.recipes.create.cutting(["minecraft:leather", Item.of("minecraft:leather").withChance(0.25)], "minecraft:leather_helmet")
     event.recipes.create.cutting(["2x minecraft:leather"], "minecraft:leather_chestplate")
     event.recipes.create.cutting(["minecraft:leather", Item.of("minecraft:leather").withChance(0.75)], "minecraft:leather_leggings")

@@ -32,11 +32,6 @@ ServerEvents.recipes(event => {
 
     event.replaceInput({id: "powah:crafting/dielectric_casing"}, "minecraft:iron_ingot", "thermal:lead_ingot")
 
-    /*powah_tiers.forEach((val) => 
-        {
-            event.shapeless(`powah:energy_cell_${val}`, [`powah:battery_${val}`, "powah:dielectric_casing"])
-        })*/
-
     let energize1 = (output, input1, energy) => {
         event.custom({
             "type": "powah:energizing",
@@ -155,19 +150,6 @@ ServerEvents.recipes(event => {
             "item": "powah:capacitor_basic_large"
         }}
     )
-    /*
-    event.custom({
-        "type": "powah:energizing",
-        "ingredients": [
-            {"tag": "forge:dusts/certus_quartz"},
-            {"tag": "forge:dusts/obsidian"},
-            {"item": "thermal:lead_dust"}
-            ],
-            "energy": "50000",
-            "result": {
-            "item": "ae2:sky_dust"
-        }}
-    )*/
 
     event.custom({
         "type": "powah:energizing",

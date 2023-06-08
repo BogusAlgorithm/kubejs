@@ -805,6 +805,7 @@ ServerEvents.recipes(event => {
 
   event.recipes.thermal.smelter('thermal:steel_ingot', ["minecraft:iron_ingot", "thermal:coal_coke"])
 
+  //Redstone, Glowstone, Gunpowder filling change !!!
   event.recipes.thermal.bottler('thermal:signalum_glass', [Fluid.of('thermal:redstone', 500), 'thermal:obsidian_glass'])
   event.recipes.thermal.bottler('thermal:lumium_glass', [Fluid.of('thermal:glowstone', 500), 'thermal:obsidian_glass'])
   event.recipes.thermal.bottler('thermal:enderium_glass', [Fluid.of('thermal:ender', 250), 'thermal:obsidian_glass'])
