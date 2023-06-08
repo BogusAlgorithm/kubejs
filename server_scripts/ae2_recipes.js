@@ -19,15 +19,12 @@ ServerEvents.recipes(event => {
   event.remove({id: "ae2:network/blocks/crank"})
   event.remove({id: "ae2:network/cables/glass_fluix"})
   
-
   event.remove({id: `/ae2:tools/paintballs_.*/`})
   Color.DYE.forEach(color => {
     event.shapeless(`ae2:${color}_paint_ball`,["ae2:matter_ball", `minecraft:${color}_dye`])
     event.recipes.thermal.smelter(`ae2:${color}_lumen_paint_ball`,[`ae2:${color}_paint_ball`, "minecraft:redstone", "minecraft:glowstone_dust"]).energy(2000)
   })
 
-/*
-quartz fiber */
   event.remove({id: "ae2:network/blocks/crystal_processing_charger"})
   event.remove({id: "ae2:network/blocks/io_condenser"})
   event.remove({id: "ae2:network/blocks/energy_energy_acceptor"})
@@ -58,7 +55,7 @@ quartz fiber */
     R: "minecraft:redstone"
   })
 
-  event.shaped('ae2:charger', [
+  event.recipes.create.mechanicalCrafting('ae2:charger', [
     'IPI',
     'I  ',
     'ICI'], {
@@ -67,7 +64,7 @@ quartz fiber */
     C: 'ae2:certus_quartz_crystal'
   })
 
-  global.CrisCrosCraft('ae2:condenser', 'minecraft:iron_ingot', 'ae2:quartz_glass', 'ae2:annihilation_core')/*
+  global.CrisCrosCraftMech('ae2:condenser', 'minecraft:iron_ingot', 'ae2:quartz_glass', 'ae2:annihilation_core')/*
   event.shaped('ae2:condenser', [
     'IGI',
     'GPG',
@@ -77,7 +74,7 @@ quartz fiber */
     P: 'ae2:annihilation_core'
   })*/
 
-  global.CrisCrosCraft('ae2:energy_acceptor', 'minecraft:iron_ingot', 'ae2:quartz_glass', 'createaddition:copper_spool')/*
+  global.CrisCrosCraftMech('ae2:energy_acceptor', 'minecraft:iron_ingot', 'ae2:quartz_glass', 'createaddition:copper_spool')/*
   event.shaped('ae2:energy_acceptor', [
     'IGI',
     'GCG',
@@ -106,31 +103,16 @@ quartz fiber */
       }
   })
 
-
   event.recipes.thermal.smelter("2x ae2:quartz_glass", ['thermal:enderium_glass', "ae2:certus_quartz_dust"])
-  /*event.shaped('4x ae2:quartz_glass', [
-    'GDG',
-    'DED',
-    'GDG'], {
-    D: '#ae2:all_quartz_dust',
-    E: 'thermal:ender_pearl_dust',
-    G: '#forge:glass'
-  })*/
-
   event.recipes.thermal.smelter("4x ae2:quartz_fiber", ['thermal:enderium_glass', "ae2:fluix_dust"])
-  /*event.shaped('3x ae2:quartz_fiber', [
-    'GGG',
-    'DED',
-    'GGG'], {
-    D: '#ae2:all_quartz_dust',
-    E: 'thermal:enderium_glass',
-    G: '#forge:glass'
-  })*/
-
   event.recipes.thermal.smelter("2x ae2:fluix_glass_cable", ['ae2:quartz_fiber', "ae2:fluix_crystal"])
 
-  //machinecraft!!!
-  event.shaped('ae2:inscriber', [
+  event.recipes.thermal.furnace(Item.of("ae2:silicon"), "ae2:certus_quartz_dust").energy(5000)
+
+  event.recipes.thermal.pulverizer(Item.of("ae2:certus_quartz_dust"), Item.of("ae2:certus_quartz_crystal"))
+  event.recipes.thermal.pulverizer(Item.of("ae2:fluix_dust"), Item.of("ae2:fluix_crystal"))
+
+  event.recipes.create.mechanicalCrafting('ae2:inscriber', [
     'IDI',
     'LNE',
     'IQI'], {
@@ -161,9 +143,4 @@ quartz fiber */
   printmaker("minecraft:diamond", "ae2:printed_engineering_processor")
   printmaker("minecraft:emerald", "ae2:printed_logic_processor")
   printmaker("ae2:silicon", "ae2:printed_silicon")
-
-  event.recipes.thermal.furnace(Item.of("ae2:silicon"), "ae2:certus_quartz_dust").energy(5000)
-
-  event.recipes.thermal.pulverizer(Item.of("ae2:certus_quartz_dust"), Item.of("ae2:certus_quartz_crystal"))
-  event.recipes.thermal.pulverizer(Item.of("ae2:fluix_dust"), Item.of("ae2:fluix_crystal"))
 })

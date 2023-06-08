@@ -16,7 +16,7 @@ ServerEvents.recipes(event => {
     event.remove({id: `/powah:crafting\/furnator_.*/`})
     event.remove({id: `/powah:crafting\/magmator_.*/`})
     event.remove({id: `/powah:crafting\/thermo_generator_.*/`})
-    event.remove({id: `/powah:crafting\/solar_panel_/`})
+    event.remove({id: `/powah:crafting\/solar_panel_.*/`})
     event.remove({id: `/powah:crafting\/player_tranmitter_.*/`})
     event.remove({id: `/powah:crafting\/energy_hopper_.*/`})
     event.remove({id: `/powah:crafting\/energy_discharger_.*/`})

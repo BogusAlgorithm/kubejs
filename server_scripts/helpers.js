@@ -16,6 +16,21 @@ ServerEvents.recipes(event => {
         )
     }
 
+    global.CrisCrosCraftMech = (output, cris, cros, cntr) => {
+        event.recipes.create.mechanicalCrafting(
+            output, 
+            [ 
+            'ABA', 
+            'BCB', 
+            'ABA'  
+            ],{
+            A: cris,
+            B: cros,
+            C: cntr
+            }    
+        )
+    }
+
     global.CrisCrosCraft2 = (output, cris, updw, ltrt, cntr) => {
         event.shaped(
             output, 
