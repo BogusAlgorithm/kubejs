@@ -21,7 +21,7 @@ ServerEvents.recipes(event => {
   
   event.remove({id: `/ae2:tools/paintballs_.*/`})
   Color.DYE.forEach(color => {
-    event.shapeless(`ae2:${color}_paint_ball`,["ae2:matter_ball", `minecraft:${color}_dye`])
+    global.doughnut(`4x ae2:${color}_paint_ball`, `minecraft:${color}_dye`, "ae2:matter_ball")
     event.recipes.thermal.smelter(`ae2:${color}_lumen_paint_ball`,[`ae2:${color}_paint_ball`, "minecraft:redstone", "minecraft:glowstone_dust"]).energy(2000)
   })
 
