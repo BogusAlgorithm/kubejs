@@ -235,11 +235,11 @@ ServerEvents.recipes(event => {
 
         let current_color = /^ae2:(.+)_lumen_paint_ball$/.exec(itemstack.id)[1]
 
-        if (rand_val<0.1) 
+        if (rand_val<0.3) 
         {
             itemstack = Item.of(`kubejs:kubit_${colors_array.indexOf(current_color, 0)}`)
         }
-        else if (rand_val<0.7) 
+        else if (rand_val<0.9) 
         {
             let rc = Math.floor(Math.random()*15)//16
             if (rc >= colors_array.indexOf(current_color)) rc++
@@ -295,7 +295,6 @@ BlockEvents.rightClicked('minecraft:end_portal_frame', event => {
     const {item, block} = event
     if(item.id == 'create:wrench') {
         block.popItem("minecraft:end_portal_frame")
-        //Check for ender eye
-        //block.popItem("minecraft:ender_eye")
+        if (block.properties.eye == "true") block.popItem("minecraft:ender_eye")
     }
 })

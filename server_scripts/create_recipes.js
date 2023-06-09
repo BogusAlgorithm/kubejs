@@ -223,6 +223,7 @@ ServerEvents.recipes(event => {
   event.recipes.create.mixing([Fluid.of('minecraft:milk', 250)], [Fluid.of('minecraft:water', 250), "minecraft:bone_meal"]).heated()
 
   event.recipes.create.compacting([Fluid.of('minecraft:water', 100)], '#minecraft:leaves')
+  event.remove({id: "createaddition:compacting/seed_oil"})
   event.recipes.create.compacting([Fluid.of('createaddition:seed_oil', 100)], ['#forge:seeds','#forge:seeds','#forge:seeds','#forge:seeds','#forge:seeds'])
 
   event.recipes.create.pressing(["thermal:lead_plate"], ["thermal:lead_ingot"])
