@@ -26,7 +26,7 @@ ServerEvents.recipes(event => {
     ]
 
     materials.forEach(mat => {
-        event.smelting(`8x ${mat[0]}:${mat[1]}_nugget`, `${mat[0]}:raw_${mat[1]}`)    
+        event.smelting(`8x ${mat[0]}:${mat[1]}_nugget`, `${mat[0]}:raw_${mat[1]}`)
     })
     event.smelting('8x create:copper_nugget', 'minecraft:raw_copper')
 
@@ -46,9 +46,9 @@ ServerEvents.recipes(event => {
     event.smelting('5x create:copper_nugget', 'create:crushed_copper_ore')
 
     materials.forEach(mat => {
-        event.recipes.create.milling(`4x thermal:${mat[1]}_dust`, `create:crushed_${mat[1]}_ore`)
+        event.recipes.create.milling(`2x thermal:${mat[1]}_dust`, `create:crushed_${mat[1]}_ore`)
     })
-    event.recipes.create.milling("4x thermal:copper_dust", "create:crushed_copper_ore")
+    event.recipes.create.milling("2x thermal:copper_dust", "create:crushed_copper_ore")
 
     materials.forEach(mat => {
         event.smelting(`3x ${mat[0]}:${mat[1]}_nugget`, `thermal:${mat[1]}_dust`)
@@ -58,6 +58,8 @@ ServerEvents.recipes(event => {
     event.smelting('3x create:brass_nugget', 'thermal:brass_dust')
     event.smelting('3x thermal:electrum_nugget', 'thermal:electrum_dust')
     event.smelting('3x thermal:invar_nugget', 'thermal:invar_dust')
+
+    event.smelting('3x minecraft:iron_nugget', "minecraft:tripwire_hook")
 
     event.shaped(
         Item.of('minecraft:turtle_egg'), 

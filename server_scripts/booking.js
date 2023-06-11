@@ -16,8 +16,8 @@ ServerEvents.recipes(event => {
       output
       ,'minecraft:book',[
         event.recipes.createDeploying(inter,[inter,item]),
-        event.recipes.createFilling(inter,[inter,Fluid.of("cofh_core:experience", 1000)]),
-        event.recipes.createFilling(inter,[inter,Fluid.of("cofh_core:experience", 1000)])
+        event.recipes.createFilling(inter,[inter,Fluid.of("cofh_core:experience", 1000)])//,
+        //event.recipes.createFilling(inter,[inter,Fluid.of("cofh_core:experience", 1000)])
       ]).transitionalItem(inter).loops(1)
   }
 
@@ -29,4 +29,6 @@ ServerEvents.recipes(event => {
     book_maker("minecraft:blaze_rod", "minecraft:fire_protection", 4)
     book_maker("thermal:saw_blade", "minecraft:sharpness", 4)
     book_maker("ae2:fluix_block", "minecraft:fortune", 3)
+    book_maker("thermal:potato_block", "create:potato_recovery", 3)
+    //book_maker("minecraft:tnt", "minecraft:power", 4)
 })
