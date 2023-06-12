@@ -25,6 +25,7 @@ const organics = [
     ["minecraft:spider_eye", 2],
     ["minecraft:ink_sac", 2],
     ["minecraft:feather:", 2],
+	["minecraft:honeycomb", 2],
     ["minecraft:frogspawn", 2]
   ];
 

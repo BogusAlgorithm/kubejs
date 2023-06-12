@@ -398,7 +398,7 @@ ServerEvents.recipes(event => {
       T: 'thermal:tin_gear'
     })
 
-    event.remove({id: "thermal:charge_bench"})
+    event.remove({id: "thermal:charge_bench"})//Electrum
     event.shaped("thermal:charge_bench", [ 
         'ICI', 
         'AFA', 
@@ -793,13 +793,11 @@ ServerEvents.recipes(event => {
   event.remove({id: "thermal:fire_charge/signalum_glass_2"})
   event.remove({id: "thermal:fire_charge/lumium_glass_2"})
   event.remove({id: "thermal:fire_charge/enderium_glass_2"})
+  event.remove({type: `thermal:smelter`, input: "#forge:raw_materials"})
+  event.remove({type: `thermal:smelter`, input: "#forge:ores"})
   event.recipes.thermal.smelter("thermal:signalum_ingot", ["thermal:nickel_ingot", Item.of("minecraft:redstone", 5).toJson()]).energy(10000)
-  event.recipes.thermal.smelter("thermal:lumium_ingot", ["minecraft:gold_ingot", Item.of("minecraft:glowstone_dust", 2).toJson()]).energy(10000)
+  event.recipes.thermal.smelter("thermal:lumium_ingot", ["minecraft:gold_ingot", Item.of("minecraft:glowstone_dust", 4).toJson()]).energy(10000)
   //event.recipes.thermal.smelter("thermal:enderium_ingot", ["thermal:gold_ingot", Item.of("minecraft:glowstone", 2).toJson()]).energy(15000)???
-
-  //event.recipes.thermal.smelter('thermal:signalum_glass', ["thermal:signalum_ingot", "thermal:obsidian_glass"])
-  //event.recipes.thermal.smelter('thermal:lumium_glass', ["thermal:lumium_ingot", "thermal:obsidian_glass"])
-  //event.recipes.thermal.smelter('thermal:enderium_glass', ["thermal:enderium_ingot", "thermal:obsidian_glass"])
 
   event.recipes.thermal.smelter([Item.of("create:brass_nugget", 6)], ["thermal:copper_dust", "thermal:zinc_dust"])
   event.recipes.thermal.smelter([Item.of("thermal:electrum_nugget", 6)], ["thermal:gold_dust", "thermal:silver_dust"])
@@ -816,7 +814,7 @@ ServerEvents.recipes(event => {
   //event.recipes.thermal.bottler('minecraft:gunpowder', [Fluid.of("cofh_core:potion", 50, '{"Bottle": "REGULAR", "Potion": "minecraft:harming"}'), 'create:cinder_flour'])
 
   event.recipes.thermal.bottler('thermal:signalum_glass', [Fluid.of('thermal:redstone', 500), 'thermal:obsidian_glass'])
-  event.recipes.thermal.bottler('thermal:lumium_glass', [Fluid.of('thermal:glowstone', 500), 'thermal:obsidian_glass'])
+  event.recipes.thermal.bottler('thermal:lumium_glass', [Fluid.of('thermal:glowstone', 1000), 'thermal:obsidian_glass'])
   event.recipes.thermal.bottler('thermal:enderium_glass', [Fluid.of('thermal:ender', 250), 'thermal:obsidian_glass'])
   event.recipes.thermal.bottler('thermal:enderium_ingot', [Fluid.of('thermal:ender', 500), 'thermal:lead_ingot'])
 
@@ -850,7 +848,7 @@ ServerEvents.recipes(event => {
 
   event.remove({id: "thermal:lumium_dust_4"})
   event.recipes.create.mixing("thermal:lumium_ingot", ["thermal:gold_dust", "thermal:gold_dust", "thermal:gold_dust", 
-    "thermal:tin_dust", "minecraft:glowstone_dust", "minecraft:glowstone_dust"]).superheated()
+    "thermal:tin_dust", "minecraft:glowstone"]).superheated()
 
   event.remove({id: "thermal:signalum_dust_4"})
   event.recipes.create.mixing("thermal:signalum_ingot", ["thermal:nickel_dust", "thermal:nickel_dust", "thermal:nickel_dust", 

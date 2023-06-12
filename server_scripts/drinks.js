@@ -38,5 +38,7 @@ ServerEvents.recipes(event => {
   event.recipes.create.filling("teamod:water_cup", [Fluid.of("minecraft:water", 500), "teamod:empty_cup"])
   event.replaceInput({id: "teamod:full_tea_cup"}, "teamod:ground_tea_leaves", "thermal:tea")
   event.replaceInput({id: "teamod:full_coffee_cup"}, "teamod:coffee_grounds", "thermal:coffee_seeds")
-  //Drops from mod plants change!!!
+
+  event.shapeless("thermal:tea", "teamod:tea_leaves")
+  event.shapeless("teamod:full_coffee_cup", ["3x teamod:roasted_coffee_bean", "teamod:boiling_cup"])
 })

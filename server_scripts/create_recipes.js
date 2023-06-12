@@ -195,7 +195,7 @@ ServerEvents.recipes(event => {
   event.remove({id: "create:filling/glowstone"})
   event.remove({id: "create:filling/gunpowder"})
   event.recipes.create.filling("minecraft:redstone", ["create:cinder_flour", Fluid.of("create:potion", 50, '{"Bottle": "REGULAR", "Potion": "minecraft:strength"}')])
-  event.recipes.create.filling("minecraft:glowstone_dust", ["create:cinder_flour", Fluid.of("create:potion", 100, '{"Bottle": "REGULAR", "Potion": "minecraft:night_vision"}')])
+  event.recipes.create.filling("minecraft:glowstone_dust", ["create:cinder_flour", Fluid.of("create:potion", 50, '{"Bottle": "REGULAR", "Potion": "minecraft:night_vision"}')])
   event.recipes.create.filling("minecraft:gunpowder", ["create:cinder_flour", Fluid.of("create:potion", 50, '{"Bottle": "REGULAR", "Potion": "minecraft:harming"}')])
 
   event.recipes.create.milling(["minecraft:string"], '#thermal:rockwool')

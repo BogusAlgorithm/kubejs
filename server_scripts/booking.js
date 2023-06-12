@@ -30,5 +30,5 @@ ServerEvents.recipes(event => {
     book_maker("thermal:saw_blade", "minecraft:sharpness", 4)
     book_maker("ae2:fluix_block", "minecraft:fortune", 3)
     book_maker("thermal:potato_block", "create:potato_recovery", 3)
-    //book_maker("minecraft:tnt", "minecraft:power", 4)
+    book_maker("minecraft:tnt", "minecraft:power", 5)
 })

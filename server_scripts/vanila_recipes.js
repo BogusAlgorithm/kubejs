@@ -264,6 +264,51 @@ ServerEvents.recipes(event => {
 
     //CC
     //Computers, alt Computers , modems, wires
+    event.remove({ id: `computercraft:computer_normal`})
+    event.remove({ id: `computercraft:computer_advanced`})
+    event.remove({ id: `computercraft:pocket_computer_normal`})
+    event.remove({ id: `computercraft:pocket_computer_advanced`})
+    event.remove({ id: `computercraft:cable`})
+
+    global.sandwich('6x computercraft:cable', '#thermal:rockwool', 'createaddition:copper_wire')
+
+    event.shaped(
+        "computercraft:computer_normal", 
+            [ 
+            'SSS', 
+            'SES', 
+            'SGS'  
+            ],{
+            E: 'create:electron_tube',
+            G: 'minecraft:glass',
+            S: 'minecraft:stone'
+    })
+
+
+    event.shaped(
+        "computercraft:computer_normal", 
+            [ 
+            'SSS', 
+            'SPS', 
+            'SGS'  
+            ],{
+            P: 'ae2:calculation_processor',
+            G: 'minecraft:glass',
+            S: 'minecraft:stone'
+    })
+
+    event.shaped(
+        "computercraft:pocket_computer_normal", 
+            [ 
+            'SSS', 
+            'SPS', 
+            'SGS'  
+            ],{
+            P: 'ae2:calculation_processor',
+            G: 'minecraft:glass',
+            S: 'minecraft:stone_slab'
+    })
+
     //Remove turtles, handhelds
 
     //Calculator
