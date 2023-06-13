@@ -6,6 +6,12 @@ ServerEvents.tags('item', event => {
     event.add('thermal:plates', `/^thermal:.*_plate$/`)         //for quest
     event.add('powah:pocket_battery', `/powah:battery_.*/`)     //for quest
 
+    event.add('teamod:brewable', 'thermal:tea')
+    event.add('teamod:brewable', 'thermal:coffee_seeds')
+    event.add('teamod:brewable', 'teamod:roasted_coffee_bean')
+    event.add('teamod:ready', 'teamod:full_coffee_cup')
+    event.add('teamod:ready', 'teamod:full_tea_cup')
+
     Color.DYE.forEach(col => {
         event.add("minecraft:lumen_balls", `ae2:${col}_lumen_paint_ball`)
     })
