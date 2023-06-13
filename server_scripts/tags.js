@@ -1,11 +1,10 @@
 console.info('Loading TAGS ...')
 
 ServerEvents.tags('item', event => {
-    // Get the #forge:cobblestone tag collection and add Diamond Ore to it
     event.add('thermal:frame_component', 'thermal:silver_gear')
     event.add('thermal:frame_component', 'thermal:lead_gear')
-    event.add('thermal:plates', `/^thermal:.*_plate$/`)
-    event.add('powah:pocket_battery', `/powah:battery_.*/`)
+    event.add('thermal:plates', `/^thermal:.*_plate$/`)         //for quest
+    event.add('powah:pocket_battery', `/powah:battery_.*/`)     //for quest
 
     Color.DYE.forEach(col => {
         event.add("minecraft:lumen_balls", `ae2:${col}_lumen_paint_ball`)

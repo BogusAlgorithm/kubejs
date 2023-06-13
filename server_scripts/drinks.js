@@ -2,7 +2,6 @@ console.info('Loading Drinks recipes...')
 
 ServerEvents.recipes(event => {
   event.remove({id: "drinkbeer:trade_box_normal"})
-
   event.remove({id: `/drinkbeer:beer_mug.*/`})
 
   let brewbeer = (output, input1, input2, input3) => {
@@ -40,5 +39,6 @@ ServerEvents.recipes(event => {
   event.replaceInput({id: "teamod:full_coffee_cup"}, "teamod:coffee_grounds", "thermal:coffee_seeds")
 
   event.shapeless("thermal:tea", "teamod:tea_leaves")
+  event.shapeless("thermal:tea_seeds", "thermal:tea")
   event.shapeless("teamod:full_coffee_cup", ["3x teamod:roasted_coffee_bean", "teamod:boiling_cup"])
 })

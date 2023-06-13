@@ -284,7 +284,6 @@ ServerEvents.recipes(event => {
             S: 'minecraft:stone'
     })
 
-
     event.shaped(
         "computercraft:computer_normal", 
             [ 
@@ -309,7 +308,7 @@ ServerEvents.recipes(event => {
             S: 'minecraft:stone_slab'
     })
 
-    //Remove turtles, handhelds
+    //Remove turtles, handhelds???
 
     //Calculator
     event.remove({id: "jecalculation:item_calculator_craft"})

@@ -7,6 +7,14 @@ ServerEvents.recipes(event => {
   event.remove({id: "createaddition:mechanical_crafting/tesla_coil"})
   event.remove({id: "createaddition:mechanical_crafting/alternator"})
   event.remove({id: "createaddition:mechanical_crafting/electric_motor"})
+  event.remove({id: "createaddition:compat/ae2/charged_certus_quartz"})
+  
+  event.replaceInput({ id: 'createaddition:crafting/modular_accumulator'}, 'createaddition:gold_wire', 'createaddition:copper_wire')
+  event.replaceInput({ id: 'createaddition:crafting/copper_spool'}, 'createaddition:spool', 'minecraft:stick')
+  event.replaceInput({ id: 'createaddition:crafting/gold_spool'}, 'createaddition:spool', 'minecraft:stick')
+  
+  event.shapeless("createaddition:alternator", "createaddition:electric_motor")
+  event.shapeless("createaddition:electric_motor", "createaddition:alternator")
 
   event.remove({id: "create:crushing/prismarine_crystals"})
   event.remove({id: "create:crafting/kinetics/windmill_bearing"})
@@ -19,12 +27,6 @@ ServerEvents.recipes(event => {
   event.replaceInput({ id: 'create:crafting/kinetics/wrench'}, '#forge:plates/gold', 'create:brass_sheet')
 
   event.shapeless("create:blaze_cake", ["create:blaze_cake_base", "3x minecraft:magma_cream"])
-
-  event.replaceInput({ id: 'createaddition:crafting/modular_accumulator'}, 'createaddition:gold_wire', 'createaddition:copper_wire')
-  event.replaceInput({ id: 'createaddition:crafting/copper_spool'}, 'createaddition:spool', 'minecraft:stick')
-  event.replaceInput({ id: 'createaddition:crafting/gold_spool'}, 'createaddition:spool', 'minecraft:stick')
-  event.shapeless("createaddition:alternator", "createaddition:electric_motor")
-  event.shapeless("createaddition:electric_motor", "createaddition:alternator")
   
   event.remove({id: "create:crafting/materials/electron_tube"})
   event.shaped(
@@ -209,18 +211,18 @@ ServerEvents.recipes(event => {
   event.remove({id: "create:milling/dripstone_block"})
   event.recipes.create.milling([Item.of("minecraft:clay_ball", 2), Item.of("minecraft:clay_ball").withChance(0.5)], "minecraft:dripstone_block")
 
-  event.recipes.create.crushing("2x thermal:iron_dust", "minecraft:iron_ingot")
+  //event.recipes.create.crushing("2x thermal:iron_dust", "minecraft:iron_ingot")
 
   event.remove({id: "create:crafting/materials/rose_quartz"})
   event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye", "minecraft:red_dye"])
   event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone"])
   event.recipes.create.mixing(["minecraft:amethyst_shard"], ["minecraft:quartz", "minecraft:purple_dye", "minecraft:purple_dye", "minecraft:purple_dye", "minecraft:purple_dye"])
 
-  event.recipes.create.mixing([Fluid.of('create:honey', 1000)], [Fluid.of('thermal:syrup', 1000), "minecraft:sugar", "minecraft:sugar", "minecraft:sugar", "minecraft:sugar"]).heated()
+  //event.recipes.create.mixing([Fluid.of('create:honey', 1000)], [Fluid.of('thermal:syrup', 1000), "minecraft:sugar", "minecraft:sugar", "minecraft:sugar", "minecraft:sugar"]).heated()
 
   event.recipes.create.mixing("2x thermal:brass_dust", ["thermal:copper_dust", "thermal:zinc_dust"])
 
-  event.recipes.create.mixing([Fluid.of('minecraft:milk', 250)], [Fluid.of('minecraft:water', 250), "minecraft:bone_meal"]).heated()
+  //event.recipes.create.mixing([Fluid.of('minecraft:milk', 250)], [Fluid.of('minecraft:water', 250), "minecraft:bone_meal"]).heated()
 
   event.recipes.create.compacting([Fluid.of('minecraft:water', 100)], '#minecraft:leaves')
   event.remove({id: "createaddition:compacting/seed_oil"})
@@ -263,14 +265,14 @@ ServerEvents.recipes(event => {
   ]).transitionalItem(inter).loops(1)
   
   //Remove maybe???
-  inter = 'kubejs:pulp'
+  /*inter = 'kubejs:pulp'
   event.recipes.createSequencedAssembly([ 
     "minecraft:paper"
     ],'thermal:sawdust',[
     event.recipes.createFilling(inter,[inter, Fluid.of("minecraft:water", 1000)]),
     event.recipes.createPressing(inter, inter),
     event.recipes.createPressing(inter, inter),
-  ]).transitionalItem(inter).loops(1)
+  ]).transitionalItem(inter).loops(1)*/
 
   event.remove({id: "create:sequenced_assembly/precision_mechanism"})
   inter = 'create:incomplete_precision_mechanism'
