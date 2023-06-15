@@ -74,7 +74,7 @@ ServerEvents.recipes(event => {
     P: 'ae2:annihilation_core'
   })*/
 
-  global.CrisCrosCraftMech('ae2:energy_acceptor', 'minecraft:iron_ingot', 'ae2:quartz_glass', 'createaddition:copper_spool')/*
+  global.CrisCrosCraftMech('ae2:energy_acceptor', 'minecraft:iron_ingot', 'ae2:quartz_glass', 'createaddition:gold_spool')/*
   event.shaped('ae2:energy_acceptor', [
     'IGI',
     'GCG',
@@ -139,6 +139,7 @@ ServerEvents.recipes(event => {
     })
   }
 
+  printmaker("ae2:guide", "minecraft:book")
   printmaker("ae2:certus_quartz_crystal", "ae2:printed_calculation_processor")
   printmaker("minecraft:diamond", "ae2:printed_engineering_processor")
   printmaker("minecraft:emerald", "ae2:printed_logic_processor")
