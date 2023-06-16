@@ -3,9 +3,15 @@ console.info('Loading TAGS ...')
 ServerEvents.tags('item', event => {
     event.add('thermal:frame_component', 'thermal:silver_gear')
     event.add('thermal:frame_component', 'thermal:lead_gear')
+
     event.add('thermal:plates', `/^thermal:.*_plate$/`)                 //for quest
 
     event.add('thermal:adv_glass', `/thermal:((?!obsidian).)*_glass/`)  //for quest
+
+    event.add('thermal:crystal', `minecraft:diamond`)  //for quest
+    event.add('thermal:crystal', `minecraft:emerald`)  //for quest
+    event.add('thermal:crystal', `minecraft:lapis_lazuli`)  //for quest
+    event.add('thermal:crystal', `ae2:certus_quartz_crystal`)  //for quest
 
     event.add('powah:pocket_battery', `/powah:battery_.*/`)             //for quest
 

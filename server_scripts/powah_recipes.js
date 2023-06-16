@@ -109,7 +109,7 @@ ServerEvents.recipes(event => {
     global.CrisCrosCraft("powah:energy_cell_basic", "powah:dielectric_paste", 'powah:capacitor_basic_large', 'powah:dielectric_casing')
 
     global.sandwich('8x powah:energy_cable_starter', "powah:dielectric_paste", 'kubejs:silver_wire')
-    global.sandwich('8x powah:energy_cable_basic', "powah:dielectric_paste", 'createadditions:gold_wire')
+    global.sandwich('8x powah:energy_cable_basic', "powah:dielectric_paste", 'createaddition:gold_wire')
     global.doughnut(`8x powah:energy_cable_hardened`, "powah:energy_cable_basic", `powah:steel_energized`)
 
     powah_tiers.forEach((val, ind) => 

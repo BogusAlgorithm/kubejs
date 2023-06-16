@@ -50,7 +50,7 @@ ServerEvents.recipes(event => {
     'G',
     'L',
     'R'], {
-    G: 'minecraft:glass',
+    G: 'ae2:fluix_glass_cable',
     L: 'minecraft:lever',
     R: "minecraft:redstone"
   })
@@ -139,7 +139,7 @@ ServerEvents.recipes(event => {
     })
   }
 
-  printmaker("ae2:guide", "minecraft:book")
+  printmaker("minecraft:book", "ae2:guide")
   printmaker("ae2:certus_quartz_crystal", "ae2:printed_calculation_processor")
   printmaker("minecraft:diamond", "ae2:printed_engineering_processor")
   printmaker("minecraft:emerald", "ae2:printed_logic_processor")

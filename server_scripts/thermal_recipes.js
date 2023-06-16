@@ -126,7 +126,7 @@ ServerEvents.recipes(event => {
     )
   
   augm_upgrade('thermal:upgrade_augment_1', 'thermal:nickel_plate','powah:capacitor_basic_large','thermal:obsidian_glass', 'thermal:quartz_gear')
-  augm_upgrade('thermal:upgrade_augment_2', 'thermal:signalum_plate','powah:capacitor_hardened','thermal:signalum_glass', 'thermal:upgrade_augment_1')
+  augm_upgrade('thermal:upgrade_augment_2', 'thermal:lumium_plate','powah:capacitor_hardened','thermal:lumium_glass', 'thermal:upgrade_augment_1')
   augm_upgrade('thermal:upgrade_augment_3', 'thermal:enderium_plate','powah:capacitor_blazing','thermal:enderium_glass', 'thermal:upgrade_augment_2')
   /*
   event.shaped(Item.of('thermal:upgrade_augment_1'), 
