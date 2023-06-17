@@ -108,7 +108,7 @@ const food = [
   ];
 
   const gems = [
-    ['thermal:quartz_dust',2],
+    ['thermal:quartz_dust',1],
     ['thermal:diamond_dust',1],
     ['thermal:emerald_dust',1]//,
     //['ae2:certus_quartz_dust',2]
@@ -157,7 +157,7 @@ const modes = [ [stones, 0.02, "minecraft:raw_iron", 64, 3, 0.5],
                 [soils, 0.02, "minecraft:soul_soil", 64, 4, 0.5],
                 [protein, 0.00, "minecraft:air", 64, 16, 0.5],
                 [minerals, 0.01, "minecraft:coal", 64, 2, 0.25],
-                [gems, 0.00, "minecraft:air", 64, 8, 0.5],
+                [gems, 0.00, "minecraft:air", 64, 8, 0.25],
                 [crops_2, 0.00, "minecraft:air", 64, 4, 0.5],
                 [stones2, 0.00, "minecraft:air", 64, 8, 0.5],
                 [gems, 0.00, "minecraft:air", 64, 4, 0.5],

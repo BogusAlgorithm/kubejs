@@ -121,7 +121,7 @@ ServerEvents.recipes(event => {
     E: 'minecraft:emerald',
     L: 'minecraft:lapis_lazuli',
     Q: 'ae2:certus_quartz_crystal',
-    N: 'minecraft:ender_pearl'
+    N: 'powah:lens_of_ender'
   })
 
   let printmaker = (input, output) => {

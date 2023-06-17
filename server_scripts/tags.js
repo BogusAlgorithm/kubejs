@@ -23,6 +23,8 @@ ServerEvents.tags('item', event => {
     event.add('ae2:storage_cells', `/^ae2:(item|fluid)_storage_cell_.*/`)           //for quest
     event.add('ae2:spatial_storage_cells', `/^ae2:spatial_storage_cell_.*/`)           //for quest
 
+    event.add('kubejs:kubits', `/kubejs:kubit_(?!(16|17|18))/`)  //for quest
+
     event.add('teamod:brewable', 'thermal:tea')
     event.add('teamod:brewable', 'thermal:coffee_seeds')
     event.add('teamod:brewable', 'teamod:roasted_coffee_bean')
