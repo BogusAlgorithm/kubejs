@@ -30,6 +30,8 @@ ServerEvents.recipes(event => {
 
   event.remove({id: `/thermal:compat/create/bottler_.*/`})
   
+  event.remove({output: `thermal:enderium_dust`})
+
   event.shapeless("2x minecraft:fire_charge", ["minecraft:blaze_powder", "minecraft:gunpowder", '2x thermal:sawdust'])
 
   event.replaceInput({id: "thermal:chiller_ball_cast"}, "thermal:bronze_plate", "thermal:gold_plate")
@@ -750,12 +752,15 @@ ServerEvents.recipes(event => {
         "amount": 1000
       },
       {
-        "item": "ae2:certus_quartz_dust"
+        "item": "minecraft:quartz_block",
+      },
+      {
+        "item": "kubejs:crystallizer"
       }
     ],
     "result": [
       {
-        "item": "ae2:certus_quartz_crystal"
+        "item": "ae2:quartz_block"
       }
     ],
     "energy": 5000

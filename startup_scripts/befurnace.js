@@ -110,8 +110,8 @@ const food = [
   const gems = [
     ['thermal:quartz_dust',2],
     ['thermal:diamond_dust',1],
-    ['thermal:emerald_dust',1],
-    ['ae2:certus_quartz_dust',2]
+    ['thermal:emerald_dust',1]//,
+    //['ae2:certus_quartz_dust',2]
   ];
 
   const stones2 = [

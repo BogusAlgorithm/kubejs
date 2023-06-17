@@ -6,14 +6,22 @@ ServerEvents.tags('item', event => {
 
     event.add('thermal:plates', `/^thermal:.*_plate$/`)                 //for quest
 
-    event.add('thermal:adv_glass', `/thermal:((?!obsidian).)*_glass/`)  //for quest
+    //event.add('thermal:adv_glass', `/thermal:((?!obsidian).)*_glass/`)  //for quest
+    event.add('thermal:adv_glass', `/thermal:(?!obsidian).*_glass/`)  //for quest
 
-    event.add('thermal:crystal', `minecraft:diamond`)  //for quest
-    event.add('thermal:crystal', `minecraft:emerald`)  //for quest
-    event.add('thermal:crystal', `minecraft:lapis_lazuli`)  //for quest
-    event.add('thermal:crystal', `ae2:certus_quartz_crystal`)  //for quest
+
+    event.add('thermal:crystal', `minecraft:diamond`)                   //for quest
+    event.add('thermal:crystal', `minecraft:emerald`)                   //for quest
+    event.add('thermal:crystal', `minecraft:lapis_lazuli`)              //for quest
+    event.add('thermal:crystal', `ae2:certus_quartz_crystal`)           //for quest
 
     event.add('powah:pocket_battery', `/powah:battery_.*/`)             //for quest
+
+    event.add('ae2:cell_components', `/ae2:cell_component_*/`)           //for quest
+    event.add('ae2:spatial_cell_components', `/ae2:spatial_cell_component_*/`)           //for quest
+    event.add('ae2:upgrade_cards', `/^ae2:(?!(basic|advanced|biometric|memory|debug)).*_card$/`)           //for quest
+    event.add('ae2:storage_cells', `/^ae2:(item|fluid)_storage_cell_.*/`)           //for quest
+    event.add('ae2:spatial_storage_cells', `/^ae2:spatial_storage_cell_.*/`)           //for quest
 
     event.add('teamod:brewable', 'thermal:tea')
     event.add('teamod:brewable', 'thermal:coffee_seeds')
