@@ -2,8 +2,7 @@ console.info('Loading Booking...')
 
 ServerEvents.recipes(event => {
 
-    event.shapeless("create:experience_nugget", "minecraft:book")
-    event.recipes.create.mixing([Fluid.of("cofh_core:experience", 125)], "create:experience_nugget").heated()
+  event.shapeless("create:experience_nugget", "minecraft:book")
 
   let book_maker = (item, ench, lvl) => {
     let output = []
@@ -32,4 +31,5 @@ ServerEvents.recipes(event => {
     book_maker("thermal:potato_block", "create:potato_recovery", 3)
     book_maker("minecraft:tnt", "minecraft:power", 5)
     book_maker("minecraft:white_wool", "minecraft:silk_touch", 1)
+    book_maker("minecraft:feather", "minecraft:feather_falling", 4)
 })

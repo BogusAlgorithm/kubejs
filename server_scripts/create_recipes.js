@@ -218,11 +218,7 @@ ServerEvents.recipes(event => {
   event.recipes.create.mixing(["create:rose_quartz"], ["minecraft:quartz", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone", "minecraft:redstone"])
   event.recipes.create.mixing(["minecraft:amethyst_shard"], ["minecraft:quartz", "minecraft:purple_dye", "minecraft:purple_dye", "minecraft:purple_dye", "minecraft:purple_dye"])
 
-  //event.recipes.create.mixing([Fluid.of('create:honey', 1000)], [Fluid.of('thermal:syrup', 1000), "minecraft:sugar", "minecraft:sugar", "minecraft:sugar", "minecraft:sugar"]).heated()
-
   event.recipes.create.mixing("2x thermal:brass_dust", ["thermal:copper_dust", "thermal:zinc_dust"])
-
-  //event.recipes.create.mixing([Fluid.of('minecraft:milk', 250)], [Fluid.of('minecraft:water', 250), "minecraft:bone_meal"]).heated()
 
   event.recipes.create.compacting([Fluid.of('minecraft:water', 100)], '#minecraft:leaves')
   event.remove({id: "createaddition:compacting/seed_oil"})

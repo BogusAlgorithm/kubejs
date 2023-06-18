@@ -358,6 +358,21 @@ ServerEvents.recipes(event => {
       P: '#minecraft:planks'
   })
 
+  event.remove({id: "thermal:device_hive_extractor"})
+  event.shaped(
+    Item.of('thermal:device_hive_extractor'), 
+      [ 
+      'PHP', 
+      'GCG', 
+      'PUP'  
+      ],{
+      H: 'minecraft:hopper',  
+      C: 'create:copper_casing', 
+      G: '#forge:glass',
+      U: 'minecraft:shears',
+      P: '#minecraft:planks'
+  })
+
   event.remove({id: "thermal:redstone_servo"})
   event.shaped('thermal:redstone_servo', [
     'RIR',

@@ -57,6 +57,7 @@ const food = [
     ["minecraft:carrot", 1],
     ["minecraft:pumpkin", 1],
     ["minecraft:melon", 1],
+    ["minecraft:sweet_berries", 1],
     ["minecraft:beetroot", 2]
   ];
 

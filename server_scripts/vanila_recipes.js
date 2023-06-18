@@ -94,7 +94,7 @@ ServerEvents.recipes(event => {
     summonegg("minecraft:sheep_spawn_egg", "minecraft:mutton", "minecraft:grass")
     summonegg("minecraft:cat_spawn_egg", "minecraft:rotten_flesh", "#forge:foods/fish/raw")
     summonegg("minecraft:wolf_spawn_egg", "minecraft:rotten_flesh", "minecraft:bone")
-    summonegg("2x minecraft:bee_spawn_egg", "minecraft:honey_bottle", "#minecraft:flowers")
+    summonegg("3x minecraft:bee_spawn_egg", "minecraft:honeycomb", "#minecraft:flowers")
     summonegg("minecraft:rabbit_spawn_egg", "minecraft:rabbit", "minecraft:carrot")
     summonegg("minecraft:magma_cube_spawn_egg", "minecraft:magma_cream", "minecraft:magma_cream")
 
