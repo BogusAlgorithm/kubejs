@@ -25,7 +25,7 @@ const organics = [
     ["minecraft:spider_eye", 2],
     ["minecraft:ink_sac", 2],
     ["minecraft:feather:", 2],
-	["minecraft:honeycomb", 2],
+	  ["minecraft:honeycomb", 2],
     ["minecraft:frogspawn", 2]
   ];
 
@@ -72,7 +72,7 @@ const food = [
 
   
   const crops_2 = [
-    ["thermal:amaranth", 1],
+    ["thermal:amaranth", 1],//Swap to seeds
     ["thermal:barley", 1],
     ["thermal:bell_pepper", 1],
     ["thermal:corn", 1],
@@ -86,7 +86,8 @@ const food = [
     ["thermal:sadiroot", 1],
     ["thermal:spinach", 1],
     ["thermal:strawberry", 1],
-    ["thermal:tomato", 1]
+    ["thermal:tomato", 1],
+    ["thermal:frost_melon_slice"]
   ];
 
   const protein = [
@@ -154,7 +155,7 @@ const modes = [ [stones, 0.02, "minecraft:raw_iron", 64, 3, 0.5],
                 [organics, 0.02, "minecraft:egg", 16, 4, 0.5],
                 [plants, 0.02, "minecraft:cactus", 64, 4, 0.5],
                 [trees, 0.02, "minecraft:bamboo", 64, 4, 0.5],
-                [food, 0.02, "thermal:frost_melon_slice", 64, 6, 0.5],
+                [food, 0.00, "minecraft:air", 64, 6, 0.5],
                 [soils, 0.02, "minecraft:soul_soil", 64, 4, 0.5],
                 [protein, 0.00, "minecraft:air", 64, 16, 0.5],
                 [minerals, 0.01, "minecraft:coal", 64, 2, 0.25],
