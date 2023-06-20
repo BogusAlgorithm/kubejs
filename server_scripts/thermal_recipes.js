@@ -32,7 +32,7 @@ ServerEvents.recipes(event => {
   
   event.remove({output: `thermal:enderium_dust`})
 
-  event.shapeless("2x minecraft:fire_charge", ["minecraft:blaze_powder", "minecraft:gunpowder", '2x thermal:sawdust'])
+  //event.shapeless("2x minecraft:fire_charge", ["minecraft:blaze_powder", "minecraft:gunpowder", '2x thermal:sawdust'])
 
   event.replaceInput({id: "thermal:chiller_ball_cast"}, "thermal:bronze_plate", "thermal:gold_plate")
   event.replaceInput({id: "thermal:tools/satchel"}, "thermal:tin_ingot", "thermal:tin_gear")
@@ -864,7 +864,7 @@ ServerEvents.recipes(event => {
   event.remove({type: "thermal:pulverizer_catalyst"})
   event.recipes.thermal.pulverizer_catalyst("minecraft:flint").primaryMod(1.0).secondaryMod(1.0).energyMod(0.9).minChance(0.0).useChance(1.0)
 
-  event.recipes.create.crushing(["thermal:sawdust", Item.of("thermal:sawdust").withChance(0.5)], "#minecraft:planks")
+  //event.recipes.create.crushing(["thermal:sawdust", Item.of("thermal:sawdust").withChance(0.5)], "#minecraft:planks")
 
   event.remove({id: "thermal:lumium_dust_4"})
   event.recipes.create.mixing("thermal:lumium_ingot", ["thermal:gold_dust", "thermal:gold_dust", "thermal:gold_dust", 
