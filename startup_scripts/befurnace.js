@@ -72,22 +72,22 @@ const food = [
 
   
   const crops_2 = [
-    ["thermal:amaranth", 1],//Swap to seeds
-    ["thermal:barley", 1],
-    ["thermal:bell_pepper", 1],
-    ["thermal:corn", 1],
-    ["thermal:eggplant", 1],
-    ["thermal:flax", 1],
-    ["thermal:green_bean", 1],
-    ["thermal:onion", 1],
-    ["thermal:peanut", 1],
-    ["thermal:radish", 1],
-    ["thermal:rice", 1],
-    ["thermal:sadiroot", 1],
-    ["thermal:spinach", 1],
-    ["thermal:strawberry", 1],
-    ["thermal:tomato", 1],
-    ["thermal:frost_melon_slice"]
+    ["thermal:amaranth_seeds", 1],
+    ["thermal:barley_seeds", 1],
+    ["thermal:bell_pepper_seeds", 1],
+    ["thermal:corn_seeds", 1],
+    ["thermal:eggplant_seeds", 1],
+    ["thermal:flax_seeds", 1],
+    ["thermal:green_bean_seeds", 1],
+    ["thermal:onion_seeds", 1],
+    ["thermal:peanut_seeds", 1],
+    ["thermal:radish_seeds", 1],
+    ["thermal:rice_seeds", 1],
+    ["thermal:sadiroot_seeds", 1],
+    ["thermal:spinach_seeds", 1],
+    ["thermal:strawberry_seeds", 1],
+    ["thermal:tomato_seeds", 1],
+    ["thermal:frost_melon_seeds"]
   ];
 
   const protein = [
