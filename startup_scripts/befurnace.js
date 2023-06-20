@@ -87,7 +87,7 @@ const food = [
     ["thermal:spinach_seeds", 1],
     ["thermal:strawberry_seeds", 1],
     ["thermal:tomato_seeds", 1],
-    ["thermal:frost_melon_seeds"]
+    ["thermal:frost_melon_seeds", 1]
   ];
 
   const protein = [
