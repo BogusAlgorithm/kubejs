@@ -36,6 +36,7 @@ ServerEvents.recipes(event => {
 
   event.replaceInput({id: "thermal:chiller_ball_cast"}, "thermal:bronze_plate", "thermal:gold_plate")
   event.replaceInput({id: "thermal:tools/satchel"}, "thermal:tin_ingot", "thermal:tin_gear")
+  event.replaceInput({output: "thermal:phytogro"}, "#forge:sand", "thermal:compost")
 
   event.remove({id: "thermal:hazmat_fabric"})
   global.CrisCrosCraft('thermal:hazmat_fabric', 'thermal:cured_rubber', 'minecraft:string', 'thermal:lead_plate')
