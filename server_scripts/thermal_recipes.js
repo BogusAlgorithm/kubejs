@@ -418,15 +418,15 @@ ServerEvents.recipes(event => {
 
     event.remove({id: "thermal:charge_bench"})//Electrum
     event.shaped("thermal:charge_bench", [ 
-        'ICI', 
+        'ILI', 
         'AFA', 
-        'IGI'  
+        'ICI'  
         ],{
-        C: 'createaddition:tesla_coil',
+        L: 'thermal:lumium_plate',
         F: 'thermal:machine_frame',
         A: 'createaddition:capacitor',
         I: 'thermal:iron_plate',
-        G: 'thermal:electrum_gear'
+        C: 'thermal:rf_coil'
       })  
 
   event.remove({id: "thermal:machine_press"})
