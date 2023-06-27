@@ -39,6 +39,9 @@ ServerEvents.tags('item', event => {
 ServerEvents.tags('block', event => {
     event.add('create:wrench_pickup', "minecraft:end_portal_frame")
     event.add("create:wrench_pickup", "minecraft:end_portal")
+
+    event.add('minecraft:dampens_vibrations', '/^thermal:.*_rockwool$/')
+    event.add('minecraft:occludes_vibration_signals', /^thermal:.*_rockwool$/)
 })
 
 ServerEvents.loaded(e => e.server.runCommandSilent('reload'))

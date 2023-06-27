@@ -230,6 +230,8 @@ ServerEvents.recipes(event => {
     event.shapeless("minecraft:pearlescent_froglight", "minecraft:ochre_froglight")
     event.shapeless("minecraft:ochre_froglight", "minecraft:verdant_froglight")
 
+    event.shapeless("minecraft:sculk_sensor", ["minecraft:observer", "create:experience_nugget", "minecraft:feather"])
+
     //Kubits
     Ingredient.registerCustomIngredientAction("lumen_transform", (itemstack, index, inventory) => {
         let rand_val = Math.random()
