@@ -791,7 +791,7 @@ ServerEvents.recipes(event => {
   event.recipes.thermal.refinery([Fluid.of("thermal:refined_fuel", 50)], [Fluid.of("thermal:heavy_oil", 100)])
   event.recipes.create.compacting([Item.of("thermal:coal_coke")], [Fluid.of("thermal:heavy_oil", 200)])
 
-  event.recipes.thermal.refinery([Item.of("kubejs:crystallizer")], [Fluid.of('kubejs:solution_4', 125)]).energy(20000)
+  event.recipes.thermal.refinery([Item.of("kubejs:crystallizer")], [Fluid.of('kubejs:solution_4', 100)]).energy(20000)
   event.recipes.thermal.refinery([Item.of("powah:uraninite")], [Fluid.of("thermal:refined_fuel", 1000)]).energy(20000)
 
   event.recipes.thermal.brewer([Fluid.of("kubejs:solution_1", 1000)], [Item.of("minecraft:blaze_rod"), Fluid.of("minecraft:water",1000)]).energy(20000)
